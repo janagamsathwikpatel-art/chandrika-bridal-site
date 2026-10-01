@@ -53,9 +53,6 @@ export default function Footer() {
             <a href="#boutiques" className="hover:text-white transition-colors">
               Ateliers
             </a>
-            <a href="#gallery" className="hover:text-white transition-colors">
-              Editorial
-            </a>
           </div>
 
           <p className="uppercase">
