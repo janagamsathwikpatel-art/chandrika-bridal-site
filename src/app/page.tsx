@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import ExperienceArchSection from "@/components/ExperienceArchSection";
 import EditorialStory from "@/components/EditorialStory";
 import CollectionShowcase from "@/components/CollectionShowcase";
 import BoutiqueGrid from "@/components/BoutiqueGrid";
@@ -19,8 +20,11 @@ export default function Home() {
       {/* Fixed Luxury Navigation Header */}
       <Header onOpenInquiry={() => setInquiryModalOpen(true)} />
 
-      {/* Hero Video with Large Typographic Scroll Reveal */}
+      {/* Hero Video with Large Typographic Scroll Reveal — 100% UNTOUCHED */}
       <Hero />
+
+      {/* Stitching Stories Archway & Saree Collection Experience — DIRECTLY BELOW HERO */}
+      <ExperienceArchSection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Editorial Story & Brand Philosophy */}
       <EditorialStory />
