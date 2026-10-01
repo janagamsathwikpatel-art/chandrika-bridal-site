@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { X, ArrowRight, Sparkles, ShoppingBag, Eye, Heart } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { X, Sparkles, ShoppingBag, Eye, ArrowRight } from "lucide-react";
 
 interface SareeItem {
   id: string;
@@ -89,11 +89,33 @@ interface ExperienceArchSectionProps {
 }
 
 export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchSectionProps) {
-  const [experienceOpen, setExperienceOpen] = useState(false);
+  const [doorsOpen, setDoorsOpen] = useState(false);
+  const [experienceModalOpen, setExperienceModalOpen] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState("ALL");
   const [selectedSaree, setSelectedSaree] = useState<SareeItem | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const categories = ["ALL", "Kanchipuram", "Banarasi", "Paithani", "Chanderi", "Patola", "Tussar"];
+
+  // Open doors on scroll when section enters view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setDoorsOpen(true);
+        } else {
+          setDoorsOpen(false);
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const filteredItems = SAREE_EXPERIENCE_ITEMS.filter(
     (item) => selectedFilter === "ALL" || item.category === selectedFilter
@@ -102,210 +124,211 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
   return (
     <>
       {/* ─────────────────────────────────────────────────────────────────
-          ARCHITECTURAL ARCH PORTAL SECTION (MATCHING SCREENSHOT)
+          AUTHENTIC STITCHING STORIES ARCH PORTAL SECTION (EXACT TO SCREENSHOT)
       ───────────────────────────────────────────────────────────────── */}
       <section
-        id="experience-arch"
-        className="relative w-full overflow-hidden flex flex-col justify-end items-center"
+        id="experience"
+        ref={sectionRef}
+        className="relative w-screen overflow-hidden flex flex-col items-center justify-end"
         style={{
-          minHeight: "100vh",
-          backgroundColor: "#d5d5d3",
-          backgroundImage: `
-            radial-gradient(ellipse at 50% 20%, rgba(255,255,255,0.45) 0%, transparent 70%),
-            linear-gradient(to bottom, #d8d8d6 0%, #cacac7 50%, #b8b8b5 100%)
-          `,
-          paddingTop: "60px",
-          paddingBottom: "0px",
+          height: "100vh",
+          minHeight: "720px",
+          backgroundColor: "#b4b4b2",
         }}
       >
-        {/* Subtle stone texture simulation overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-25"
-          style={{
-            backgroundImage: `radial-gradient(circle at 25% 25%, #888 1px, transparent 1px), radial-gradient(circle at 75% 75%, #444 1px, transparent 1px)`,
-            backgroundSize: "24px 24px",
-          }}
-        />
+        {/* Background Wall Image (Desktop wall with arch cutout) */}
+        <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
+          <img
+            src="/images/arch-background.webp"
+            alt="Experience Wall Background"
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-        {/* Ambient Top Vignette */}
-        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/20 to-transparent pointer-events-none" />
-
-        {/* Architectural Stone Arch Opening */}
+        {/* Interior Deep Blue Background & Saree World Behind Doors */}
         <div
-          className="relative z-10 w-full max-w-[960px] mx-auto flex flex-col items-center justify-end px-4"
+          className="absolute inset-0 w-full h-full z-0 flex items-center justify-center"
           style={{
-            minHeight: "82vh",
+            backgroundColor: "#05084a",
+            backgroundImage: "radial-gradient(circle at 50% 50%, #0a116b 0%, #05084a 60%, #02042b 100%)",
           }}
         >
-          {/* Outer molded stone arch frame */}
+          {/* Subtle ambient preview of sarees behind the arch */}
           <div
-            className="w-full flex flex-col items-center justify-center relative"
-            style={{
-              height: "78vh",
-              minHeight: "560px",
-              maxHeight: "780px",
-              borderRadius: "440px 440px 0 0",
-              background: "linear-gradient(to bottom, #bcbbb8 0%, #a8a7a4 100%)",
-              padding: "16px 16px 0 16px",
-              boxShadow: `
-                0 -10px 40px rgba(0,0,0,0.18),
-                inset 0 4px 12px rgba(255,255,255,0.6),
-                inset 0 -4px 12px rgba(0,0,0,0.3)
-              `,
-            }}
+            className={`w-full max-w-4xl px-8 flex justify-center items-center gap-6 transition-opacity duration-1000 ${
+              doorsOpen ? "opacity-100" : "opacity-0"
+            }`}
           >
-            {/* Inner Stone Molding Rim */}
-            <div
-              className="w-full h-full flex flex-col items-center justify-center relative overflow-hidden"
-              style={{
-                borderRadius: "420px 420px 0 0",
-                background: "linear-gradient(to bottom, #9f9e9a 0%, #8e8d89 100%)",
-                padding: "10px 10px 0 10px",
-                boxShadow: "inset 0 6px 16px rgba(0,0,0,0.45)",
-              }}
-            >
-              {/* ── THE DEEP NAVY / ROYAL BLUE ARCH PORTAL (EXACT LIKE SCREENSHOT) ── */}
-              <div
-                className="w-full h-full flex flex-col items-center justify-center text-center relative px-6 md:px-12"
+            <div className="text-center text-white select-none">
+              <span className="text-[11px] tracking-[0.35em] text-white/80 uppercase block mb-2 font-medium">
+                DISCOVER OUR WORLD
+              </span>
+              <h3
                 style={{
-                  borderRadius: "410px 410px 0 0",
-                  backgroundColor: "#05084a",
-                  backgroundImage: `
-                    radial-gradient(circle at 50% 35%, #080d69 0%, #05084a 55%, #030536 100%)
-                  `,
-                  boxShadow: `
-                    inset 0 12px 35px rgba(0,0,0,0.7),
-                    inset 0 -12px 35px rgba(0,0,0,0.5)
-                  `,
+                  fontFamily: "'Anton', 'Impact', sans-serif",
+                  fontSize: "clamp(36px, 5vw, 64px)",
+                  letterSpacing: "0.02em",
+                  lineHeight: "1",
                 }}
+                className="text-white uppercase mb-4"
               >
-                {/* Subtle light shimmer within the blue portal */}
-                <div
-                  className="absolute inset-0 pointer-events-none opacity-30"
-                  style={{
-                    background: "radial-gradient(ellipse at 50% 30%, rgba(120, 150, 255, 0.35) 0%, transparent 70%)",
-                  }}
-                />
-
-                {/* Content Inside the Arch */}
-                <div className="relative z-10 flex flex-col items-center justify-center text-center select-none py-8">
-                  {/* Small Header Tag: EXPERIENCE */}
-                  <span
-                    style={{
-                      fontSize: "clamp(12px, 1.4vw, 15px)",
-                      letterSpacing: "0.35em",
-                      fontWeight: 500,
-                      color: "#ffffff",
-                      textTransform: "uppercase",
-                      display: "block",
-                      marginBottom: "16px",
-                      opacity: 0.95,
-                      textShadow: "0 2px 8px rgba(0,0,0,0.5)",
-                    }}
-                  >
-                    EXPERIENCE
-                  </span>
-
-                  {/* Bold Hero Wordmark: STITCHING STORIES */}
-                  <h2
-                    style={{
-                      fontFamily: "'Anton', 'Impact', sans-serif",
-                      fontSize: "clamp(46px, 7vw, 92px)",
-                      letterSpacing: "0.02em",
-                      lineHeight: "0.95",
-                      color: "#ffffff",
-                      textTransform: "uppercase",
-                      margin: 0,
-                      padding: 0,
-                      marginBottom: "38px",
-                      textShadow: "0 4px 20px rgba(0,0,0,0.6)",
-                    }}
-                  >
-                    STITCHING STORIES
-                  </h2>
-
-                  {/* Clean Outlined Button: EXPERIENCE OUR WORLD */}
-                  <button
-                    onClick={() => setExperienceOpen(true)}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: "10px",
-                      padding: "16px 36px",
-                      border: "1.5px solid #ffffff",
-                      backgroundColor: "transparent",
-                      color: "#ffffff",
-                      fontSize: "clamp(11px, 1.1vw, 13px)",
-                      letterSpacing: "0.26em",
-                      textTransform: "uppercase",
-                      fontWeight: 500,
-                      cursor: "pointer",
-                      transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
-                      textShadow: "0 1px 4px rgba(0,0,0,0.5)",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = "#ffffff";
-                      e.currentTarget.style.color = "#05084a";
-                      e.currentTarget.style.textShadow = "none";
-                      e.currentTarget.style.boxShadow = "0 8px 30px rgba(255,255,255,0.3)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = "transparent";
-                      e.currentTarget.style.color = "#ffffff";
-                      e.currentTarget.style.textShadow = "0 1px 4px rgba(0,0,0,0.5)";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
-                  >
-                    EXPERIENCE OUR WORLD
-                  </button>
-
-                  {/* Subtle Subtitle */}
-                  <p
-                    style={{
-                      marginTop: "20px",
-                      fontSize: "10px",
-                      letterSpacing: "0.25em",
-                      color: "rgba(255,255,255,0.65)",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Click to explore the handcrafted saree collection
-                  </p>
-                </div>
-              </div>
+                HANDLOOM SAREE COUTURE
+              </h3>
+              <p className="text-[11px] tracking-[0.2em] text-white/80 uppercase max-w-md mx-auto mb-6">
+                Explore our private curation of ancestral handloom drapes.
+              </p>
+              <button
+                onClick={() => setExperienceModalOpen(true)}
+                className="px-8 py-3 bg-white text-[#05084a] text-[11px] tracking-[0.25em] uppercase font-semibold hover:bg-[#ebe9e5] transition-colors shadow-2xl"
+              >
+                OPEN FULL COLLECTION
+              </button>
             </div>
           </div>
+        </div>
+
+        {/* ── Sliding Blue Arch Doors ── */}
+        <div
+          className="absolute inset-0 w-full h-full z-20 flex justify-center items-end pointer-events-none overflow-hidden"
+        >
+          {/* Left Door */}
+          <div
+            className="h-full flex items-end justify-end transition-transform duration-[1800ms] ease-in-out"
+            style={{
+              width: "50%",
+              transform: doorsOpen ? "translateX(-100%)" : "translateX(0%)",
+            }}
+          >
+            <img
+              src="/images/door-left.png"
+              alt="Left Blue Door"
+              className="h-full object-contain object-bottom"
+              style={{ maxHeight: "92vh" }}
+            />
+          </div>
+
+          {/* Right Door */}
+          <div
+            className="h-full flex items-end justify-start transition-transform duration-[1800ms] ease-in-out"
+            style={{
+              width: "50%",
+              transform: doorsOpen ? "translateX(100%)" : "translateX(0%)",
+            }}
+          >
+            <img
+              src="/images/door-right.png"
+              alt="Right Blue Door"
+              className="h-full object-contain object-bottom"
+              style={{ maxHeight: "92vh", marginLeft: "-2px" }}
+            />
+          </div>
+        </div>
+
+        {/* ── Overlay Text Centerpiece (Exact to Reference Screenshot) ── */}
+        <div
+          className={`absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-4 select-none transition-all duration-700 pointer-events-auto ${
+            doorsOpen ? "opacity-30 hover:opacity-100" : "opacity-100"
+          }`}
+        >
+          {/* Small Top Label: EXPERIENCE */}
+          <span
+            style={{
+              fontSize: "clamp(12px, 1.4vw, 16px)",
+              letterSpacing: "0.35em",
+              fontWeight: 500,
+              color: "#ffffff",
+              textTransform: "uppercase",
+              display: "block",
+              marginBottom: "14px",
+              textShadow: "0 2px 10px rgba(0,0,0,0.8)",
+            }}
+          >
+            EXPERIENCE
+          </span>
+
+          {/* Bold Condensed Title: STITCHING STORIES */}
+          <h2
+            style={{
+              fontFamily: "'Anton', 'Impact', sans-serif",
+              fontSize: "clamp(42px, 6.8vw, 88px)",
+              letterSpacing: "0.02em",
+              lineHeight: "0.95",
+              color: "#ffffff",
+              textTransform: "uppercase",
+              margin: 0,
+              padding: 0,
+              marginBottom: "36px",
+              textShadow: "0 4px 24px rgba(0,0,0,0.8)",
+            }}
+          >
+            STITCHING STORIES
+          </h2>
+
+          {/* Clean Outlined Button: EXPERIENCE OUR WORLD */}
+          <button
+            onClick={() => {
+              setDoorsOpen(true);
+              setExperienceModalOpen(true);
+            }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "16px 40px",
+              border: "1.5px solid #ffffff",
+              backgroundColor: "transparent",
+              color: "#ffffff",
+              fontSize: "clamp(11px, 1.1vw, 13px)",
+              letterSpacing: "0.26em",
+              textTransform: "uppercase",
+              fontWeight: 500,
+              cursor: "pointer",
+              transition: "all 0.35s ease",
+              textShadow: "0 1px 6px rgba(0,0,0,0.7)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#ffffff";
+              e.currentTarget.style.color = "#05084a";
+              e.currentTarget.style.textShadow = "none";
+              e.currentTarget.style.boxShadow = "0 8px 30px rgba(255,255,255,0.4)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.color = "#ffffff";
+              e.currentTarget.style.textShadow = "0 1px 6px rgba(0,0,0,0.7)";
+              e.currentTarget.style.boxShadow = "none";
+            }}
+          >
+            EXPERIENCE OUR WORLD
+          </button>
         </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────────────
-          IMMERSIVE SAREE IMAGE COLLECTION MODAL / EXPERIENCE VIEW
-          (OPENS WHEN USER CLICKS 'EXPERIENCE OUR WORLD')
+          IMMERSIVE SAREE IMAGE COLLECTION MODAL
+          (OPENS WHEN 'EXPERIENCE OUR WORLD' IS CLICKED)
       ───────────────────────────────────────────────────────────────── */}
-      {experienceOpen && (
+      {experienceModalOpen && (
         <div
           className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex flex-col justify-start items-center p-4 md:p-8 animate-fadeIn"
           style={{ animationDuration: "0.3s" }}
         >
-          <div
-            className="w-full max-w-[1400px] bg-[#fbfaf8] text-[#201f1f] rounded-sm shadow-2xl relative my-auto p-6 md:p-12 border border-[#e8e6e1]"
-          >
+          <div className="w-full max-w-[1400px] bg-[#fbfaf8] text-[#201f1f] rounded-sm shadow-2xl relative my-auto p-6 md:p-12 border border-[#e8e6e1]">
             {/* Close Button */}
             <button
-              onClick={() => setExperienceOpen(false)}
+              onClick={() => setExperienceModalOpen(false)}
               className="absolute top-6 right-6 p-2 rounded-full hover:bg-black/10 transition-colors text-[#201f1f] z-20 cursor-pointer"
-              aria-label="Close Experience"
+              aria-label="Close"
             >
               <X size={26} />
             </button>
 
-            {/* Header of Saree Experience */}
+            {/* Header */}
             <div className="mb-10 pb-6 border-b border-[#201f1f]/20">
               <div className="flex items-center gap-2 mb-2">
                 <Sparkles size={14} className="text-[#8B0000]" />
                 <span className="text-[10px] tracking-[0.35em] text-[#767573] uppercase font-semibold">
-                  Experience Our World • Handcrafted Sarees
+                  Experience Our World • Saree Collection
                 </span>
               </div>
               <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
@@ -322,11 +345,10 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
                     STITCHING STORIES · SAREE COLLECTION
                   </h3>
                   <p className="text-[11px] tracking-widest text-[#767573] uppercase mt-2">
-                    Every thread tells an ancestral narrative woven by master artisans.
+                    Ancestral Indian Handlooms • Kanchipuram, Banarasi, Paithani, Chanderi & Patola
                   </p>
                 </div>
 
-                {/* Direct Link to /experience */}
                 <a
                   href="/experience"
                   className="px-6 py-2.5 border border-[#201f1f] text-[#201f1f] hover:bg-[#201f1f] hover:text-white transition-all duration-300 text-[10px] tracking-[0.22em] uppercase font-medium"
@@ -361,20 +383,15 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
                   className="group flex flex-col bg-[#f4f3f0] border border-[#e8e6e1] transition-all duration-500 hover:shadow-xl cursor-pointer"
                   onClick={() => setSelectedSaree(saree)}
                 >
-                  {/* Image Card with Zoom Hover */}
                   <div className="relative aspect-[3/4] overflow-hidden bg-[#ebe9e5]">
                     <img
                       src={saree.image}
                       alt={saree.name}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-
-                    {/* Badge */}
                     <div className="absolute top-3 left-3 bg-[#05084a] text-white text-[9px] tracking-widest px-3 py-1 uppercase">
                       {saree.category}
                     </div>
-
-                    {/* Hover Overlay Button */}
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
                       <span className="px-5 py-2.5 bg-white text-[#05084a] text-[10px] tracking-widest uppercase font-semibold flex items-center gap-2 shadow-lg">
                         <Eye size={13} /> EXAMINE WEAVE
@@ -382,7 +399,6 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
                     </div>
                   </div>
 
-                  {/* Details */}
                   <div className="p-5 flex flex-col justify-between flex-grow">
                     <div>
                       <div className="flex justify-between items-baseline mb-1">
@@ -408,7 +424,7 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          setExperienceOpen(false);
+                          setExperienceModalOpen(false);
                           onOpenInquiry?.();
                         }}
                         className="text-[#05084a] font-semibold hover:underline uppercase flex items-center gap-1"
@@ -429,7 +445,7 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
               </p>
               <button
                 onClick={() => {
-                  setExperienceOpen(false);
+                  setExperienceModalOpen(false);
                   onOpenInquiry?.();
                 }}
                 className="px-8 py-3 bg-[#05084a] text-white hover:bg-black transition-colors text-[10px] tracking-[0.25em] uppercase font-semibold"
@@ -445,9 +461,7 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
           SINGLE SAREE DETAIL LIGHTBOX
       ───────────────────────────────────────────────────────────────── */}
       {selectedSaree && (
-        <div
-          className="fixed inset-0 z-[60] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn"
-        >
+        <div className="fixed inset-0 z-[60] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
           <div className="bg-[#fbfaf8] w-full max-w-2xl p-6 md:p-8 relative shadow-2xl border border-[#e8e6e1]">
             <button
               onClick={() => setSelectedSaree(null)}
@@ -492,7 +506,7 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
                   <button
                     onClick={() => {
                       setSelectedSaree(null);
-                      setExperienceOpen(false);
+                      setExperienceModalOpen(false);
                       onOpenInquiry?.();
                     }}
                     className="w-full py-3 bg-[#05084a] text-white hover:bg-black transition-colors uppercase tracking-[0.2em] font-medium text-[10px]"
