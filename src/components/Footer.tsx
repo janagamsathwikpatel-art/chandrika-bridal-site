@@ -18,9 +18,12 @@ export default function Footer() {
           <span className="text-[28px] md:text-[42px] tracking-[0.35em] font-light text-white uppercase block mb-4">
             CHANDRIKA
           </span>
+          <span className="text-[10px] tracking-[0.4em] text-[#d4af37] uppercase block mb-4 font-medium">
+            HAUTE BRIDAL SAREES
+          </span>
           <p className="text-[11px] md:text-[13px] tracking-[0.2em] text-[#a6a39b] uppercase leading-relaxed font-light">
-            Chandrika is an ode to quiet luxury, offering refined bridal design for the woman who
-            seeks elegance without excess.
+            An ode to quiet luxury and living Indian heritage, offering handcrafted bridal handloom
+            sarees for the woman who seeks timeless grace woven with pure silk and 24K real gold zari.
           </p>
         </div>
 
@@ -41,11 +44,14 @@ export default function Footer() {
             <a href="#about" className="hover:text-white transition-colors">
               Philosophy
             </a>
+            <a href="#sarees" className="hover:text-white transition-colors">
+              Sarees
+            </a>
             <a href="#collection" className="hover:text-white transition-colors">
               Silhouettes
             </a>
             <a href="#boutiques" className="hover:text-white transition-colors">
-              Stockists
+              Ateliers
             </a>
             <a href="#gallery" className="hover:text-white transition-colors">
               Editorial
@@ -53,7 +59,7 @@ export default function Footer() {
           </div>
 
           <p className="uppercase">
-            © {new Date().getFullYear()} CHANDRIKA HAUTE BRIDAL. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} CHANDRIKA HAUTE BRIDAL SAREES. ALL RIGHTS RESERVED.
           </p>
 
           <div className="flex gap-4 uppercase">
@@ -64,7 +70,7 @@ export default function Footer() {
               Pinterest
             </a>
             <a href="#" className="hover:text-white transition-colors">
-              Vogue Runway
+              Vogue India
             </a>
           </div>
         </div>

@@ -178,7 +178,7 @@ export default function Hero() {
               opacity: Math.max(0, 1 - scrollProgress * 1.6),
             }}
           >
-            Modern wedding dresses defined by clean lines,&nbsp;sculpted form, and understated luxury.
+            Ancestral handloom sarees defined by pure silk,&nbsp;24K gold zari, and timeless Indian elegance.
           </p>
         </div>
 

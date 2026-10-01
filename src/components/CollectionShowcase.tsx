@@ -15,35 +15,35 @@ interface Look {
 const COLLECTION_LOOKS: Look[] = [
   {
     id: "look-01",
-    name: "AURA SILK COLUMN",
-    silhouette: "Architectural Column with Watteau Train",
-    fabric: "100% Heavy Silk 4-Ply Crepe",
-    image: "https://images.unsplash.com/photo-1546804784-896d0dca3805?q=80&w=1200&auto=format&fit=crop",
-    season: "Collection 2026",
+    name: "KANJIVARAM KORVAI",
+    silhouette: "Architectural 3-Shuttle Temple Border Drape",
+    fabric: "100% Pure Mulberry Silk & 24K Gold Real Zari",
+    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop",
+    season: "Heritage 2026",
   },
   {
     id: "look-02",
-    name: "NOVA SCULPTED CORSET",
-    silhouette: "Dropped Waist Basqued Bodice & Fluted Hem",
-    fabric: "Duchess Satin & Structured Silk Tulle",
-    image: "https://images.unsplash.com/photo-1596451190630-186aff535bf2?q=80&w=1200&auto=format&fit=crop",
-    season: "Collection 2026",
+    name: "BANARASI SHIKARGAH",
+    silhouette: "Kadhwa Hand-Locked Royal Jaal Brocade",
+    fabric: "Pure Katan Silk & Antique Silver-Gold Zari",
+    image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1200&auto=format&fit=crop",
+    season: "Heritage 2026",
   },
   {
     id: "look-03",
-    name: "LYRA DRAPED COWL",
-    silhouette: "Open Back Bias-Cut Slip Gown",
-    fabric: "Fluid Mulberry Silk Charmeuse",
-    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&auto=format&fit=crop",
-    season: "Collection 2026",
+    name: "PAITHANI PEACOCK PALLU",
+    silhouette: "Tapestry Weave with Kaleidoscopic Resham Inlay",
+    fabric: "Handwoven Maharashtra Silk & Gold Tissue",
+    image: "https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=1200&auto=format&fit=crop",
+    season: "Heritage 2026",
   },
   {
     id: "look-04",
-    name: "SOLA MINIMALIST CAPE",
-    silhouette: "High-Neck Column with Floor-Sweeping Capelet",
-    fabric: "Crisp Silk Gazar & Featherweight Organza",
-    image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1200&auto=format&fit=crop",
-    season: "Collection 2026",
+    name: "CHANDERI TISSUE METALLIC",
+    silhouette: "Gossamer Sheer Drape with Hand-Beaten Buttas",
+    fabric: "Featherweight Silk Zari Warp & Tissue Weft",
+    image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1200&auto=format&fit=crop",
+    season: "Heritage 2026",
   },
 ];
 
@@ -59,22 +59,22 @@ export default function CollectionShowcase({ onSelectLook }: CollectionShowcaseP
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 pb-6 border-b border-[#201f1f]/20">
           <div>
-            <span className="text-[10px] tracking-[0.3em] text-[#767573] uppercase block mb-2">
-              Spring / Summer 2026
+            <span className="text-[10px] tracking-[0.3em] text-[#767573] uppercase block mb-2 font-semibold">
+              Heritage Bridal Collection 2026
             </span>
-            <h2 className="title text-[#201f1f]">THE SILHOUETTES</h2>
+            <h2 className="title text-[#201f1f]">THE SAREE SILHOUETTES</h2>
           </div>
-          <p className="mt-4 md:mt-0 text-[11px] tracking-widest text-[#595955] max-w-sm uppercase">
-            Designed for timeless presence. Each silhouette is sculpted to celebrate personal grace without unnecessary ornament.
+          <p className="mt-4 md:mt-0 text-[11px] tracking-widest text-[#595955] max-w-sm uppercase leading-relaxed">
+            Designed for timeless bridal majesty. Each handloom saree silhouette is sculpted by centuries of Indian weaving traditions and architectural pallu draping.
           </p>
         </div>
 
-        {/* 4 Column Lookbook Grid */}
+        {/* 4 Column Saree Lookbook Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {COLLECTION_LOOKS.map((look) => (
             <div
               key={look.id}
-              className="group cursor-pointer flex flex-col bg-[#fbfaf8] border border-[#e8e6e1] transition-all duration-500 hover:shadow-md"
+              className="group cursor-pointer flex flex-col bg-[#fbfaf8] border border-[#e8e6e1] transition-all duration-500 hover:shadow-xl"
               onClick={() => {
                 setActiveLook(look);
                 onSelectLook?.(look);
@@ -84,7 +84,7 @@ export default function CollectionShowcase({ onSelectLook }: CollectionShowcaseP
                 <img
                   src={look.image}
                   alt={look.name}
-                  className="w-full h-full object-cover grayscale contrast-105 transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute top-3 right-3 p-2 bg-[#201f1f]/80 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <ArrowUpRight size={14} />
@@ -110,11 +110,11 @@ export default function CollectionShowcase({ onSelectLook }: CollectionShowcaseP
                 </div>
 
                 <div className="mt-6 pt-3 border-t border-[#e8e6e1]/80 flex justify-between items-center">
-                  <span className="text-[9px] tracking-widest text-[#201f1f] group-hover:underline">
-                    VIEW DETAILS
+                  <span className="text-[9px] tracking-widest text-[#201f1f] font-semibold group-hover:underline">
+                    INQUIRE DRAPING
                   </span>
                   <span className="text-[9px] tracking-widest text-[#767573]">
-                    BY APPOINTMENT
+                    HANDLOOM CERTIFIED
                   </span>
                 </div>
               </div>
