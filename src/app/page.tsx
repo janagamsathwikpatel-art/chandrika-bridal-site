@@ -38,7 +38,7 @@ export default function Home() {
       {/* Select Boutiques & Stockists Grid */}
       <BoutiqueGrid onOpenPartnerInquiry={() => setInquiryModalOpen(true)} />
 
-      {/* Stay in the loop & Bespoke Appointment CTA */}
+      {/* Why Choose Chandrika & Bespoke Appointment CTA */}
       <InquirySection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Editorial Luxury Footer */}
