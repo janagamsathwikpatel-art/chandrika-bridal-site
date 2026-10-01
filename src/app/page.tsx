@@ -3,9 +3,8 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import ExperienceArchSection from "@/components/ExperienceArchSection";
+import SareeCollectionSection from "@/components/SareeCollectionSection";
 import EditorialStory from "@/components/EditorialStory";
-import CollectionShowcase from "@/components/CollectionShowcase";
 import BoutiqueGrid from "@/components/BoutiqueGrid";
 import LayeredGallery from "@/components/LayeredGallery";
 import InquirySection from "@/components/InquirySection";
@@ -20,17 +19,14 @@ export default function Home() {
       {/* Fixed Luxury Navigation Header */}
       <Header onOpenInquiry={() => setInquiryModalOpen(true)} />
 
-      {/* Hero Video with Large Typographic Scroll Reveal — 100% UNTOUCHED */}
+      {/* Hero Video with Large Typographic Reveal — 100% UNTOUCHED */}
       <Hero />
 
-      {/* Stitching Stories Archway & Saree Collection Experience — DIRECTLY BELOW HERO */}
-      <ExperienceArchSection onOpenInquiry={() => setInquiryModalOpen(true)} />
+      {/* Haute Handloom Saree Collection — DIRECTLY BELOW HERO */}
+      <SareeCollectionSection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Editorial Story & Brand Philosophy */}
       <EditorialStory />
-
-      {/* Haute Couture Silhouettes Lookbook */}
-      <CollectionShowcase onSelectLook={() => setInquiryModalOpen(true)} />
 
       {/* Select Boutiques & Stockists Grid */}
       <BoutiqueGrid onOpenPartnerInquiry={() => setInquiryModalOpen(true)} />
