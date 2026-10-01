@@ -12,96 +12,234 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinkClass = (base = "") =>
-    `relative uppercase tracking-[0.2em] text-[13px] font-medium transition-colors duration-300 cursor-pointer
-    after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:h-[1px] after:w-0
-    hover:after:w-full after:transition-all after:duration-300
-    ${scrolled
-      ? "text-[#201f1f] after:bg-[#201f1f]"
-      : "text-white after:bg-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)]"
-    } ${base}`;
-
   return (
     <>
-      {/* ────────────────────────── MAIN HEADER ────────────────────────── */}
+      {/* ═══════════════════════════ HEADER ═══════════════════════════ */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-[#fbfaf8]/95 backdrop-blur-md border-b border-[#e8e6e1] py-4 shadow-sm"
-            : "bg-gradient-to-b from-black/60 to-transparent py-7"
-        }`}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          transition: "all 0.4s ease",
+          background: scrolled
+            ? "rgba(251,250,248,0.95)"
+            : "linear-gradient(to bottom, rgba(0,0,0,0.55), transparent)",
+          backdropFilter: scrolled ? "blur(12px)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(232,230,225,0.9)" : "none",
+          padding: scrolled ? "14px 0" : "28px 0",
+          boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.06)" : "none",
+        }}
       >
-        <div className="max-w-[1440px] mx-auto w-full px-8 md:px-14">
-          <div className="flex items-center justify-between w-full">
-
-            {/* ── LEFT NAV ── */}
-            <nav className="hidden lg:flex items-center gap-10">
-              <a href="#about" className={navLinkClass()}>PHILOSOPHY</a>
-              <a href="#collection" className={navLinkClass()}>COLLECTION</a>
-              <a href="#boutiques" className={navLinkClass()}>BOUTIQUES</a>
-            </nav>
-
-            {/* ── CENTER BRAND ── */}
-            <a
-              href="/"
-              className="flex flex-col items-center justify-center group mx-auto lg:mx-0 transition-all duration-300"
-            >
-              <span
-                className={`text-[22px] md:text-[28px] tracking-[0.38em] font-light uppercase transition-all duration-300 group-hover:tracking-[0.46em] ${
-                  scrolled ? "text-[#201f1f]" : "text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
-                }`}
-              >
-                CHANDRIKA
-              </span>
-              <span
-                className={`text-[9px] tracking-[0.45em] -mt-1 font-normal uppercase transition-all duration-300 ${
-                  scrolled ? "text-[#767573]" : "text-white/85 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
-                }`}
-              >
-                HAUTE BRIDAL
-              </span>
-            </a>
-
-            {/* ── RIGHT NAV ── */}
-            <div className="hidden lg:flex items-center gap-10">
-              <a href="#gallery" className={navLinkClass()}>EDITORIAL</a>
-              <button onClick={onOpenInquiry} className={navLinkClass()}>INQUIRE</button>
+        <div
+          style={{
+            maxWidth: "1440px",
+            margin: "0 auto",
+            padding: "0 56px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          {/* ── LEFT NAV (desktop) ── */}
+          <nav
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "40px",
+            }}
+            className="hidden lg:flex"
+          >
+            {["PHILOSOPHY", "COLLECTION", "BOUTIQUES"].map((label, i) => (
               <a
-                href="#boutiques"
-                className={`text-[11px] tracking-[0.25em] uppercase font-medium px-5 py-2.5 border transition-all duration-300 ${
-                  scrolled
-                    ? "border-[#201f1f] text-[#201f1f] hover:bg-[#201f1f] hover:text-white"
-                    : "border-white text-white bg-white/10 hover:bg-white hover:text-black backdrop-blur-sm"
-                }`}
+                key={label}
+                href={["#about", "#collection", "#boutiques"][i]}
+                style={{
+                  fontSize: "12px",
+                  letterSpacing: "0.2em",
+                  fontWeight: 500,
+                  textTransform: "uppercase",
+                  color: scrolled ? "#201f1f" : "#ffffff",
+                  textDecoration: "none",
+                  textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.7)",
+                  transition: "opacity 0.2s",
+                  whiteSpace: "nowrap",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.65")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
               >
-                FIND A BOUTIQUE
+                {label}
               </a>
-            </div>
+            ))}
+          </nav>
 
-            {/* ── MOBILE HAMBURGER ── */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`lg:hidden p-2 transition-opacity absolute right-6 ${
-                scrolled ? "text-[#201f1f]" : "text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
-              }`}
-              aria-label="Menu"
+          {/* ── CENTER BRAND ── */}
+          <a
+            href="/"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textDecoration: "none",
+              transition: "all 0.3s",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "clamp(18px, 2vw, 28px)",
+                letterSpacing: "0.38em",
+                fontWeight: 300,
+                textTransform: "uppercase",
+                color: scrolled ? "#201f1f" : "#ffffff",
+                textShadow: scrolled ? "none" : "0 2px 8px rgba(0,0,0,0.8)",
+                whiteSpace: "nowrap",
+                transition: "all 0.3s",
+              }}
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              CHANDRIKA
+            </span>
+            <span
+              style={{
+                fontSize: "9px",
+                letterSpacing: "0.45em",
+                fontWeight: 400,
+                textTransform: "uppercase",
+                color: scrolled ? "#767573" : "rgba(255,255,255,0.85)",
+                textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.8)",
+                marginTop: "-2px",
+                whiteSpace: "nowrap",
+                transition: "all 0.3s",
+              }}
+            >
+              HAUTE BRIDAL
+            </span>
+          </a>
+
+          {/* ── RIGHT NAV (desktop) ── */}
+          <div
+            style={{ display: "flex", alignItems: "center", gap: "40px" }}
+            className="hidden lg:flex"
+          >
+            {[
+              { label: "EDITORIAL", href: "#gallery" },
+              { label: "INQUIRE", href: null },
+            ].map(({ label, href }) =>
+              href ? (
+                <a
+                  key={label}
+                  href={href}
+                  style={{
+                    fontSize: "12px",
+                    letterSpacing: "0.2em",
+                    fontWeight: 500,
+                    textTransform: "uppercase",
+                    color: scrolled ? "#201f1f" : "#ffffff",
+                    textDecoration: "none",
+                    textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.7)",
+                    transition: "opacity 0.2s",
+                    whiteSpace: "nowrap",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.65")}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+                >
+                  {label}
+                </a>
+              ) : (
+                <button
+                  key={label}
+                  onClick={onOpenInquiry}
+                  style={{
+                    fontSize: "12px",
+                    letterSpacing: "0.2em",
+                    fontWeight: 500,
+                    textTransform: "uppercase",
+                    color: scrolled ? "#201f1f" : "#ffffff",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.7)",
+                    whiteSpace: "nowrap",
+                    transition: "opacity 0.2s",
+                    padding: 0,
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.65")}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+                >
+                  {label}
+                </button>
+              )
+            )}
+
+            {/* FIND A BOUTIQUE button */}
+            <a
+              href="#boutiques"
+              style={{
+                fontSize: "11px",
+                letterSpacing: "0.22em",
+                fontWeight: 500,
+                textTransform: "uppercase",
+                textDecoration: "none",
+                padding: "10px 20px",
+                border: scrolled ? "1px solid #201f1f" : "1px solid rgba(255,255,255,0.9)",
+                color: scrolled ? "#201f1f" : "#ffffff",
+                background: scrolled ? "transparent" : "rgba(255,255,255,0.1)",
+                backdropFilter: scrolled ? "none" : "blur(4px)",
+                transition: "all 0.3s",
+                whiteSpace: "nowrap",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = scrolled ? "#201f1f" : "#ffffff";
+                e.currentTarget.style.color = scrolled ? "#ffffff" : "#201f1f";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = scrolled ? "transparent" : "rgba(255,255,255,0.1)";
+                e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
+              }}
+            >
+              FIND A BOUTIQUE
+            </a>
           </div>
+
+          {/* ── MOBILE HAMBURGER ── */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden"
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: scrolled ? "#201f1f" : "#ffffff",
+              textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.8)",
+              padding: "8px",
+            }}
+            aria-label="Menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </header>
 
-      {/* ────────────────────────── MOBILE DRAWER ────────────────────────── */}
+      {/* ═══════════════════════════ MOBILE DRAWER ═══════════════════════════ */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#fbfaf8] flex flex-col justify-center items-center gap-10 lg:hidden">
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 40,
+            background: "#fbfaf8",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "36px",
+          }}
+        >
           {[
             { href: "#about", label: "PHILOSOPHY" },
             { href: "#collection", label: "COLLECTION" },
@@ -112,7 +250,14 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
               key={href}
               href={href}
               onClick={() => setMobileMenuOpen(false)}
-              className="text-xl tracking-[0.25em] font-light text-[#201f1f] uppercase hover:opacity-60 transition-opacity"
+              style={{
+                fontSize: "20px",
+                letterSpacing: "0.25em",
+                fontWeight: 300,
+                textTransform: "uppercase",
+                color: "#201f1f",
+                textDecoration: "none",
+              }}
             >
               {label}
             </a>
@@ -122,7 +267,16 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
               setMobileMenuOpen(false);
               onOpenInquiry?.();
             }}
-            className="text-xl tracking-[0.25em] font-light text-[#201f1f] uppercase hover:opacity-60 transition-opacity"
+            style={{
+              fontSize: "20px",
+              letterSpacing: "0.25em",
+              fontWeight: 300,
+              textTransform: "uppercase",
+              color: "#201f1f",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+            }}
           >
             INQUIRE
           </button>
