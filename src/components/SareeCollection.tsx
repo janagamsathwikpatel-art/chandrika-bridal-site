@@ -68,6 +68,13 @@ export default function SareeCollection({ onOpenInquiry }: SareeCollectionProps)
   return (
     <section id="sarees" className="w-full bg-[#fbfaf8] py-14 md:py-20 px-4 md:px-10 relative">
       <div className="max-w-[1440px] mx-auto relative">
+        {/* ── Customer Favourites Heading at Top of Section (Matching User Request) ── */}
+        <div className="mb-8 md:mb-12 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#1f2421] tracking-tight uppercase">
+            Customer Favourites
+          </h2>
+        </div>
+
         {/* ── Carousel Container with Left & Right Arrow Buttons ── */}
         <div className="relative group/carousel">
           {/* Left Arrow Button */}
@@ -119,13 +126,6 @@ export default function SareeCollection({ onOpenInquiry }: SareeCollectionProps)
               </div>
             ))}
           </div>
-        </div>
-
-        {/* ── Customer Favourites Stately Serif Heading below cards ── */}
-        <div className="mt-12 md:mt-16 text-center">
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1f2421] tracking-tight">
-            Customer Favourites
-          </h2>
         </div>
       </div>
 
