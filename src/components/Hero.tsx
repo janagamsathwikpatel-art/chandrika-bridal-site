@@ -81,26 +81,56 @@ export default function Hero() {
           </button>
         </div>
 
-        {/* Poeza-style Large Editorial Typography Centerpiece */}
-        <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 select-none pointer-events-none">
+        {/* Typography — positioned left-center matching reference screenshot */}
+        <div
+          className="relative z-20 select-none pointer-events-none w-full"
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: 0,
+            transform: `translateY(calc(-50% - ${scrollProgress * 60}px))`,
+            opacity: Math.max(0, 1 - scrollProgress * 1.2),
+            paddingLeft: "clamp(24px, 6vw, 100px)",
+          }}
+        >
           <h1
-            className="title text-white tracking-tight leading-[0.88] drop-shadow-sm transition-all duration-500"
-            style={{
-              opacity: 1 - scrollProgress * 1.2,
-              transform: `translateY(-${scrollProgress * 60}px)`,
-            }}
+            style={{ lineHeight: 0.88, margin: 0, padding: 0, letterSpacing: "-0.01em" }}
+            className="title text-white drop-shadow-md"
           >
-            <span className="block text-left text-white/95">A NEW</span>
-            <span className="block md:pl-28 pl-12 text-white/95">CHAPTER</span>
-            <span className="block md:pl-48 pl-20 text-white/90 italic font-serif lowercase tracking-normal text-[0.85em]">
+            <span style={{ display: "block", textAlign: "left" }} className="text-white">
+              A NEW
+            </span>
+            <span style={{ display: "block", textAlign: "left" }} className="text-white">
+              CHAPTER
+            </span>
+            <span
+              style={{
+                display: "block",
+                textAlign: "left",
+                paddingLeft: "clamp(40px, 8vw, 180px)",
+                fontStyle: "italic",
+                fontFamily: "Georgia, serif",
+                textTransform: "lowercase",
+                fontSize: "0.85em",
+                letterSpacing: "0.01em",
+                fontWeight: 400,
+                color: "rgba(255,255,255,0.92)",
+              }}
+            >
               begins
             </span>
           </h1>
 
           <p
-            className="mt-8 text-[11px] md:text-[13px] tracking-[0.3em] text-white/80 uppercase font-light max-w-[480px] text-center"
             style={{
-              opacity: 1 - scrollProgress * 1.5,
+              marginTop: "28px",
+              fontSize: "clamp(10px, 1vw, 13px)",
+              letterSpacing: "0.28em",
+              textTransform: "uppercase",
+              fontWeight: 300,
+              color: "rgba(255,255,255,0.80)",
+              maxWidth: "420px",
+              opacity: Math.max(0, 1 - scrollProgress * 1.5),
             }}
           >
             Modern wedding dresses defined by clean lines, sculpted form, and understated luxury.
