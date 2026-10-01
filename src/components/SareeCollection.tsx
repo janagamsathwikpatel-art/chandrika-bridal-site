@@ -22,10 +22,8 @@ const SAREE_COLLECTION: SareeProduct[] = [
     subtitle: "Pure Mulberry Silk · Temple Border · Bridal Crimson",
     weave: "Kanchipuram Handloom · 24K Real Zari",
     price: "₹ 48,000",
-    image:
-      "/images/royal-kanjivaram-bridal-saree.jpg",
-    hoverImage:
-      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=900&auto=format&fit=crop",
+    image: "/images/royal-kanjivaram-bridal-saree.jpg",
+    hoverImage: "/images/royal-kanjivaram-bridal-saree.jpg",
     tag: "BRIDAL HEIRLOOM",
     isNew: true,
   },
@@ -35,10 +33,8 @@ const SAREE_COLLECTION: SareeProduct[] = [
     subtitle: "Katan Silk · Gold Jaal Brocade · Royal Ivory",
     weave: "Varanasi Kadhwa Handloom",
     price: "₹ 54,000",
-    image:
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=900&auto=format&fit=crop",
-    hoverImage:
-      "https://images.unsplash.com/photo-1610030469668-93530c17b58f?q=80&w=900&auto=format&fit=crop",
+    image: "/images/banarasi-gold-brocade-saree.jpg",
+    hoverImage: "/images/banarasi-gold-brocade-saree.jpg",
     tag: "BESTSELLER",
   },
   {
@@ -47,10 +43,8 @@ const SAREE_COLLECTION: SareeProduct[] = [
     subtitle: "Pure Silk · Peacock Pallu · Peacock Teal",
     weave: "Paithan Tapestry Weave",
     price: "₹ 42,000",
-    image:
-      "https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=900&auto=format&fit=crop",
-    hoverImage:
-      "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=900&auto=format&fit=crop",
+    image: "/images/paithani-peacock-teal-saree.jpg",
+    hoverImage: "/images/paithani-peacock-teal-saree.jpg",
     tag: "HERITAGE WEAVE",
   },
   {
@@ -59,10 +53,8 @@ const SAREE_COLLECTION: SareeProduct[] = [
     subtitle: "Featherweight Silk Zari · Champagne Gold",
     weave: "Chanderi Traditional Pit Loom",
     price: "₹ 24,500",
-    image:
-      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=900&auto=format&fit=crop",
-    hoverImage:
-      "https://images.unsplash.com/photo-1583391733975-dd83d95c5567?q=80&w=900&auto=format&fit=crop",
+    image: "/images/chanderi-tissue-gold-saree.jpg",
+    hoverImage: "/images/chanderi-tissue-gold-saree.jpg",
     isNew: true,
   },
   {
@@ -71,10 +63,8 @@ const SAREE_COLLECTION: SareeProduct[] = [
     subtitle: "Double Ikat Silk · Sacred Geometrics · Vermilion",
     weave: "Patan Double Ikat Heritage",
     price: "₹ 1,15,000",
-    image:
-      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=900&auto=format&fit=crop",
-    hoverImage:
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=900&auto=format&fit=crop",
+    image: "/images/patan-patola-double-ikat-saree.jpg",
+    hoverImage: "/images/patan-patola-double-ikat-saree.jpg",
     tag: "RARE WEAVE",
   },
   {
@@ -83,10 +73,8 @@ const SAREE_COLLECTION: SareeProduct[] = [
     subtitle: "Raw Wild Silk · Antique Bronze Zari · Desert Ochre",
     weave: "Bhagalpur Handloom",
     price: "₹ 26,000",
-    image:
-      "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=900&auto=format&fit=crop",
-    hoverImage:
-      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=900&auto=format&fit=crop",
+    image: "/images/tussar-silk-handloom-saree.jpg",
+    hoverImage: "/images/tussar-silk-handloom-saree.jpg",
   },
 ];
 

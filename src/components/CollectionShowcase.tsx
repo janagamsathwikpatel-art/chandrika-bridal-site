@@ -26,7 +26,7 @@ const COLLECTION_LOOKS: Look[] = [
     name: "BANARASI SHIKARGAH",
     silhouette: "Kadhwa Hand-Locked Royal Jaal Brocade",
     fabric: "Pure Katan Silk & Antique Silver-Gold Zari",
-    image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/banarasi-gold-brocade-saree.jpg",
     season: "Heritage 2026",
   },
   {
@@ -34,7 +34,7 @@ const COLLECTION_LOOKS: Look[] = [
     name: "PAITHANI PEACOCK PALLU",
     silhouette: "Tapestry Weave with Kaleidoscopic Resham Inlay",
     fabric: "Handwoven Maharashtra Silk & Gold Tissue",
-    image: "https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/paithani-peacock-teal-saree.jpg",
     season: "Heritage 2026",
   },
   {
@@ -42,7 +42,7 @@ const COLLECTION_LOOKS: Look[] = [
     name: "CHANDERI TISSUE METALLIC",
     silhouette: "Gossamer Sheer Drape with Hand-Beaten Buttas",
     fabric: "Featherweight Silk Zari Warp & Tissue Weft",
-    image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/chanderi-tissue-gold-saree.jpg",
     season: "Heritage 2026",
   },
 ];

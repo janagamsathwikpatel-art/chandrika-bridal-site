@@ -35,7 +35,7 @@ const SAREES: SareeItem[] = [
     origin: "Varanasi, Uttar Pradesh",
     weave: "Kadhwa Hand-Locked Floral Jaal",
     price: "₹ 54,000",
-    image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/banarasi-gold-brocade-saree.jpg",
     description: "Katan silk brocade with master weaver zari jaal depicting heritage royal hunting scenes.",
   },
   {
@@ -45,8 +45,8 @@ const SAREES: SareeItem[] = [
     origin: "Paithan, Maharashtra",
     weave: "Oblique Square · Tapestry Weave",
     price: "₹ 42,000",
-    image: "https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=1200&auto=format&fit=crop",
-    description: "Pure crimson silk woven with golden tissue pallu and kaleidoscopic resham inlay peacocks.",
+    image: "/images/paithani-peacock-teal-saree.jpg",
+    description: "Pure peacock teal silk woven with golden tissue pallu and kaleidoscopic resham inlay peacocks.",
   },
   {
     id: "saree-04",
@@ -55,8 +55,8 @@ const SAREES: SareeItem[] = [
     origin: "Chanderi, Madhya Pradesh",
     weave: "Featherweight Silk Zari Warp",
     price: "₹ 24,500",
-    image: "https://images.unsplash.com/photo-1583391733975-dd83d95c5567?q=80&w=1200&auto=format&fit=crop",
-    description: "Gossamer sheer handloom silk with metallic micro-zari and hand-beaten gold butis.",
+    image: "/images/chanderi-tissue-gold-saree.jpg",
+    description: "Gossamer sheer champagne gold handloom silk with metallic micro-zari and hand-beaten gold butis.",
   },
   {
     id: "saree-05",
@@ -65,7 +65,7 @@ const SAREES: SareeItem[] = [
     origin: "Patan, Gujarat",
     weave: "Double Ikat Silk · 8 Months Weaving",
     price: "₹ 1,15,000",
-    image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/patan-patola-double-ikat-saree.jpg",
     description: "Sacred geometric resist-dye double ikat woven by national award-winning hereditary master weavers.",
   },
   {
@@ -75,7 +75,7 @@ const SAREES: SareeItem[] = [
     origin: "Bhagalpur, Bihar",
     weave: "Wild Tussar · Vegetable Dyed",
     price: "₹ 26,000",
-    image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/tussar-silk-handloom-saree.jpg",
     description: "Rich organic textured tussar silk finished with antique bronze-gold zari border.",
   },
 ];
