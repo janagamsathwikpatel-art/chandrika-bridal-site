@@ -97,21 +97,21 @@ export default function SareeCollection({ onOpenInquiry }: SareeCollectionProps)
   return (
     <section
       id="sarees"
-      className="w-full bg-[#fbfaf8] py-24 md:py-36 px-6 md:px-14 border-t border-[#e8e6e1]"
+      className="w-full bg-[#fbfaf8] py-16 md:py-24 px-6 md:px-14 border-t border-[#e8e6e1]"
     >
       <div className="max-w-[1440px] mx-auto">
 
-        {/* ── Section Header (Poeza Editorial Style) ── */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 pb-8 border-b border-[#201f1f]/15">
+        {/* ── Section Header (Refined Font Scale) ── */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-6 border-b border-[#201f1f]/15">
           <div>
-            <span className="text-[10px] tracking-[0.35em] text-[#767573] uppercase block mb-3 font-semibold">
+            <span className="text-[10px] tracking-[0.35em] text-[#767573] uppercase block mb-2 font-semibold">
               Authenticated Handloom • Silk Mark Certified
             </span>
-            <h2 className="title text-[#201f1f]">
-              THE SAREE<br />COLLECTION
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-light tracking-[0.14em] text-[#201f1f] uppercase leading-tight">
+              THE SAREE COLLECTION
             </h2>
           </div>
-          <div className="mt-6 md:mt-0 flex flex-col items-start md:items-end gap-3">
+          <div className="mt-6 md:mt-0 flex flex-col items-start md:items-end gap-2.5">
             <p className="text-[11px] tracking-widest text-[#595955] max-w-xs uppercase leading-relaxed text-left md:text-right">
               Every drape is individually hand-woven by hereditary master artisans on traditional pit looms using pure silk and real gold zari.
             </p>
@@ -124,17 +124,17 @@ export default function SareeCollection({ onOpenInquiry }: SareeCollectionProps)
           </div>
         </div>
 
-        {/* ── Saree Products Grid ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+        {/* ── Saree Products Grid (Structured Luxury Gallery Grid) ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {SAREE_COLLECTION.map((saree) => (
             <div
               key={saree.id}
-              className="group flex flex-col"
+              className="group flex flex-col bg-white p-4 border border-[#e8e6e1] hover:border-[#201f1f] transition-all duration-300 shadow-sm hover:shadow-md"
               onMouseEnter={() => setHovered(saree.id)}
               onMouseLeave={() => setHovered(null)}
             >
               {/* ─ Image Card ─ */}
-              <div className="relative overflow-hidden bg-[#ebe9e5] aspect-[3/4]">
+              <div className="relative overflow-hidden bg-[#ebe9e5] aspect-[4/5] w-full">
                 {/* Main image */}
                 <img
                   src={saree.image}
