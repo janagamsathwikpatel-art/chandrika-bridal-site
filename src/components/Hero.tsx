@@ -40,12 +40,10 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" style={{ position: "relative", width: "100vw", height: "220vh", background: "#fbfaf8" }}>
+    <section id="hero" style={{ position: "relative", width: "100vw", height: "100vh", overflow: "hidden" }}>
       <div
         style={{
-          position: "sticky",
-          top: 0,
-          left: 0,
+          position: "relative",
           width: "100vw",
           height: "100vh",
           overflow: "hidden",
