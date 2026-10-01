@@ -33,7 +33,7 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             : "linear-gradient(to bottom, rgba(0,0,0,0.55), transparent)",
           backdropFilter: scrolled ? "blur(12px)" : "none",
           borderBottom: scrolled ? "1px solid rgba(232,230,225,0.9)" : "none",
-          padding: scrolled ? "14px 0" : "28px 0",
+          padding: scrolled ? "10px 0 6px 0" : "18px 0 10px 0",
           boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.06)" : "none",
         }}
       >
@@ -217,6 +217,53 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
+        </div>
+
+        {/* ── Saree Categories Sub-Navigation Bar (Matching User Screenshot) ── */}
+        <div
+          className="hidden md:flex items-center justify-center border-t mt-3 pt-2.5 overflow-x-auto no-scrollbar"
+          style={{
+            borderColor: scrolled ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.2)",
+            gap: "clamp(12px, 2vw, 32px)",
+            paddingLeft: "24px",
+            paddingRight: "24px",
+          }}
+        >
+          {[
+            { label: "NEW ARRIVALS", href: "#sarees" },
+            { label: "KANCHIPURAM", href: "#sarees" },
+            { label: "BANARASI", href: "#sarees" },
+            { label: "OCCASIONS", href: "#sarees" },
+            { label: "DESIGNED BY CHANDRIKA", href: "#sarees" },
+            { label: "SHOP ALL", href: "#sarees" },
+            { label: "READYMADES", href: "#sarees" },
+            { label: "FABRICS", href: "#sarees" },
+            { label: "MORE", href: "#why-chandrika" },
+          ].map(({ label, href }) => (
+            <a
+              key={label}
+              href={href}
+              style={{
+                fontSize: "11px",
+                letterSpacing: "0.14em",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                color: scrolled ? "#201f1f" : "#ffffff",
+                textDecoration: "none",
+                textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.85)",
+                whiteSpace: "nowrap",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = scrolled ? "#8B0000" : "#ffd700";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
+              }}
+            >
+              {label}
+            </a>
+          ))}
         </div>
       </header>
 
