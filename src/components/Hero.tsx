@@ -126,7 +126,7 @@ export default function Hero() {
             style={{
               display: "block",
               textAlign: "left",
-              paddingLeft: "clamp(36px, 6vw, 140px)",
+              paddingLeft: "clamp(24px, 4vw, 80px)",
               fontStyle: "italic",
               fontFamily: "Georgia, 'Times New Roman', serif",
               textTransform: "lowercase",
