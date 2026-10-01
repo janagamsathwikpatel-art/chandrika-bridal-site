@@ -56,10 +56,10 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             }}
             className="hidden lg:flex"
           >
-            {["PHILOSOPHY", "SAREES", "BOUTIQUES"].map((label, i) => (
+            {["PHILOSOPHY", "SAREES", "WHY CHANDRIKA"].map((label, i) => (
               <a
                 key={label}
-                href={["#about", "#sarees", "#boutiques"][i]}
+                href={["#about", "#sarees", "#why-chandrika"][i]}
                 style={{
                   fontSize: "12px",
                   letterSpacing: "0.2em",
@@ -176,9 +176,9 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
               )
             )}
 
-            {/* FIND A BOUTIQUE button */}
+            {/* EXPLORE SAREES button */}
             <a
-              href="#boutiques"
+              href="#sarees"
               style={{
                 fontSize: "11px",
                 letterSpacing: "0.22em",
@@ -202,7 +202,7 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
                 e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
               }}
             >
-              FIND A BOUTIQUE
+              EXPLORE SAREES
             </a>
           </div>
 
@@ -243,8 +243,8 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
           {[
             { href: "#about", label: "PHILOSOPHY" },
             { href: "#sarees", label: "SAREES" },
-            { href: "#boutiques", label: "BOUTIQUES" },
             { href: "#collection", label: "SILHOUETTES" },
+            { href: "#why-chandrika", label: "WHY CHANDRIKA" },
           ].map(({ href, label }) => (
             <a
               key={href}

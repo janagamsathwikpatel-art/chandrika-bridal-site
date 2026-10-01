@@ -50,9 +50,6 @@ export default function Footer() {
             <a href="#collection" className="hover:text-white transition-colors">
               Silhouettes
             </a>
-            <a href="#boutiques" className="hover:text-white transition-colors">
-              Ateliers
-            </a>
             <a href="#why-chandrika" className="hover:text-white transition-colors">
               Why Chandrika
             </a>

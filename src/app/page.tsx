@@ -7,7 +7,6 @@ import ExperienceArchSection from "@/components/ExperienceArchSection";
 import SareeCollection from "@/components/SareeCollection";
 import EditorialStory from "@/components/EditorialStory";
 import CollectionShowcase from "@/components/CollectionShowcase";
-import BoutiqueGrid from "@/components/BoutiqueGrid";
 import InquirySection from "@/components/InquirySection";
 import InquiryModal from "@/components/InquiryModal";
 import Footer from "@/components/Footer";
@@ -34,9 +33,6 @@ export default function Home() {
 
       {/* Haute Couture Silhouettes Lookbook */}
       <CollectionShowcase onSelectLook={() => setInquiryModalOpen(true)} />
-
-      {/* Select Boutiques & Stockists Grid */}
-      <BoutiqueGrid onOpenPartnerInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Why Choose Chandrika & Bespoke Appointment CTA */}
       <InquirySection onOpenInquiry={() => setInquiryModalOpen(true)} />
