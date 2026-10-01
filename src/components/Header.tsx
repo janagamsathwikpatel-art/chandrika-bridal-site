@@ -8,33 +8,20 @@ interface HeaderProps {
 }
 
 export default function Header({ onOpenInquiry }: HeaderProps) {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <>
-      {/* ═══════════════════════════ HEADER ═══════════════════════════ */}
+      {/* ═══════════════════════════ HEADER (Anchored in Hero Section) ═══════════════════════════ */}
       <header
         style={{
-          position: "fixed",
+          position: "absolute",
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 50,
-          transition: "all 0.4s ease",
-          background: scrolled
-            ? "rgba(251,250,248,0.95)"
-            : "linear-gradient(to bottom, rgba(0,0,0,0.55), transparent)",
-          backdropFilter: scrolled ? "blur(12px)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(232,230,225,0.9)" : "none",
-          padding: scrolled ? "10px 0 6px 0" : "18px 0 10px 0",
-          boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.06)" : "none",
+          zIndex: 40,
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 65%, transparent 100%)",
+          padding: "20px 0 14px 0",
         }}
       >
         <div
@@ -65,8 +52,8 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
                 letterSpacing: "0.38em",
                 fontWeight: 300,
                 textTransform: "uppercase",
-                color: scrolled ? "#201f1f" : "#ffffff",
-                textShadow: scrolled ? "none" : "0 2px 8px rgba(0,0,0,0.85)",
+                color: "#ffffff",
+                textShadow: "0 2px 8px rgba(0,0,0,0.85)",
                 whiteSpace: "nowrap",
                 transition: "all 0.3s",
               }}
@@ -79,8 +66,8 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
                 letterSpacing: "0.45em",
                 fontWeight: 400,
                 textTransform: "uppercase",
-                color: scrolled ? "#767573" : "rgba(255,255,255,0.85)",
-                textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.8)",
+                color: "rgba(255,255,255,0.85)",
+                textShadow: "0 1px 4px rgba(0,0,0,0.8)",
                 marginTop: "-2px",
                 whiteSpace: "nowrap",
                 transition: "all 0.3s",
@@ -102,8 +89,8 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
               background: "none",
               border: "none",
               cursor: "pointer",
-              color: scrolled ? "#201f1f" : "#ffffff",
-              textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.8)",
+              color: "#ffffff",
+              textShadow: "0 1px 4px rgba(0,0,0,0.8)",
               padding: "8px",
             }}
             aria-label="Menu"
@@ -116,7 +103,7 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
         <div
           className="flex items-center md:justify-center justify-start border-t mt-3 pt-2.5 overflow-x-auto no-scrollbar"
           style={{
-            borderColor: scrolled ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.2)",
+            borderColor: "rgba(255,255,255,0.2)",
             gap: "clamp(14px, 2.2vw, 36px)",
             paddingLeft: "24px",
             paddingRight: "24px",
@@ -142,18 +129,18 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
                 letterSpacing: "0.14em",
                 fontWeight: 600,
                 textTransform: "uppercase",
-                color: scrolled ? "#201f1f" : "#ffffff",
+                color: "#ffffff",
                 textDecoration: "none",
-                textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.85)",
+                textShadow: "0 1px 4px rgba(0,0,0,0.85)",
                 whiteSpace: "nowrap",
                 flexShrink: 0,
                 transition: "all 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = scrolled ? "#8B0000" : "#ffd700";
+                e.currentTarget.style.color = "#ffd700";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
+                e.currentTarget.style.color = "#ffffff";
               }}
             >
               {label}
