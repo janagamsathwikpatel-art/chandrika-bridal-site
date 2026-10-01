@@ -1,80 +1,52 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowRight, ShoppingBag, Heart, Eye } from "lucide-react";
+import { useState, useRef } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
 
 interface SareeProduct {
   id: string;
   name: string;
-  subtitle: string;
-  weave: string;
   price: string;
   image: string;
-  hoverImage: string;
-  tag?: string;
-  isNew?: boolean;
 }
 
-const SAREE_COLLECTION: SareeProduct[] = [
+const CUSTOMER_FAVOURITES: SareeProduct[] = [
   {
-    id: "sc-01",
-    name: "AARUSHI KANJIVARAM",
-    subtitle: "Pure Mulberry Silk · Temple Border · Bridal Crimson",
-    weave: "Kanchipuram Handloom · 24K Real Zari",
-    price: "₹ 48,000",
-    image: "/images/royal-kanjivaram-bridal-saree.jpg",
-    hoverImage: "/images/royal-kanjivaram-bridal-saree.jpg",
-    tag: "BRIDAL HEIRLOOM",
-    isNew: true,
+    id: "cf-01",
+    name: "Blue Woven Pure Viscose Saree",
+    price: "₹ 3999",
+    image: "/images/blue-woven-pure-silk-saree.jpg",
   },
   {
-    id: "sc-02",
-    name: "MEERA BANARASI",
-    subtitle: "Katan Silk · Gold Jaal Brocade · Royal Ivory",
-    weave: "Varanasi Kadhwa Handloom",
-    price: "₹ 54,000",
-    image: "/images/banarasi-gold-brocade-saree.jpg",
-    hoverImage: "/images/banarasi-gold-brocade-saree.jpg",
-    tag: "BESTSELLER",
-  },
-  {
-    id: "sc-03",
-    name: "SITA PAITHANI",
-    subtitle: "Pure Silk · Peacock Pallu · Peacock Teal",
-    weave: "Paithan Tapestry Weave",
-    price: "₹ 42,000",
+    id: "cf-02",
+    name: "Blue Pure Viscose Woven Saree",
+    price: "₹ 3999",
     image: "/images/paithani-peacock-teal-saree.jpg",
-    hoverImage: "/images/paithani-peacock-teal-saree.jpg",
-    tag: "HERITAGE WEAVE",
   },
   {
-    id: "sc-04",
-    name: "TARA CHANDERI",
-    subtitle: "Featherweight Silk Zari · Champagne Gold",
-    weave: "Chanderi Traditional Pit Loom",
-    price: "₹ 24,500",
+    id: "cf-03",
+    name: "Light Violet Woven Pure Silk Cotton Maheshwari Saree",
+    price: "₹ 4999",
+    image: "/images/royal-kanjivaram-bridal-saree.jpg",
+  },
+  {
+    id: "cf-04",
+    name: "Pink Woven Pure Viscose Saree",
+    price: "₹ 4999",
+    image: "/images/magenta-pink-woven-silk-saree.jpg",
+  },
+  {
+    id: "cf-05",
+    name: "Royal Ivory Gold Woven Banarasi Saree",
+    price: "₹ 5499",
+    image: "/images/banarasi-gold-brocade-saree.jpg",
+  },
+  {
+    id: "cf-06",
+    name: "Champagne Gold Woven Chanderi Tissue Saree",
+    price: "₹ 4499",
     image: "/images/chanderi-tissue-gold-saree.jpg",
-    hoverImage: "/images/chanderi-tissue-gold-saree.jpg",
-    isNew: true,
-  },
-  {
-    id: "sc-05",
-    name: "LAKSHMI PATOLA",
-    subtitle: "Double Ikat Silk · Sacred Geometrics · Vermilion",
-    weave: "Patan Double Ikat Heritage",
-    price: "₹ 1,15,000",
-    image: "/images/patan-patola-double-ikat-saree.jpg",
-    hoverImage: "/images/patan-patola-double-ikat-saree.jpg",
-    tag: "RARE WEAVE",
-  },
-  {
-    id: "sc-06",
-    name: "RADHA TUSSAR",
-    subtitle: "Raw Wild Silk · Antique Bronze Zari · Desert Ochre",
-    weave: "Bhagalpur Handloom",
-    price: "₹ 26,000",
-    image: "/images/tussar-silk-handloom-saree.jpg",
-    hoverImage: "/images/tussar-silk-handloom-saree.jpg",
   },
 ];
 
@@ -83,146 +55,90 @@ interface SareeCollectionProps {
 }
 
 export default function SareeCollection({ onOpenInquiry }: SareeCollectionProps) {
-  const [hovered, setHovered] = useState<string | null>(null);
-  const [wishlisted, setWishlisted] = useState<Set<string>>(new Set());
+  const [startIndex, setStartIndex] = useState(0);
 
-  const toggleWishlist = (id: string) => {
-    setWishlisted((prev) => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      return next;
-    });
+  const prevSlide = () => {
+    setStartIndex((prev) => (prev > 0 ? prev - 1 : CUSTOMER_FAVOURITES.length - 4));
+  };
+
+  const nextSlide = () => {
+    setStartIndex((prev) => (prev < CUSTOMER_FAVOURITES.length - 4 ? prev + 1 : 0));
   };
 
   return (
-    <section
-      id="sarees"
-      className="w-full bg-[#fbfaf8] py-16 md:py-24 px-6 md:px-14 border-t border-[#e8e6e1]"
-    >
-      <div className="max-w-[1440px] mx-auto">
+    <section id="sarees" className="w-full bg-[#fbfaf8] py-14 md:py-20 px-4 md:px-10 relative">
+      <div className="max-w-[1440px] mx-auto relative">
+        {/* ── Carousel Container with Left & Right Arrow Buttons ── */}
+        <div className="relative group/carousel">
+          {/* Left Arrow Button */}
+          <button
+            onClick={prevSlide}
+            aria-label="Previous Saree"
+            className="absolute -left-3 md:-left-5 top-[38%] -translate-y-1/2 z-30 w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/95 border border-[#e2dfd7] shadow-md flex items-center justify-center text-[#555] hover:text-[#000] hover:bg-white hover:scale-105 transition-all duration-200"
+          >
+            <ChevronLeft size={20} />
+          </button>
 
-        {/* ── Section Header (Clean & Minimal) ── */}
-        <div className="mb-10 pb-6 border-b border-[#201f1f]/15">
-          <span className="text-[10px] tracking-[0.35em] text-[#767573] uppercase block mb-2 font-semibold">
-            Authenticated Handloom • Silk Mark Certified
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-light tracking-[0.14em] text-[#201f1f] uppercase leading-tight">
-            THE SAREE COLLECTION
-          </h2>
-        </div>
+          {/* Right Arrow Button */}
+          <button
+            onClick={nextSlide}
+            aria-label="Next Saree"
+            className="absolute -right-3 md:-right-5 top-[38%] -translate-y-1/2 z-30 w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/95 border border-[#e2dfd7] shadow-md flex items-center justify-center text-[#555] hover:text-[#000] hover:bg-white hover:scale-105 transition-all duration-200"
+          >
+            <ChevronRight size={20} />
+          </button>
 
-        {/* ── Saree Products Grid (Structured Luxury Gallery Grid) ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {SAREE_COLLECTION.map((saree) => (
-            <div
-              key={saree.id}
-              className="group flex flex-col bg-white p-4 border border-[#e8e6e1] hover:border-[#201f1f] transition-all duration-300 shadow-sm hover:shadow-md"
-              onMouseEnter={() => setHovered(saree.id)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              {/* ─ Image Card ─ */}
-              <div className="relative overflow-hidden bg-[#ebe9e5] aspect-[4/5] w-full">
-                {/* Main image */}
-                <img
-                  src={saree.image}
-                  alt={saree.name}
-                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
-                    hovered === saree.id ? "opacity-0 scale-105" : "opacity-100 scale-100"
-                  }`}
-                />
-                {/* Hover image swap */}
-                <img
-                  src={saree.hoverImage}
-                  alt={`${saree.name} alternate view`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
-                    hovered === saree.id ? "opacity-100 scale-105" : "opacity-0 scale-100"
-                  }`}
-                />
-
-                {/* Badges */}
-                {(saree.tag || saree.isNew) && (
-                  <div className="absolute top-4 left-4 z-10">
-                    {saree.isNew && (
-                      <span className="block text-[9px] tracking-[0.25em] bg-[#201f1f] text-white px-3 py-1 uppercase mb-1">
-                        NEW ARRIVAL
-                      </span>
-                    )}
-                    {saree.tag && (
-                      <span className="block text-[9px] tracking-[0.25em] bg-[#8B0000] text-white px-3 py-1 uppercase font-semibold">
-                        {saree.tag}
-                      </span>
-                    )}
-                  </div>
-                )}
-
-                {/* Hover action overlay */}
-                <div
-                  className={`absolute inset-0 z-10 flex flex-col justify-end p-5 bg-gradient-to-t from-black/60 via-black/10 to-transparent transition-opacity duration-300 ${
-                    hovered === saree.id ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  <button
-                    onClick={onOpenInquiry}
-                    className="w-full py-3 bg-white text-[#201f1f] text-[10px] tracking-[0.25em] uppercase font-semibold hover:bg-[#201f1f] hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
-                  >
-                    <ShoppingBag size={13} /> INQUIRE & DRAPE
-                  </button>
+          {/* ── 4-Column Product Cards Row ── */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 overflow-hidden">
+            {CUSTOMER_FAVOURITES.slice(startIndex, startIndex + 4).map((saree) => (
+              <div
+                key={saree.id}
+                onClick={onOpenInquiry}
+                className="cursor-pointer group flex flex-col transition-transform duration-300 hover:-translate-y-1"
+              >
+                {/* Rounded Image Card matching user screenshot */}
+                <div className="relative aspect-[3/4] w-full rounded-2xl md:rounded-3xl overflow-hidden bg-[#ebe8e2] shadow-sm group-hover:shadow-md transition-shadow">
+                  <Image
+                    src={saree.image}
+                    alt={saree.name}
+                    fill
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
                 </div>
 
-                {/* Wishlist button */}
-                <button
-                  onClick={() => toggleWishlist(saree.id)}
-                  className={`absolute top-4 right-4 z-20 p-2.5 rounded-full transition-all duration-300 ${
-                    wishlisted.has(saree.id)
-                      ? "bg-[#8B0000] text-white"
-                      : "bg-white/80 backdrop-blur-sm text-[#201f1f] opacity-0 group-hover:opacity-100"
-                  }`}
-                  aria-label="Wishlist"
-                >
-                  <Heart
-                    size={14}
-                    fill={wishlisted.has(saree.id) ? "white" : "none"}
-                  />
-                </button>
-              </div>
-
-              {/* ─ Product Info ─ */}
-              <div className="mt-5 flex flex-col gap-1">
-                <div className="flex justify-between items-baseline">
-                  <h3 className="text-[13px] md:text-[14px] tracking-[0.16em] font-medium text-[#201f1f] uppercase">
+                {/* Product Caption below image */}
+                <div className="mt-3.5 px-1 flex flex-col gap-1 text-left">
+                  <h3 className="text-[13px] md:text-[14px] text-[#201f1f] font-normal leading-snug line-clamp-1">
                     {saree.name}
                   </h3>
-                  <span className="text-[12px] tracking-widest text-[#201f1f] font-semibold">
+                  <p className="text-[13px] md:text-[14px] font-bold text-[#111111]">
                     {saree.price}
-                  </span>
-                </div>
-                <p className="text-[10px] tracking-wider text-[#767573] uppercase">
-                  {saree.subtitle}
-                </p>
-                <p className="text-[9px] tracking-widest text-[#a9a69f] uppercase mt-0.5">
-                  {saree.weave}
-                </p>
-
-                {/* Quick actions */}
-                <div className="flex items-center justify-between mt-3 pt-3 border-t border-[#e8e6e1]">
-                  <button
-                    onClick={onOpenInquiry}
-                    className="text-[10px] tracking-widest text-[#201f1f] uppercase font-semibold flex items-center gap-1.5 hover:gap-3 transition-all duration-300"
-                  >
-                    SHOP THIS DRAPE <ArrowRight size={11} />
-                  </button>
-                  <button
-                    onClick={onOpenInquiry}
-                    className="text-[10px] tracking-widest text-[#767573] uppercase flex items-center gap-1.5 hover:text-[#201f1f] transition-colors"
-                  >
-                    <Eye size={11} /> QUICK VIEW
-                  </button>
+                  </p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* ── Customer Favourites Stately Serif Heading below cards ── */}
+        <div className="mt-12 md:mt-16 text-center">
+          <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1f2421] tracking-tight">
+            Customer Favourites
+          </h2>
         </div>
       </div>
+
+      {/* Floating WhatsApp Action Button in bottom right corner */}
+      <a
+        href="https://wa.me/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300"
+      >
+        <MessageCircle size={30} fill="currentColor" stroke="none" />
+      </a>
     </section>
   );
 }
