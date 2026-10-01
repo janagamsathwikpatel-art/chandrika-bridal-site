@@ -39,23 +39,24 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
       >
         <div
           style={{
-            maxWidth: "1560px",
+            width: "100%",
+            maxWidth: "1680px",
             margin: "0 auto",
-            padding: "0 28px",
+            padding: "0 clamp(20px, 3.5vw, 56px)",
+            position: "relative",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            gap: "clamp(12px, 1.6vw, 28px)",
+            minHeight: "48px",
           }}
         >
-          {/* ── LEFT SAREE CATEGORIES (desktop) ── */}
+          {/* ── LEFT SAREE CATEGORIES (Kept on Left Side of Header) ── */}
           <nav
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "clamp(10px, 1.4vw, 22px)",
-              flex: 1,
-              justifyContent: "flex-end",
+              gap: "clamp(12px, 1.8vw, 32px)",
+              justifyContent: "flex-start",
             }}
             className="hidden lg:flex"
           >
@@ -69,8 +70,8 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
                 key={label}
                 href={href}
                 style={{
-                  fontSize: "clamp(10px, 0.78vw, 11px)",
-                  letterSpacing: "0.14em",
+                  fontSize: "clamp(10.5px, 0.85vw, 12px)",
+                  letterSpacing: "0.16em",
                   fontWeight: 600,
                   textTransform: "uppercase",
                   color: scrolled ? "#201f1f" : "#ffffff",
@@ -93,7 +94,7 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             ))}
           </nav>
 
-          {/* ── CENTER BRAND ── */}
+          {/* ── CENTER BRAND (True Center of Header) ── */}
           <a
             href="/"
             style={{
@@ -102,8 +103,11 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
               alignItems: "center",
               textDecoration: "none",
               transition: "all 0.3s",
-              flexShrink: 0,
-              padding: "0 8px",
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: 10,
             }}
           >
             <span
@@ -137,14 +141,13 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             </span>
           </a>
 
-          {/* ── RIGHT SAREE CATEGORIES (desktop) ── */}
+          {/* ── RIGHT SAREE CATEGORIES (Kept on Right Side of Header) ── */}
           <nav
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "clamp(10px, 1.4vw, 22px)",
-              flex: 1,
-              justifyContent: "flex-start",
+              gap: "clamp(12px, 1.8vw, 32px)",
+              justifyContent: "flex-end",
             }}
             className="hidden lg:flex"
           >
@@ -159,8 +162,8 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
                 key={label}
                 href={href}
                 style={{
-                  fontSize: "clamp(10px, 0.78vw, 11px)",
-                  letterSpacing: "0.14em",
+                  fontSize: "clamp(10.5px, 0.85vw, 12px)",
+                  letterSpacing: "0.16em",
                   fontWeight: 600,
                   textTransform: "uppercase",
                   color: scrolled ? "#201f1f" : "#ffffff",
