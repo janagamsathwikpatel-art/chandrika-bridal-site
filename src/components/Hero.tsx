@@ -7,6 +7,18 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const progress = Math.min(Math.max(scrollY / (windowHeight * 1.5), 0), 1);
+      setScrollProgress(progress);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -27,226 +39,184 @@ export default function Hero() {
     }
   };
 
-  const scrollToNext = () => {
-    const nextSection = document.getElementById("experience");
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <section 
-      id="hero" 
-      style={{ 
-        position: "relative", 
-        width: "100vw", 
-        height: "100vh", 
-        minHeight: "100vh",
-        overflow: "hidden",
-        backgroundColor: "#000000"
-      }}
-    >
-      {/* ── Full-bleed Background Video ── */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden" }}>
-        <video
-          ref={videoRef}
-          src="/videos/hero.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            pointerEvents: "none",
-            filter: "brightness(0.88)",
-          }}
-        />
-        {/* Cinematic gradient overlay matching reference screenshot */}
+    <section id="hero" style={{ position: "relative", width: "100vw", height: "220vh", background: "#fbfaf8" }}>
+      <div
+        style={{
+          position: "sticky",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          overflow: "hidden",
+        }}
+      >
+        {/* ── Full-bleed Video ── */}
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden" }}>
+          <video
+            ref={videoRef}
+            src="/videos/hero.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              pointerEvents: "none",
+              transform: `scale(${1 + scrollProgress * 0.1})`,
+              filter: `brightness(${Math.max(0.55, 0.9 - scrollProgress * 0.3)})`,
+            }}
+          />
+          {/* Dark gradient overlay — stronger at top & bottom */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.12) 40%, rgba(0,0,0,0.55) 100%)",
+              pointerEvents: "none",
+            }}
+          />
+        </div>
+
+        {/* ── Controls (play / mute) ── */}
         <div
           style={{
             position: "absolute",
-            inset: 0,
-            background: "linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.2) 65%, rgba(0,0,0,0.6) 100%)",
-            pointerEvents: "none",
+            bottom: 32,
+            right: 32,
+            zIndex: 30,
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
           }}
-        />
-      </div>
+        >
+          {[
+            { onClick: togglePlay, label: isPlaying ? "Pause" : "Play", icon: isPlaying ? <Pause size={14} /> : <Play size={14} /> },
+            { onClick: toggleMute, label: isMuted ? "Unmute" : "Mute", icon: isMuted ? <VolumeX size={14} /> : <Volume2 size={14} /> },
+          ].map(({ onClick, label, icon }) => (
+            <button
+              key={label}
+              onClick={onClick}
+              aria-label={label}
+              style={{
+                padding: 12,
+                background: "rgba(255,255,255,0.18)",
+                border: "1px solid rgba(255,255,255,0.35)",
+                borderRadius: "50%",
+                color: "#fff",
+                cursor: "pointer",
+                backdropFilter: "blur(8px)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "background 0.2s",
+              }}
+            >
+              {icon}
+            </button>
+          ))}
+        </div>
 
-      {/* ── Left-Aligned Typography in Hero Page ── */}
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: 0,
-          transform: "translateY(-50%)",
-          zIndex: 20,
-          pointerEvents: "none",
-          userSelect: "none",
-          width: "100%",
-          maxWidth: "1000px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          justifyContent: "center",
-          textAlign: "left",
-          paddingLeft: "clamp(32px, 7vw, 120px)",
-          paddingRight: "clamp(24px, 5vw, 60px)",
-        }}
-      >
-        <h1
-          className="hero-title"
+        {/* ── Typographic Centrepiece ── */}
+        <div
           style={{
-            color: "#ffffff",
-            textShadow: "0 2px 28px rgba(0,0,0,0.5)",
+            position: "absolute",
+            top: "50%",
+            left: 0,
+            right: 0,
+            transform: `translateY(calc(-50% - ${scrollProgress * 50}px))`,
+            opacity: Math.max(0, 1 - scrollProgress * 1.15),
+            zIndex: 20,
+            pointerEvents: "none",
+            userSelect: "none",
+            paddingLeft: "clamp(20px, 5vw, 90px)",
+            paddingRight: "clamp(20px, 5vw, 60px)",
+          }}
+        >
+          {/* Big headline */}
+          <div
+            className="hero-title"
+            style={{ color: "#fff", textShadow: "0 2px 20px rgba(0,0,0,0.35)" }}
+          >
+            {/* A NEW */}
+            <div style={{ display: "block", lineHeight: "inherit" }}>A NEW</div>
+
+            {/* CHAPTER */}
+            <div style={{ display: "block", lineHeight: "inherit" }}>CHAPTER</div>
+
+            {/* begins — italic serif, indented */}
+            <div
+              style={{
+                display: "block",
+                lineHeight: "inherit",
+                paddingLeft: "clamp(36px, 7vw, 160px)",
+                fontStyle: "italic",
+                fontFamily: "Georgia, 'Times New Roman', serif",
+                textTransform: "lowercase",
+                fontSize: "0.82em",
+                letterSpacing: "0.01em",
+                fontWeight: 400,
+                color: "rgba(255,255,255,0.93)",
+              }}
+            >
+              begins
+            </div>
+          </div>
+
+          {/* Subtitle */}
+          <p
+            style={{
+              marginTop: "clamp(16px, 2.5vh, 32px)",
+              fontSize: "clamp(10px, 1.1vw, 13px)",
+              letterSpacing: "0.28em",
+              textTransform: "uppercase",
+              fontWeight: 300,
+              color: "rgba(255,255,255,0.78)",
+              maxWidth: 440,
+              lineHeight: 1.6,
+              opacity: Math.max(0, 1 - scrollProgress * 1.6),
+            }}
+          >
+            Modern wedding dresses defined by clean lines,&nbsp;sculpted form, and understated luxury.
+          </p>
+        </div>
+
+        {/* ── Scroll Indicator ── */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 32,
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 20,
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-start",
-            justifyContent: "center",
-            textAlign: "left",
-            margin: 0,
-            padding: 0,
-            letterSpacing: "-0.01em",
+            alignItems: "center",
+            gap: 6,
+            pointerEvents: "none",
+            opacity: Math.max(0, 1 - scrollProgress * 4),
           }}
         >
-          {/* A NEW */}
-          <span style={{ display: "block", textAlign: "left", width: "100%" }}>
-            A NEW
-          </span>
-
-          {/* CHAPTER */}
-          <span style={{ display: "block", textAlign: "left", width: "100%" }}>
-            CHAPTER
-          </span>
-
-          {/* begins */}
           <span
             style={{
-              display: "block",
-              textAlign: "left",
-              paddingLeft: "clamp(24px, 4vw, 80px)",
-              fontStyle: "italic",
-              fontFamily: "Georgia, 'Times New Roman', serif",
-              textTransform: "lowercase",
-              fontSize: "0.85em",
-              letterSpacing: "0.01em",
-              fontWeight: 400,
-              color: "rgba(255,255,255,0.96)",
-              marginTop: "-4px",
+              fontSize: 10,
+              letterSpacing: "0.25em",
+              color: "rgba(255,255,255,0.72)",
+              textTransform: "uppercase",
+              fontWeight: 500,
             }}
           >
-            begins
+            Scroll to Discover
           </span>
-        </h1>
-
-        {/* Subtitle left-aligned */}
-        <p
-          style={{
-            marginTop: "24px",
-            fontSize: "clamp(10px, 1.1vw, 13px)",
-            letterSpacing: "0.26em",
-            textTransform: "uppercase",
-            fontWeight: 300,
-            color: "rgba(255,255,255,0.85)",
-            maxWidth: 460,
-            lineHeight: 1.65,
-            textAlign: "left",
-            textShadow: "0 1px 10px rgba(0,0,0,0.6)",
-          }}
-        >
-          Modern wedding dresses defined by clean lines, sculpted form, and understated luxury.
-        </p>
-      </div>
-
-      {/* ── Scroll To Discover (Centered at Bottom) ── */}
-      <div
-        onClick={scrollToNext}
-        style={{
-          position: "absolute",
-          bottom: 32,
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 25,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 6,
-          cursor: "pointer",
-          pointerEvents: "auto",
-        }}
-      >
-        <span
-          style={{
-            fontSize: 10,
-            letterSpacing: "0.25em",
-            color: "rgba(255,255,255,0.75)",
-            textTransform: "uppercase",
-            fontWeight: 500,
-            userSelect: "none",
-          }}
-        >
-          Scroll to Discover
-        </span>
-        <ChevronDown
-          size={16}
-          color="rgba(255,255,255,0.7)"
-          style={{ animation: "bounce 1.5s infinite" }}
-        />
-      </div>
-
-      {/* ── Floating Play / Mute Controls (Bottom Right) ── */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 28,
-          right: 28,
-          zIndex: 30,
-          display: "flex",
-          alignItems: "center",
-          gap: 12,
-        }}
-      >
-        {[
-          { 
-            onClick: togglePlay, 
-            label: isPlaying ? "Pause Video" : "Play Video", 
-            icon: isPlaying ? <Pause size={14} /> : <Play size={14} /> 
-          },
-          { 
-            onClick: toggleMute, 
-            label: isMuted ? "Unmute Video" : "Mute Video", 
-            icon: isMuted ? <VolumeX size={14} /> : <Volume2 size={14} /> 
-          },
-        ].map(({ onClick, label, icon }) => (
-          <button
-            key={label}
-            onClick={onClick}
-            aria-label={label}
-            style={{
-              padding: 12,
-              background: "rgba(255,255,255,0.18)",
-              border: "1px solid rgba(255,255,255,0.35)",
-              borderRadius: "50%",
-              color: "#ffffff",
-              cursor: "pointer",
-              backdropFilter: "blur(8px)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              transition: "all 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(255,255,255,0.35)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "rgba(255,255,255,0.18)";
-            }}
-          >
-            {icon}
-          </button>
-        ))}
+          <ChevronDown
+            size={16}
+            color="rgba(255,255,255,0.65)"
+            style={{ animation: "bounce 1.5s infinite" }}
+          />
+        </div>
       </div>
     </section>
   );

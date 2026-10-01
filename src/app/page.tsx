@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import SareeCollectionSection from "@/components/SareeCollectionSection";
+import ExperienceArchSection from "@/components/ExperienceArchSection";
 import EditorialStory from "@/components/EditorialStory";
+import CollectionShowcase from "@/components/CollectionShowcase";
 import BoutiqueGrid from "@/components/BoutiqueGrid";
 import LayeredGallery from "@/components/LayeredGallery";
 import InquirySection from "@/components/InquirySection";
@@ -19,14 +20,17 @@ export default function Home() {
       {/* Fixed Luxury Navigation Header */}
       <Header onOpenInquiry={() => setInquiryModalOpen(true)} />
 
-      {/* Hero Video with Large Typographic Reveal — 100% UNTOUCHED */}
+      {/* Hero Video (100% Unchanged) */}
       <Hero />
 
-      {/* Haute Handloom Saree Collection — DIRECTLY BELOW HERO */}
-      <SareeCollectionSection onOpenInquiry={() => setInquiryModalOpen(true)} />
+      {/* Experience Stitching Stories Architectural Arch Section (Directly Down of Hero) */}
+      <ExperienceArchSection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Editorial Story & Brand Philosophy */}
       <EditorialStory />
+
+      {/* Haute Couture Silhouettes Lookbook */}
+      <CollectionShowcase onSelectLook={() => setInquiryModalOpen(true)} />
 
       {/* Select Boutiques & Stockists Grid */}
       <BoutiqueGrid onOpenPartnerInquiry={() => setInquiryModalOpen(true)} />

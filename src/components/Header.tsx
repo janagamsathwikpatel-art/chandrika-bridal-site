@@ -56,10 +56,10 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             }}
             className="hidden lg:flex"
           >
-            {["SAREES", "PHILOSOPHY", "BOUTIQUES"].map((label, i) => (
+            {["PHILOSOPHY", "COLLECTION", "BOUTIQUES"].map((label, i) => (
               <a
                 key={label}
-                href={["#collection", "#about", "#boutiques"][i]}
+                href={["#about", "#collection", "#boutiques"][i]}
                 style={{
                   fontSize: "12px",
                   letterSpacing: "0.2em",
@@ -241,8 +241,8 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
           }}
         >
           {[
-            { href: "#collection", label: "SAREES" },
             { href: "#about", label: "PHILOSOPHY" },
+            { href: "#collection", label: "COLLECTION" },
             { href: "#boutiques", label: "BOUTIQUES" },
             { href: "#gallery", label: "EDITORIAL" },
           ].map(({ href, label }) => (
