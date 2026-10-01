@@ -127,7 +127,6 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             className="hidden lg:flex"
           >
             {[
-              { label: "SILHOUETTES", href: "#collection" },
               { label: "INQUIRE", href: null },
             ].map(({ label, href }) =>
               href ? (
@@ -243,7 +242,6 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
           {[
             { href: "#about", label: "PHILOSOPHY" },
             { href: "#sarees", label: "SAREES" },
-            { href: "#collection", label: "SILHOUETTES" },
             { href: "#why-chandrika", label: "WHY CHANDRIKA" },
           ].map(({ href, label }) => (
             <a

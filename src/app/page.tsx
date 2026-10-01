@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import ExperienceArchSection from "@/components/ExperienceArchSection";
 import SareeCollection from "@/components/SareeCollection";
 import EditorialStory from "@/components/EditorialStory";
-import CollectionShowcase from "@/components/CollectionShowcase";
 import InquirySection from "@/components/InquirySection";
 import InquiryModal from "@/components/InquiryModal";
 import Footer from "@/components/Footer";
@@ -30,9 +29,6 @@ export default function Home() {
 
       {/* Editorial Story & Brand Philosophy */}
       <EditorialStory />
-
-      {/* Haute Couture Silhouettes Lookbook */}
-      <CollectionShowcase onSelectLook={() => setInquiryModalOpen(true)} />
 
       {/* Why Choose Chandrika & Bespoke Appointment CTA */}
       <InquirySection onOpenInquiry={() => setInquiryModalOpen(true)} />
