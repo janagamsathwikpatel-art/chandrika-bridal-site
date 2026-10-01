@@ -35,7 +35,7 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
         />
       </div>
 
-      {/* ── Center Typography (Exact Match to Reference Screenshot) ── */}
+      {/* ── Center Typography (Replacing STITCHING STORIES with THE SAREE COLLECTION) ── */}
       <div
         className="relative z-20 flex flex-col items-center justify-center text-center px-4 select-none"
         style={{
@@ -58,11 +58,11 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
           EXPERIENCE
         </span>
 
-        {/* Large Bold Condensed Headline: STITCHING STORIES */}
+        {/* Large Bold Condensed Headline: THE SAREE COLLECTION */}
         <h2
           style={{
             fontFamily: "'Anton', 'Impact', sans-serif",
-            fontSize: "clamp(44px, 6.8vw, 92px)",
+            fontSize: "clamp(42px, 6.5vw, 86px)",
             letterSpacing: "0.02em",
             lineHeight: "0.95",
             color: "#ffffff",
@@ -73,12 +73,12 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
             textShadow: "0 4px 24px rgba(0,0,0,0.85)",
           }}
         >
-          STITCHING STORIES
+          THE SAREE COLLECTION
         </h2>
 
-        {/* Outlined Button: EXPERIENCE OUR WORLD */}
-        <Link
-          href="/experience"
+        {/* Outlined Button: EXPLORE COLLECTION */}
+        <a
+          href="#sarees"
           style={{
             display: "inline-flex",
             alignItems: "center",
@@ -109,8 +109,8 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
             e.currentTarget.style.boxShadow = "none";
           }}
         >
-          EXPERIENCE OUR WORLD
-        </Link>
+          EXPLORE THE COLLECTION
+        </a>
       </div>
     </section>
   );

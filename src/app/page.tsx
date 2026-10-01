@@ -4,6 +4,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ExperienceArchSection from "@/components/ExperienceArchSection";
+import SareeCollection from "@/components/SareeCollection";
 import EditorialStory from "@/components/EditorialStory";
 import CollectionShowcase from "@/components/CollectionShowcase";
 import BoutiqueGrid from "@/components/BoutiqueGrid";
@@ -23,8 +24,11 @@ export default function Home() {
       {/* Hero Video (100% Unchanged) */}
       <Hero />
 
-      {/* Experience Stitching Stories Architectural Arch Section (Directly Down of Hero) */}
+      {/* Experience The Saree Collection Architectural Arch Section */}
       <ExperienceArchSection onOpenInquiry={() => setInquiryModalOpen(true)} />
+
+      {/* The Saree Collection Grid directly on the website */}
+      <SareeCollection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Editorial Story & Brand Philosophy */}
       <EditorialStory />

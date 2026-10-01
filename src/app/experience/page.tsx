@@ -122,7 +122,7 @@ export default function ExperiencePage() {
           }}
           className="text-white uppercase mb-6"
         >
-          STITCHING STORIES
+          THE SAREE COLLECTION
         </h1>
         <p className="text-[11px] md:text-[13px] tracking-[0.25em] text-white/80 uppercase max-w-xl mx-auto leading-relaxed">
           Welcome to our world. An immersive curation of handcrafted bridal and heirloom handloom sarees.
