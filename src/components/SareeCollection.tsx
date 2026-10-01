@@ -247,16 +247,6 @@ export default function SareeCollection({ onOpenInquiry }: SareeCollectionProps)
             </div>
           ))}
         </div>
-
-        {/* ── View Full Collection CTA ── */}
-        <div className="mt-20 flex justify-center">
-          <button
-            onClick={onOpenInquiry}
-            className="px-12 py-4 border border-[#201f1f] text-[#201f1f] text-[11px] tracking-[0.3em] uppercase font-medium hover:bg-[#201f1f] hover:text-white transition-all duration-300 flex items-center gap-3"
-          >
-            REQUEST PRIVATE ATELIER VIEWING <ArrowRight size={13} />
-          </button>
-        </div>
       </div>
     </section>
   );
