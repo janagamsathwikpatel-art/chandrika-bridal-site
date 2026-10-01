@@ -45,8 +45,8 @@
 
 .title {
   color: var(--color-dark-text);
-  font-size: 48px;
-  line-height: 85%;
+  font-size: 64px;
+  line-height: 83%;
   font-weight: 300;
   letter-spacing: -0.02em;
   text-transform: uppercase;
@@ -54,20 +54,29 @@
 
 @media screen and (min-width: 640px) {
   .title {
-    font-size: 76px;
+    font-size: 96px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .title {
-    font-size: 110px;
+    font-size: 130px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .title {
-    font-size: 142px;
+    font-size: 160px;
   }
+}
+
+/* Hero-specific even larger title override */
+.hero-title {
+  font-size: clamp(72px, 13vw, 175px);
+  line-height: 82%;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 /* Poeza-style animated hover underline */
