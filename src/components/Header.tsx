@@ -41,48 +41,13 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
           style={{
             maxWidth: "1440px",
             margin: "0 auto",
-            padding: "0 56px",
+            padding: "0 24px",
+            position: "relative",
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
+            justifyContent: "center",
           }}
         >
-          {/* ── LEFT NAV (desktop) ── */}
-          <nav
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "36px",
-            }}
-            className="hidden lg:flex"
-          >
-            {[
-              { label: "PHILOSOPHY", href: "#about" },
-              { label: "SAREES", href: "#sarees" },
-              { label: "HANDLOOM STORIES", href: "#about" },
-            ].map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                style={{
-                  fontSize: "12px",
-                  letterSpacing: "0.2em",
-                  fontWeight: 500,
-                  textTransform: "uppercase",
-                  color: scrolled ? "#201f1f" : "#ffffff",
-                  textDecoration: "none",
-                  textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.7)",
-                  transition: "opacity 0.2s",
-                  whiteSpace: "nowrap",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.65")}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
-
           {/* ── CENTER BRAND ── */}
           <a
             href="/"
@@ -96,12 +61,12 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
           >
             <span
               style={{
-                fontSize: "clamp(18px, 2vw, 28px)",
+                fontSize: "clamp(20px, 2.5vw, 32px)",
                 letterSpacing: "0.38em",
                 fontWeight: 300,
                 textTransform: "uppercase",
                 color: scrolled ? "#201f1f" : "#ffffff",
-                textShadow: scrolled ? "none" : "0 2px 8px rgba(0,0,0,0.8)",
+                textShadow: scrolled ? "none" : "0 2px 8px rgba(0,0,0,0.85)",
                 whiteSpace: "nowrap",
                 transition: "all 0.3s",
               }}
@@ -125,87 +90,15 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             </span>
           </a>
 
-          {/* ── RIGHT NAV (desktop) ── */}
-          <div
-            style={{ display: "flex", alignItems: "center", gap: "36px" }}
-            className="hidden lg:flex"
-          >
-            <a
-              href="#why-chandrika"
-              style={{
-                fontSize: "12px",
-                letterSpacing: "0.2em",
-                fontWeight: 500,
-                textTransform: "uppercase",
-                color: scrolled ? "#201f1f" : "#ffffff",
-                textDecoration: "none",
-                textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.7)",
-                transition: "opacity 0.2s",
-                whiteSpace: "nowrap",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.65")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-            >
-              WHY CHANDRIKA
-            </a>
-
-            <button
-              onClick={onOpenInquiry}
-              style={{
-                fontSize: "12px",
-                letterSpacing: "0.2em",
-                fontWeight: 500,
-                textTransform: "uppercase",
-                color: scrolled ? "#201f1f" : "#ffffff",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.7)",
-                whiteSpace: "nowrap",
-                transition: "opacity 0.2s",
-                padding: 0,
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.65")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-            >
-              INQUIRE
-            </button>
-
-            {/* BOOK CONSULTATION Form button */}
-            <button
-              onClick={onOpenInquiry}
-              style={{
-                fontSize: "11px",
-                letterSpacing: "0.22em",
-                fontWeight: 500,
-                textTransform: "uppercase",
-                padding: "10px 20px",
-                border: scrolled ? "1px solid #201f1f" : "1px solid rgba(255,255,255,0.9)",
-                color: scrolled ? "#201f1f" : "#ffffff",
-                background: scrolled ? "transparent" : "rgba(255,255,255,0.1)",
-                backdropFilter: scrolled ? "none" : "blur(4px)",
-                cursor: "pointer",
-                transition: "all 0.3s",
-                whiteSpace: "nowrap",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = scrolled ? "#201f1f" : "#ffffff";
-                e.currentTarget.style.color = scrolled ? "#ffffff" : "#201f1f";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = scrolled ? "transparent" : "rgba(255,255,255,0.1)";
-                e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
-              }}
-            >
-              BOOK CONSULTATION
-            </button>
-          </div>
-
           {/* ── MOBILE HAMBURGER ── */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden"
+            className="md:hidden"
             style={{
+              position: "absolute",
+              right: "24px",
+              top: "50%",
+              transform: "translateY(-50%)",
               background: "none",
               border: "none",
               cursor: "pointer",
@@ -221,12 +114,13 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
 
         {/* ── Saree Categories Sub-Navigation Bar (Matching User Screenshot) ── */}
         <div
-          className="hidden md:flex items-center justify-center border-t mt-3 pt-2.5 overflow-x-auto no-scrollbar"
+          className="flex items-center md:justify-center justify-start border-t mt-3 pt-2.5 overflow-x-auto no-scrollbar"
           style={{
             borderColor: scrolled ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.2)",
-            gap: "clamp(12px, 2vw, 32px)",
+            gap: "clamp(14px, 2.2vw, 36px)",
             paddingLeft: "24px",
             paddingRight: "24px",
+            width: "100%",
           }}
         >
           {[
@@ -252,6 +146,7 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
                 textDecoration: "none",
                 textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.85)",
                 whiteSpace: "nowrap",
+                flexShrink: 0,
                 transition: "all 0.2s ease",
               }}
               onMouseEnter={(e) => {
