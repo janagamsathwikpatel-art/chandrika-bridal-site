@@ -42,11 +42,11 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             width: "100%",
             maxWidth: "1680px",
             margin: "0 auto",
-            padding: "0 clamp(20px, 3.5vw, 56px)",
-            position: "relative",
-            display: "flex",
+            padding: "0 clamp(16px, 2.5vw, 48px)",
+            display: "grid",
+            gridTemplateColumns: "1fr auto 1fr",
             alignItems: "center",
-            justifyContent: "space-between",
+            columnGap: "clamp(16px, 2.5vw, 36px)",
             minHeight: "48px",
           }}
         >
@@ -55,7 +55,7 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "clamp(12px, 1.8vw, 32px)",
+              gap: "clamp(8px, 1.2vw, 22px)",
               justifyContent: "flex-start",
             }}
             className="hidden lg:flex"
@@ -70,8 +70,8 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
                 key={label}
                 href={href}
                 style={{
-                  fontSize: "clamp(10.5px, 0.85vw, 12px)",
-                  letterSpacing: "0.16em",
+                  fontSize: "clamp(10px, 0.76vw, 11.5px)",
+                  letterSpacing: "0.14em",
                   fontWeight: 600,
                   textTransform: "uppercase",
                   color: scrolled ? "#201f1f" : "#ffffff",
@@ -94,7 +94,7 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             ))}
           </nav>
 
-          {/* ── CENTER BRAND (True Center of Header) ── */}
+          {/* ── CENTER BRAND (Auto Width in Center Column, Guaranteed Never Collides) ── */}
           <a
             href="/"
             style={{
@@ -103,11 +103,8 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
               alignItems: "center",
               textDecoration: "none",
               transition: "all 0.3s",
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              transform: "translate(-50%, -50%)",
-              zIndex: 10,
+              justifySelf: "center",
+              padding: "0 12px",
             }}
           >
             <span
@@ -141,68 +138,78 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             </span>
           </a>
 
-          {/* ── RIGHT SAREE CATEGORIES (Kept on Right Side of Header) ── */}
-          <nav
+          {/* ── RIGHT SAREE CATEGORIES (Fixed on Right Side of Header) ── */}
+          <div
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "clamp(12px, 1.8vw, 32px)",
               justifyContent: "flex-end",
+              justifySelf: "end",
+              width: "100%",
             }}
-            className="hidden lg:flex"
           >
-            {[
-              { label: "DESIGNED BY CHANDRIKA", href: "#sarees" },
-              { label: "SHOP ALL", href: "#sarees" },
-              { label: "READYMADES", href: "#sarees" },
-              { label: "FABRICS", href: "#sarees" },
-              { label: "MORE", href: "#why-chandrika" },
-            ].map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                style={{
-                  fontSize: "clamp(10.5px, 0.85vw, 12px)",
-                  letterSpacing: "0.16em",
-                  fontWeight: 600,
-                  textTransform: "uppercase",
-                  color: scrolled ? "#201f1f" : "#ffffff",
-                  textDecoration: "none",
-                  textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.85)",
-                  whiteSpace: "nowrap",
-                  transition: "all 0.2s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = scrolled ? "#8B0000" : "#ffd700";
-                  e.currentTarget.style.opacity = "0.75";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
-                  e.currentTarget.style.opacity = "1";
-                }}
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
+            <nav
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "clamp(8px, 1.2vw, 22px)",
+                justifyContent: "flex-end",
+              }}
+              className="hidden lg:flex"
+            >
+              {[
+                { label: "DESIGNED BY CHANDRIKA", href: "#sarees" },
+                { label: "SHOP ALL", href: "#sarees" },
+                { label: "READYMADES", href: "#sarees" },
+                { label: "FABRICS", href: "#sarees" },
+                { label: "MORE", href: "#why-chandrika" },
+              ].map(({ label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  style={{
+                    fontSize: "clamp(10px, 0.76vw, 11.5px)",
+                    letterSpacing: "0.14em",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    color: scrolled ? "#201f1f" : "#ffffff",
+                    textDecoration: "none",
+                    textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.85)",
+                    whiteSpace: "nowrap",
+                    transition: "all 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = scrolled ? "#8B0000" : "#ffd700";
+                    e.currentTarget.style.opacity = "0.75";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
+                    e.currentTarget.style.opacity = "1";
+                  }}
+                >
+                  {label}
+                </a>
+              ))}
+            </nav>
 
-          {/* ── MOBILE HAMBURGER (Visible on mobile & tablet) ── */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden"
-            style={{
-              marginLeft: "auto",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              color: scrolled ? "#201f1f" : "#ffffff",
-              textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.8)",
-              padding: "8px",
-            }}
-            aria-label="Menu"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            {/* ── MOBILE HAMBURGER (Visible on mobile & tablet) ── */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden"
+              style={{
+                marginLeft: "auto",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                color: scrolled ? "#201f1f" : "#ffffff",
+                textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.8)",
+                padding: "8px",
+              }}
+              aria-label="Menu"
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* ── Saree Categories Strip for Mobile / Tablet screens (< lg) ── */}
