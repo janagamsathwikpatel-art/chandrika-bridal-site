@@ -52,14 +52,18 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "40px",
+              gap: "36px",
             }}
             className="hidden lg:flex"
           >
-            {["PHILOSOPHY", "SAREES", "WHY CHANDRIKA"].map((label, i) => (
+            {[
+              { label: "PHILOSOPHY", href: "#about" },
+              { label: "SAREES", href: "#sarees" },
+              { label: "HANDLOOM STORIES", href: "#about" },
+            ].map(({ label, href }) => (
               <a
                 key={label}
-                href={["#about", "#sarees", "#why-chandrika"][i]}
+                href={href}
                 style={{
                   fontSize: "12px",
                   letterSpacing: "0.2em",
@@ -123,72 +127,64 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
 
           {/* ── RIGHT NAV (desktop) ── */}
           <div
-            style={{ display: "flex", alignItems: "center", gap: "40px" }}
+            style={{ display: "flex", alignItems: "center", gap: "36px" }}
             className="hidden lg:flex"
           >
-            {[
-              { label: "INQUIRE", href: null },
-            ].map(({ label, href }) =>
-              href ? (
-                <a
-                  key={label}
-                  href={href}
-                  style={{
-                    fontSize: "12px",
-                    letterSpacing: "0.2em",
-                    fontWeight: 500,
-                    textTransform: "uppercase",
-                    color: scrolled ? "#201f1f" : "#ffffff",
-                    textDecoration: "none",
-                    textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.7)",
-                    transition: "opacity 0.2s",
-                    whiteSpace: "nowrap",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.65")}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-                >
-                  {label}
-                </a>
-              ) : (
-                <button
-                  key={label}
-                  onClick={onOpenInquiry}
-                  style={{
-                    fontSize: "12px",
-                    letterSpacing: "0.2em",
-                    fontWeight: 500,
-                    textTransform: "uppercase",
-                    color: scrolled ? "#201f1f" : "#ffffff",
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.7)",
-                    whiteSpace: "nowrap",
-                    transition: "opacity 0.2s",
-                    padding: 0,
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.65")}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-                >
-                  {label}
-                </button>
-              )
-            )}
-
-            {/* EXPLORE SAREES button */}
             <a
-              href="#sarees"
+              href="#why-chandrika"
+              style={{
+                fontSize: "12px",
+                letterSpacing: "0.2em",
+                fontWeight: 500,
+                textTransform: "uppercase",
+                color: scrolled ? "#201f1f" : "#ffffff",
+                textDecoration: "none",
+                textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.7)",
+                transition: "opacity 0.2s",
+                whiteSpace: "nowrap",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.65")}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+            >
+              WHY CHANDRIKA
+            </a>
+
+            <button
+              onClick={onOpenInquiry}
+              style={{
+                fontSize: "12px",
+                letterSpacing: "0.2em",
+                fontWeight: 500,
+                textTransform: "uppercase",
+                color: scrolled ? "#201f1f" : "#ffffff",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.7)",
+                whiteSpace: "nowrap",
+                transition: "opacity 0.2s",
+                padding: 0,
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.65")}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+            >
+              INQUIRE
+            </button>
+
+            {/* BOOK CONSULTATION Form button */}
+            <button
+              onClick={onOpenInquiry}
               style={{
                 fontSize: "11px",
                 letterSpacing: "0.22em",
                 fontWeight: 500,
                 textTransform: "uppercase",
-                textDecoration: "none",
                 padding: "10px 20px",
                 border: scrolled ? "1px solid #201f1f" : "1px solid rgba(255,255,255,0.9)",
                 color: scrolled ? "#201f1f" : "#ffffff",
                 background: scrolled ? "transparent" : "rgba(255,255,255,0.1)",
                 backdropFilter: scrolled ? "none" : "blur(4px)",
+                cursor: "pointer",
                 transition: "all 0.3s",
                 whiteSpace: "nowrap",
               }}
@@ -201,8 +197,8 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
                 e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
               }}
             >
-              EXPLORE SAREES
-            </a>
+              BOOK CONSULTATION
+            </button>
           </div>
 
           {/* ── MOBILE HAMBURGER ── */}
@@ -242,6 +238,7 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
           {[
             { href: "#about", label: "PHILOSOPHY" },
             { href: "#sarees", label: "SAREES" },
+            { href: "#about", label: "HANDLOOM STORIES" },
             { href: "#why-chandrika", label: "WHY CHANDRIKA" },
           ].map(({ href, label }) => (
             <a
