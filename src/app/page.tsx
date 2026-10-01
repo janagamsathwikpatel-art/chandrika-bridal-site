@@ -14,8 +14,8 @@ export default function Home() {
   const [inquiryModalOpen, setInquiryModalOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-[#fbfaf8] text-[#595955] flex flex-col items-center justify-start overflow-x-hidden relative">
-      {/* Luxury Navigation Header (Anchored in Hero Section) */}
+    <main className="min-h-screen bg-[#fbfaf8] text-[#595955] flex flex-col items-center justify-start overflow-x-hidden">
+      {/* Fixed Luxury Navigation Header */}
       <Header onOpenInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Hero Video (100% Unchanged) */}
