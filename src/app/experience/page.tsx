@@ -25,7 +25,7 @@ const SAREES: SareeItem[] = [
     origin: "Kanchipuram, Tamil Nadu",
     weave: "Interlocked Pit Loom · 24K Gold Real Zari",
     price: "₹ 48,000",
-    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/royal-kanjivaram-bridal-saree.jpg",
     description: "Handcrafted pure mulberry silk with traditional temple border and three-shuttle korvai technique.",
   },
   {

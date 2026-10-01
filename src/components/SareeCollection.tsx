@@ -23,7 +23,7 @@ const SAREE_COLLECTION: SareeProduct[] = [
     weave: "Kanchipuram Handloom · 24K Real Zari",
     price: "₹ 48,000",
     image:
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=900&auto=format&fit=crop",
+      "/images/royal-kanjivaram-bridal-saree.jpg",
     hoverImage:
       "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=900&auto=format&fit=crop",
     tag: "BRIDAL HEIRLOOM",

@@ -18,7 +18,7 @@ const COLLECTION_LOOKS: Look[] = [
     name: "KANJIVARAM KORVAI",
     silhouette: "Architectural 3-Shuttle Temple Border Drape",
     fabric: "100% Pure Mulberry Silk & 24K Gold Real Zari",
-    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/royal-kanjivaram-bridal-saree.jpg",
     season: "Heritage 2026",
   },
   {

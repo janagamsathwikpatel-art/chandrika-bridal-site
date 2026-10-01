@@ -65,8 +65,8 @@ export default function InquirySection({ onOpenInquiry }: InquirySectionProps) {
           <div className="lg:col-span-5 relative group">
             <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#ebe8e2] shadow-xl">
               <Image
-                src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop"
-                alt="Authentic Chandrika Handloom Bridal Saree"
+                src="/images/royal-kanjivaram-bridal-saree.jpg"
+                alt="Authentic Chandrika Royal Kanjivaram Bridal Saree"
                 fill
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 sizes="(max-width: 1024px) 100vw, 40vw"
