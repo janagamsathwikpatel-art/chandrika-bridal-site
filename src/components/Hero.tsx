@@ -75,24 +75,25 @@ export default function Hero() {
         />
       </div>
 
-      {/* ── Center Typography in Middle of Hero Page ── */}
+      {/* ── Left-Aligned Typography in Hero Page ── */}
       <div
         style={{
           position: "absolute",
           top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
+          left: 0,
+          transform: "translateY(-50%)",
           zIndex: 20,
           pointerEvents: "none",
           userSelect: "none",
           width: "100%",
-          maxWidth: "1100px",
+          maxWidth: "1000px",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          alignItems: "flex-start",
           justifyContent: "center",
-          textAlign: "center",
-          padding: "0 24px",
+          textAlign: "left",
+          paddingLeft: "clamp(32px, 7vw, 120px)",
+          paddingRight: "clamp(24px, 5vw, 60px)",
         }}
       >
         <h1
@@ -102,21 +103,21 @@ export default function Hero() {
             textShadow: "0 2px 28px rgba(0,0,0,0.5)",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
+            alignItems: "flex-start",
             justifyContent: "center",
-            textAlign: "center",
+            textAlign: "left",
             margin: 0,
             padding: 0,
             letterSpacing: "-0.01em",
           }}
         >
           {/* A NEW */}
-          <span style={{ display: "block", textAlign: "center", width: "100%" }}>
+          <span style={{ display: "block", textAlign: "left", width: "100%" }}>
             A NEW
           </span>
 
           {/* CHAPTER */}
-          <span style={{ display: "block", textAlign: "center", width: "100%" }}>
+          <span style={{ display: "block", textAlign: "left", width: "100%" }}>
             CHAPTER
           </span>
 
@@ -124,7 +125,8 @@ export default function Hero() {
           <span
             style={{
               display: "block",
-              textAlign: "center",
+              textAlign: "left",
+              paddingLeft: "clamp(36px, 6vw, 140px)",
               fontStyle: "italic",
               fontFamily: "Georgia, 'Times New Roman', serif",
               textTransform: "lowercase",
@@ -139,7 +141,7 @@ export default function Hero() {
           </span>
         </h1>
 
-        {/* Subtitle centered in middle */}
+        {/* Subtitle left-aligned */}
         <p
           style={{
             marginTop: "24px",
@@ -148,9 +150,9 @@ export default function Hero() {
             textTransform: "uppercase",
             fontWeight: 300,
             color: "rgba(255,255,255,0.85)",
-            maxWidth: 520,
+            maxWidth: 460,
             lineHeight: 1.65,
-            textAlign: "center",
+            textAlign: "left",
             textShadow: "0 1px 10px rgba(0,0,0,0.6)",
           }}
         >
