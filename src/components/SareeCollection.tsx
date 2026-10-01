@@ -101,27 +101,14 @@ export default function SareeCollection({ onOpenInquiry }: SareeCollectionProps)
     >
       <div className="max-w-[1440px] mx-auto">
 
-        {/* ── Section Header (Refined Font Scale) ── */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-6 border-b border-[#201f1f]/15">
-          <div>
-            <span className="text-[10px] tracking-[0.35em] text-[#767573] uppercase block mb-2 font-semibold">
-              Authenticated Handloom • Silk Mark Certified
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-light tracking-[0.14em] text-[#201f1f] uppercase leading-tight">
-              THE SAREE COLLECTION
-            </h2>
-          </div>
-          <div className="mt-6 md:mt-0 flex flex-col items-start md:items-end gap-2.5">
-            <p className="text-[11px] tracking-widest text-[#595955] max-w-xs uppercase leading-relaxed text-left md:text-right">
-              Every drape is individually hand-woven by hereditary master artisans on traditional pit looms using pure silk and real gold zari.
-            </p>
-            <button
-              onClick={onOpenInquiry}
-              className="text-[11px] tracking-widest text-[#201f1f] uppercase font-semibold flex items-center gap-2 hover:gap-4 transition-all duration-300"
-            >
-              SCHEDULE PRIVATE DRAPING <ArrowRight size={12} />
-            </button>
-          </div>
+        {/* ── Section Header (Clean & Minimal) ── */}
+        <div className="mb-10 pb-6 border-b border-[#201f1f]/15">
+          <span className="text-[10px] tracking-[0.35em] text-[#767573] uppercase block mb-2 font-semibold">
+            Authenticated Handloom • Silk Mark Certified
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-light tracking-[0.14em] text-[#201f1f] uppercase leading-tight">
+            THE SAREE COLLECTION
+          </h2>
         </div>
 
         {/* ── Saree Products Grid (Structured Luxury Gallery Grid) ── */}
