@@ -4,6 +4,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InquiryModal from "@/components/InquiryModal";
+import ShopByCategory from "@/components/ShopByCategory";
 import { Sparkles, Eye, ShoppingBag, ArrowLeft } from "lucide-react";
 
 interface SareeItem {
@@ -128,6 +129,9 @@ export default function ExperiencePage() {
           Welcome to our world. An immersive curation of handcrafted bridal and heirloom handloom sarees.
         </p>
       </section>
+
+      {/* Shop By Category Grid */}
+      <ShopByCategory onSelectCategory={(cat) => setSelectedFilter(cat)} />
 
       {/* Saree Collection Section */}
       <section className="max-w-[1440px] mx-auto w-full px-6 md:px-12 py-20">

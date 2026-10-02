@@ -12,109 +12,109 @@ export interface CategoryCard {
 const CATEGORIES: CategoryCard[] = [
   {
     id: "cat-01",
-    name: "Pure Zari Kanchipuram",
+    name: "PURE ZARI KANCHIPURAM",
     image: "/images/kanjivaram-pink-pure-silk.png",
     filterCategory: "KANCHIPURAM",
   },
   {
     id: "cat-02",
-    name: "Banarasi Silk",
+    name: "BANARASI SILK",
     image: "/images/banarasi-gold-brocade-saree.jpg",
     filterCategory: "BANARASI",
   },
   {
     id: "cat-03",
-    name: "Mysore Crepe",
+    name: "MYSORE CREPE",
     image: "/images/magenta-pink-woven-silk-saree.jpg",
     filterCategory: "NEW ARRIVALS",
   },
   {
     id: "cat-04",
-    name: "Ikats",
+    name: "IKATS",
     image: "/images/patan-patola-double-ikat-saree.jpg",
     filterCategory: "DESIGNED BY CHANDRIKA",
   },
   {
     id: "cat-05",
-    name: "Tussar",
+    name: "TUSSAR",
     image: "/images/tussar-silk-handloom-saree.jpg",
     filterCategory: "FABRICS",
   },
   {
     id: "cat-06",
-    name: "Soft Silks",
+    name: "SOFT SILKS",
     image: "/images/fav-pink-viscose.png",
     filterCategory: "READYMADES",
   },
   {
     id: "cat-07",
-    name: "Kanchi Half Fine",
+    name: "KANCHI HALF FINE",
     image: "/images/royal-kanjivaram-bridal-saree.jpg",
     filterCategory: "KANCHIPURAM",
   },
   {
     id: "cat-08",
-    name: "Organza",
+    name: "ORGANZA",
     image: "/images/kanjivaram-arunima-muppagam.png",
     filterCategory: "OCCASIONS",
   },
   {
     id: "cat-09",
-    name: "Paithani",
+    name: "PAITHANI",
     image: "/images/paithani-peacock-teal-saree.jpg",
     filterCategory: "NEW ARRIVALS",
   },
   {
     id: "cat-10",
-    name: "Silk Cotton",
+    name: "SILK COTTON",
     image: "/images/fav-teal-woven.png",
     filterCategory: "FABRICS",
   },
   {
     id: "cat-11",
-    name: "Chiffon",
+    name: "CHIFFON",
     image: "/images/fav-rust-maheshwari.png",
     filterCategory: "OCCASIONS",
   },
   {
     id: "cat-12",
-    name: "Georgette",
+    name: "GEORGETTE",
     image: "/images/fav-blue-woven.png",
     filterCategory: "READYMADES",
   },
   {
     id: "cat-13",
-    name: "Cotton",
+    name: "COTTON",
     image: "/images/artisan-weaver-handloom.jpg",
     filterCategory: "FABRICS",
   },
   {
     id: "cat-14",
-    name: "Bangalore Silk",
+    name: "BANGALORE SILK",
     image: "/images/blue-woven-pure-silk-saree.jpg",
     filterCategory: "DESIGNED BY CHANDRIKA",
   },
   {
     id: "cat-15",
-    name: "Banarasi Katan Silk",
+    name: "BANARASI KATAN SILK",
     image: "/images/banarasi-gold-brocade-saree.jpg",
     filterCategory: "BANARASI",
   },
   {
     id: "cat-16",
-    name: "Kanchipuram Tissue Silk",
+    name: "KANCHIPURAM TISSUE SILK",
     image: "/images/chanderi-tissue-gold-saree.jpg",
     filterCategory: "KANCHIPURAM",
   },
   {
     id: "cat-17",
-    name: "Chanderi",
+    name: "CHANDERI",
     image: "/images/chanderi-tissue-gold-saree.jpg",
     filterCategory: "OCCASIONS",
   },
   {
     id: "cat-18",
-    name: "Brocade Kanchipuram",
+    name: "BROCADE KANCHIPURAM",
     image: "/images/kanjivaram-navy-blue.png",
     filterCategory: "KANCHIPURAM",
   },
@@ -148,13 +148,13 @@ export default function ShopByCategory({ onSelectCategory }: ShopByCategoryProps
       className="w-full bg-[#fbfaf8] py-16 md:py-24 px-4 md:px-12 border-b border-[#ece9e2] scroll-mt-20"
     >
       <div className="max-w-[1440px] mx-auto">
-        {/* Section Heading */}
+        {/* Section Heading matching User Screenshot media_1790932209079 */}
         <div className="mb-10 text-left">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1f2421] tracking-tight">
-            Shop by Category
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1f2421] tracking-tight uppercase">
+            SHOP BY CATEGORY
           </h2>
-          <p className="mt-1 text-sm md:text-base text-[#6b6965]">
-            Explore our heritage handloom weaves by craft, silk, and technique
+          <p className="mt-1 text-xs md:text-sm tracking-[0.2em] text-[#767573] uppercase font-medium">
+            EXPLORE OUR HERITAGE HANDLOOM WEAVES BY CRAFT, SILK, AND TECHNIQUE
           </p>
         </div>
 
@@ -177,8 +177,8 @@ export default function ShopByCategory({ onSelectCategory }: ShopByCategoryProps
                 />
               </div>
 
-              {/* Category Title Below Square Card */}
-              <span className="mt-2.5 text-[12px] sm:text-[13px] text-[#201f1f] font-medium leading-snug group-hover:text-[#8B0000] transition-colors">
+              {/* Uppercase Category Title Below Square Card */}
+              <span className="mt-2.5 text-[11px] sm:text-[12px] tracking-wider font-semibold text-[#201f1f] uppercase leading-snug group-hover:text-[#8B0000] transition-colors">
                 {cat.name}
               </span>
             </div>
