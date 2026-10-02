@@ -1,93 +1,196 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Heart, ShoppingBag } from "lucide-react";
 
-interface SareeProduct {
+export interface SareeProduct {
   id: string;
   name: string;
   price: string;
   image: string;
+  categories: string[];
 }
 
-const FEATURED_PRODUCTS: SareeProduct[] = [
+const ALL_PRODUCTS: SareeProduct[] = [
   {
-    id: "fp-01",
+    id: "sp-01",
     name: "Pure Silk Pink Kanjivaram Saree",
     price: "₹28,336.00",
     image: "/images/kanjivaram-pink-pure-silk.png",
+    categories: ["NEW ARRIVALS", "KANCHIPURAM", "OCCASIONS", "DESIGNED BY CHANDRIKA", "SHOP ALL"],
   },
   {
-    id: "fp-02",
+    id: "sp-02",
     name: "Gold Dual Tone Kanjivaram Tissue Saree",
     price: "₹67,507.00",
     image: "/images/kanjivaram-gold-dual-tone.png",
+    categories: ["NEW ARRIVALS", "KANCHIPURAM", "OCCASIONS", "SHOP ALL"],
   },
   {
-    id: "fp-03",
+    id: "sp-03",
     name: "Pure Silk Navy Blue Kanjivaram Saree",
     price: "₹24,652.00",
     image: "/images/kanjivaram-navy-blue.png",
+    categories: ["KANCHIPURAM", "SHOP ALL"],
   },
   {
-    id: "fp-04",
+    id: "sp-04",
     name: "Arunima - Off White Muppagam Saree",
     price: "₹24,500.00",
     image: "/images/kanjivaram-arunima-muppagam.png",
+    categories: ["KANCHIPURAM", "DESIGNED BY CHANDRIKA", "SHOP ALL"],
   },
   {
-    id: "fp-05",
+    id: "sp-05",
     name: "Royal Crimson Red Pure Silk Kanjivaram Saree",
     price: "₹48,900.00",
     image: "/images/royal-kanjivaram-bridal-saree.jpg",
+    categories: ["KANCHIPURAM", "OCCASIONS", "SHOP ALL"],
   },
   {
-    id: "fp-06",
+    id: "sp-06",
     name: "Royal Ivory Gold Woven Banarasi Brocade Saree",
     price: "₹39,500.00",
     image: "/images/banarasi-gold-brocade-saree.jpg",
+    categories: ["NEW ARRIVALS", "BANARASI", "OCCASIONS", "SHOP ALL"],
   },
   {
-    id: "fp-07",
+    id: "sp-07",
+    name: "Champagne Gold Woven Chanderi Tissue Saree",
+    price: "₹44,500.00",
+    image: "/images/chanderi-tissue-gold-saree.jpg",
+    categories: ["BANARASI", "FABRICS", "SHOP ALL"],
+  },
+  {
+    id: "sp-08",
     name: "Peacock Teal Pure Paithani Silk Saree",
     price: "₹34,500.00",
     image: "/images/paithani-peacock-teal-saree.jpg",
+    categories: ["NEW ARRIVALS", "OCCASIONS", "SHOP ALL"],
   },
   {
-    id: "fp-08",
+    id: "sp-09",
     name: "Royal Blue Woven Pure Silk Saree",
     price: "₹32,000.00",
     image: "/images/blue-woven-pure-silk-saree.jpg",
+    categories: ["FABRICS", "DESIGNED BY CHANDRIKA", "SHOP ALL"],
   },
+  {
+    id: "sp-10",
+    name: "Magenta Pink Woven Silk Saree",
+    price: "₹36,800.00",
+    image: "/images/magenta-pink-woven-silk-saree.jpg",
+    categories: ["NEW ARRIVALS", "OCCASIONS", "FABRICS", "SHOP ALL"],
+  },
+  {
+    id: "sp-11",
+    name: "Patan Patola Double Ikat Silk Saree",
+    price: "₹52,000.00",
+    image: "/images/patan-patola-double-ikat-saree.jpg",
+    categories: ["DESIGNED BY CHANDRIKA", "OCCASIONS", "SHOP ALL"],
+  },
+  {
+    id: "sp-12",
+    name: "Tussar Silk Handloom Saree & Fabric",
+    price: "₹22,900.00",
+    image: "/images/tussar-silk-handloom-saree.jpg",
+    categories: ["FABRICS", "READYMADES", "SHOP ALL"],
+  },
+  {
+    id: "sp-13",
+    name: "Light Violet Woven Maheshwari Silk Cotton Saree",
+    price: "₹26,400.00",
+    image: "/images/fav-rust-maheshwari.png",
+    categories: ["READYMADES", "FABRICS", "SHOP ALL"],
+  },
+  {
+    id: "sp-14",
+    name: "Pink Woven Pure Viscose Ready-To-Wear Saree",
+    price: "₹18,900.00",
+    image: "/images/fav-pink-viscose.png",
+    categories: ["READYMADES", "SHOP ALL"],
+  },
+];
+
+const CATEGORIES = [
+  "SHOP ALL",
+  "NEW ARRIVALS",
+  "KANCHIPURAM",
+  "BANARASI",
+  "OCCASIONS",
+  "DESIGNED BY CHANDRIKA",
+  "READYMADES",
+  "FABRICS",
 ];
 
 interface SareeCollectionProps {
   onOpenInquiry?: () => void;
+  selectedCategory?: string;
+  onSelectCategory?: (category: string) => void;
 }
 
-export default function SareeCollection({ onOpenInquiry }: SareeCollectionProps) {
+export default function SareeCollection({
+  onOpenInquiry,
+  selectedCategory = "SHOP ALL",
+  onSelectCategory,
+}: SareeCollectionProps) {
+  const [currentCategory, setCurrentCategory] = useState(selectedCategory);
   const [startIndex, setStartIndex] = useState(0);
 
+  useEffect(() => {
+    if (selectedCategory) {
+      setCurrentCategory(selectedCategory);
+      setStartIndex(0);
+    }
+  }, [selectedCategory]);
+
+  const handleCategoryChange = (category: string) => {
+    setCurrentCategory(category);
+    setStartIndex(0);
+    if (onSelectCategory) {
+      onSelectCategory(category);
+    }
+  };
+
+  // Filter products based on selected category
+  const filteredProducts = ALL_PRODUCTS.filter((product) => {
+    if (currentCategory === "SHOP ALL" || currentCategory === "ALL") return true;
+    return product.categories.includes(currentCategory);
+  });
+
+  const maxIndex = Math.max(0, filteredProducts.length - 4);
+
   const prevSlide = () => {
-    setStartIndex((prev) => (prev > 0 ? prev - 1 : FEATURED_PRODUCTS.length - 4));
+    setStartIndex((prev) => (prev > 0 ? prev - 1 : maxIndex));
   };
 
   const nextSlide = () => {
-    setStartIndex((prev) => (prev < FEATURED_PRODUCTS.length - 4 ? prev + 1 : 0));
+    setStartIndex((prev) => (prev < maxIndex ? prev + 1 : 0));
   };
 
+  const displayedProducts =
+    filteredProducts.length <= 4
+      ? filteredProducts
+      : filteredProducts.slice(startIndex, startIndex + 4);
+
   return (
-    <section id="sarees" className="w-full bg-[#fbfaf8] py-14 md:py-20 px-4 md:px-10 relative">
+    <section id="sarees" className="w-full bg-[#fbfaf8] py-14 md:py-20 px-4 md:px-10 relative scroll-mt-20">
       <div className="max-w-[1440px] mx-auto relative">
-        {/* ── Section Header matching User Screenshot ── */}
-        <div className="mb-6 md:mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        {/* ── Section Header ── */}
+        <div className="mb-6 md:mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
+            <div className="inline-block px-3 py-1 bg-[#8B0000]/10 text-[#8B0000] text-xs font-semibold tracking-widest uppercase rounded-full mb-2">
+              {currentCategory === "SHOP ALL" ? "FEATURED COLLECTION" : currentCategory}
+            </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1f2421] tracking-tight">
-              Featured products
+              Saree Collection
             </h2>
             <p className="mt-1 text-sm md:text-base text-[#6b6965]">
-              Fresh weaves, added daily — discover sarees handwoven just for you
+              Handwoven silk, zari, and bridal heritage — showing items for{" "}
+              <span className="font-semibold text-[#8B0000]">
+                {currentCategory}
+              </span>
             </p>
           </div>
           <button
@@ -98,82 +201,117 @@ export default function SareeCollection({ onOpenInquiry }: SareeCollectionProps)
           </button>
         </div>
 
-        {/* ── Carousel Container with Left & Right Arrow Buttons ── */}
-        <div className="relative group/carousel">
-          {/* Left Arrow Button */}
-          <button
-            onClick={prevSlide}
-            aria-label="Previous Saree"
-            className="absolute -left-3 md:-left-5 top-[40%] -translate-y-1/2 z-30 w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/95 border border-[#e2dfd7] shadow-md flex items-center justify-center text-[#555] hover:text-[#000] hover:bg-white hover:scale-105 transition-all duration-200"
-          >
-            <ChevronLeft size={20} />
-          </button>
-
-          {/* Right Arrow Button */}
-          <button
-            onClick={nextSlide}
-            aria-label="Next Saree"
-            className="absolute -right-3 md:-right-5 top-[40%] -translate-y-1/2 z-30 w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/95 border border-[#e2dfd7] shadow-md flex items-center justify-center text-[#555] hover:text-[#000] hover:bg-white hover:scale-105 transition-all duration-200"
-          >
-            <ChevronRight size={20} />
-          </button>
-
-          {/* ── 4-Column Product Cards Row Matching Reference ── */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 overflow-hidden">
-            {FEATURED_PRODUCTS.slice(startIndex, startIndex + 4).map((saree) => (
-              <div
-                key={saree.id}
-                onClick={onOpenInquiry}
-                className="cursor-pointer group flex flex-col text-left"
+        {/* ── Category Pill Filters Tabs ── */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-6 no-scrollbar border-b border-[#eeeae2]">
+          {CATEGORIES.map((cat) => {
+            const isActive = currentCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => handleCategoryChange(cat)}
+                className={`px-4 py-2 text-xs font-semibold tracking-wider uppercase rounded-full whitespace-nowrap transition-all duration-200 ${
+                  isActive
+                    ? "bg-[#8B0000] text-white shadow-sm"
+                    : "bg-[#f2efe9] text-[#444] hover:bg-[#e8e4dc] hover:text-[#111]"
+                }`}
               >
-                {/* Image Card Container with Wishlist Heart and Quick View */}
-                <div className="relative aspect-[244/365] w-full overflow-hidden bg-[#ebe8e2] shadow-sm">
-                  <Image
-                    src={saree.image}
-                    alt={saree.name}
-                    fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
+                {cat}
+              </button>
+            );
+          })}
+        </div>
 
-                  {/* Quick View on Hover */}
-                  <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20">
+        {/* ── Product Display Grid / Carousel ── */}
+        <div className="relative group/carousel min-h-[360px]">
+          {filteredProducts.length > 4 && (
+            <>
+              {/* Left Arrow */}
+              <button
+                onClick={prevSlide}
+                aria-label="Previous Saree"
+                className="absolute -left-3 md:-left-5 top-[40%] -translate-y-1/2 z-30 w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/95 border border-[#e2dfd7] shadow-md flex items-center justify-center text-[#555] hover:text-[#000] hover:bg-white hover:scale-105 transition-all duration-200"
+              >
+                <ChevronLeft size={20} />
+              </button>
+
+              {/* Right Arrow */}
+              <button
+                onClick={nextSlide}
+                aria-label="Next Saree"
+                className="absolute -right-3 md:-right-5 top-[40%] -translate-y-1/2 z-30 w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/95 border border-[#e2dfd7] shadow-md flex items-center justify-center text-[#555] hover:text-[#000] hover:bg-white hover:scale-105 transition-all duration-200"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </>
+          )}
+
+          {displayedProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+              {displayedProducts.map((saree) => (
+                <div
+                  key={saree.id}
+                  onClick={onOpenInquiry}
+                  className="cursor-pointer group flex flex-col text-left"
+                >
+                  {/* Image Container with Wishlist Heart and Quick View */}
+                  <div className="relative aspect-[244/365] w-full overflow-hidden bg-[#ebe8e2] shadow-sm rounded-lg">
+                    <Image
+                      src={saree.image}
+                      alt={saree.name}
+                      fill
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+
+                    {/* Quick View Button */}
+                    <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onOpenInquiry?.();
+                        }}
+                        className="flex items-center gap-1.5 px-3 py-1.5 bg-white text-[#201f1f] text-[11px] font-medium rounded-full shadow-md hover:bg-[#f5f5f5] transition-all"
+                      >
+                        <ShoppingBag size={13} />
+                        Quick View
+                      </button>
+                    </div>
+
+                    {/* Wishlist Heart */}
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        onOpenInquiry?.();
                       }}
-                      className="flex items-center gap-1.5 px-3 py-1.5 bg-white text-[#201f1f] text-[11px] font-medium rounded-full shadow-md hover:bg-[#f5f5f5] transition-all"
+                      aria-label="Add to wishlist"
+                      className="absolute bottom-3 right-3 z-20 w-8 h-8 rounded-full bg-white/90 shadow flex items-center justify-center text-[#555] hover:text-[#8B0000] hover:bg-white hover:scale-110 transition-all duration-200"
                     >
-                      <ShoppingBag size={13} />
-                      Quick View
+                      <Heart size={15} />
                     </button>
                   </div>
 
-                  {/* Circular Wishlist Heart Icon */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                    }}
-                    aria-label="Add to wishlist"
-                    className="absolute bottom-3 right-3 z-20 w-8 h-8 rounded-full bg-white/90 shadow flex items-center justify-center text-[#555] hover:text-[#8B0000] hover:bg-white hover:scale-110 transition-all duration-200"
-                  >
-                    <Heart size={15} />
-                  </button>
+                  {/* Product Details */}
+                  <div className="mt-3 px-0.5 flex flex-col gap-1">
+                    <h3 className="text-[13px] md:text-[14px] text-[#201f1f] font-normal leading-snug line-clamp-1 group-hover:underline">
+                      {saree.name}
+                    </h3>
+                    <p className="text-[13px] md:text-[14px] font-bold text-[#111111]">
+                      {saree.price}
+                    </p>
+                  </div>
                 </div>
-
-                {/* Product Caption below image */}
-                <div className="mt-3 px-0.5 flex flex-col gap-1">
-                  <h3 className="text-[13px] md:text-[14px] text-[#201f1f] font-normal leading-snug line-clamp-1 group-hover:underline">
-                    {saree.name}
-                  </h3>
-                  <p className="text-[13px] md:text-[14px] font-bold text-[#111111]">
-                    {saree.price}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="py-12 text-center text-[#666]">
+              <p className="text-base font-medium">No items found in this category.</p>
+              <button
+                onClick={() => handleCategoryChange("SHOP ALL")}
+                className="mt-3 px-4 py-2 bg-[#8B0000] text-white text-xs font-semibold rounded-full"
+              >
+                View All Products
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -13,23 +13,32 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   const [inquiryModalOpen, setInquiryModalOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("SHOP ALL");
 
   return (
     <main className="min-h-screen bg-[#fbfaf8] text-[#595955] flex flex-col items-center justify-start overflow-x-hidden">
       {/* Fixed Luxury Navigation Header */}
-      <Header onOpenInquiry={() => setInquiryModalOpen(true)} />
+      <Header
+        onOpenInquiry={() => setInquiryModalOpen(true)}
+        activeCategory={activeCategory}
+        onSelectCategory={(cat) => setActiveCategory(cat)}
+      />
 
       {/* Hero Video (100% Unchanged) */}
       <Hero />
 
-      {/* Experience The Saree Collection Architectural Arch Section */}
+      {/* Experience Architectural Arch Section */}
       <ExperienceArchSection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Customer Favourites Slider matching user screenshot */}
       <CustomerFavourites onOpenInquiry={() => setInquiryModalOpen(true)} />
 
-      {/* Featured Products Saree Collection Grid */}
-      <SareeCollection onOpenInquiry={() => setInquiryModalOpen(true)} />
+      {/* Featured Products Saree Collection Grid with active category filter */}
+      <SareeCollection
+        onOpenInquiry={() => setInquiryModalOpen(true)}
+        selectedCategory={activeCategory}
+        onSelectCategory={(cat) => setActiveCategory(cat)}
+      />
 
       {/* Editorial Story & Brand Philosophy */}
       <EditorialStory />

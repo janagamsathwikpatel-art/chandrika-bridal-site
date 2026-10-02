@@ -5,9 +5,15 @@ import { Menu, X } from "lucide-react";
 
 interface HeaderProps {
   onOpenInquiry?: () => void;
+  activeCategory?: string;
+  onSelectCategory?: (category: string) => void;
 }
 
-export default function Header({ onOpenInquiry }: HeaderProps) {
+export default function Header({
+  onOpenInquiry,
+  activeCategory = "SHOP ALL",
+  onSelectCategory,
+}: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -16,6 +22,49 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    label: string,
+    href: string
+  ) => {
+    e.preventDefault();
+    if (onSelectCategory) {
+      onSelectCategory(label);
+    }
+    const targetId = href.startsWith("#") ? href.substring(1) : href;
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      const headerOffset = 70;
+      const elementPosition = targetEl.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    } else {
+      window.location.href = href;
+    }
+    setMobileMenuOpen(false);
+  };
+
+  const leftNavItems = [
+    { label: "NEW ARRIVALS", href: "#sarees" },
+    { label: "KANCHIPURAM", href: "#sarees" },
+    { label: "BANARASI", href: "#sarees" },
+    { label: "OCCASIONS", href: "#sarees" },
+  ];
+
+  const rightNavItems = [
+    { label: "DESIGNED BY CHANDRIKA", href: "#sarees" },
+    { label: "SHOP ALL", href: "#sarees" },
+    { label: "READYMADES", href: "#sarees" },
+    { label: "FABRICS", href: "#sarees" },
+    { label: "MORE", href: "#why-chandrika" },
+  ];
+
+  const allNavItems = [...leftNavItems, ...rightNavItems];
 
   return (
     <>
@@ -30,7 +79,7 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
           transition: "all 0.4s ease",
           background: scrolled
             ? "rgba(251,250,248,0.95)"
-            : "linear-gradient(to bottom, rgba(0,0,0,0.55), transparent)",
+            : "linear-gradient(to bottom, rgba(0,0,0,0.6), transparent)",
           backdropFilter: scrolled ? "blur(12px)" : "none",
           borderBottom: scrolled ? "1px solid rgba(232,230,225,0.9)" : "none",
           padding: scrolled ? "10px 0 6px 0" : "18px 0 10px 0",
@@ -50,7 +99,7 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             minHeight: "48px",
           }}
         >
-          {/* ── LEFT SAREE CATEGORIES (Kept on Left Side of Header) ── */}
+          {/* ── LEFT SAREE CATEGORIES ── */}
           <nav
             style={{
               display: "flex",
@@ -60,41 +109,56 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             }}
             className="hidden lg:flex"
           >
-            {[
-              { label: "NEW ARRIVALS", href: "#sarees" },
-              { label: "KANCHIPURAM", href: "#sarees" },
-              { label: "BANARASI", href: "#sarees" },
-              { label: "OCCASIONS", href: "#sarees" },
-            ].map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                style={{
-                  fontSize: "clamp(10px, 0.76vw, 11.5px)",
-                  letterSpacing: "0.14em",
-                  fontWeight: 600,
-                  textTransform: "uppercase",
-                  color: scrolled ? "#201f1f" : "#ffffff",
-                  textDecoration: "none",
-                  textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.85)",
-                  whiteSpace: "nowrap",
-                  transition: "all 0.2s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = scrolled ? "#8B0000" : "#ffd700";
-                  e.currentTarget.style.opacity = "0.75";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
-                  e.currentTarget.style.opacity = "1";
-                }}
-              >
-                {label}
-              </a>
-            ))}
+            {leftNavItems.map(({ label, href }) => {
+              const isActive = activeCategory === label;
+              return (
+                <a
+                  key={label}
+                  href={href}
+                  onClick={(e) => handleNavClick(e, label, href)}
+                  style={{
+                    fontSize: "clamp(10px, 0.76vw, 11.5px)",
+                    letterSpacing: "0.14em",
+                    fontWeight: isActive ? 700 : 600,
+                    textTransform: "uppercase",
+                    color: isActive
+                      ? scrolled
+                        ? "#8B0000"
+                        : "#ffd700"
+                      : scrolled
+                      ? "#201f1f"
+                      : "#ffffff",
+                    textDecoration: "none",
+                    borderBottom: isActive
+                      ? scrolled
+                        ? "2px solid #8B0000"
+                        : "2px solid #ffd700"
+                      : "2px solid transparent",
+                    paddingBottom: "2px",
+                    textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.85)",
+                    whiteSpace: "nowrap",
+                    transition: "all 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.color = scrolled ? "#8B0000" : "#ffd700";
+                      e.currentTarget.style.opacity = "0.85";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
+                      e.currentTarget.style.opacity = "1";
+                    }
+                  }}
+                >
+                  {label}
+                </a>
+              );
+            })}
           </nav>
 
-          {/* ── CENTER BRAND (Auto Width in Center Column, Guaranteed Never Collides) ── */}
+          {/* ── CENTER BRAND ── */}
           <a
             href="/"
             style={{
@@ -138,7 +202,7 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             </span>
           </a>
 
-          {/* ── RIGHT SAREE CATEGORIES (Fixed on Right Side of Header) ── */}
+          {/* ── RIGHT SAREE CATEGORIES ── */}
           <div
             style={{
               display: "flex",
@@ -157,42 +221,56 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
               }}
               className="hidden lg:flex"
             >
-              {[
-                { label: "DESIGNED BY CHANDRIKA", href: "#sarees" },
-                { label: "SHOP ALL", href: "#sarees" },
-                { label: "READYMADES", href: "#sarees" },
-                { label: "FABRICS", href: "#sarees" },
-                { label: "MORE", href: "#why-chandrika" },
-              ].map(({ label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  style={{
-                    fontSize: "clamp(10px, 0.76vw, 11.5px)",
-                    letterSpacing: "0.14em",
-                    fontWeight: 600,
-                    textTransform: "uppercase",
-                    color: scrolled ? "#201f1f" : "#ffffff",
-                    textDecoration: "none",
-                    textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.85)",
-                    whiteSpace: "nowrap",
-                    transition: "all 0.2s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = scrolled ? "#8B0000" : "#ffd700";
-                    e.currentTarget.style.opacity = "0.75";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
-                    e.currentTarget.style.opacity = "1";
-                  }}
-                >
-                  {label}
-                </a>
-              ))}
+              {rightNavItems.map(({ label, href }) => {
+                const isActive = activeCategory === label;
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    onClick={(e) => handleNavClick(e, label, href)}
+                    style={{
+                      fontSize: "clamp(10px, 0.76vw, 11.5px)",
+                      letterSpacing: "0.14em",
+                      fontWeight: isActive ? 700 : 600,
+                      textTransform: "uppercase",
+                      color: isActive
+                        ? scrolled
+                          ? "#8B0000"
+                          : "#ffd700"
+                        : scrolled
+                        ? "#201f1f"
+                        : "#ffffff",
+                      textDecoration: "none",
+                      borderBottom: isActive
+                        ? scrolled
+                          ? "2px solid #8B0000"
+                          : "2px solid #ffd700"
+                        : "2px solid transparent",
+                      paddingBottom: "2px",
+                      textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.85)",
+                      whiteSpace: "nowrap",
+                      transition: "all 0.2s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.color = scrolled ? "#8B0000" : "#ffd700";
+                        e.currentTarget.style.opacity = "0.85";
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
+                        e.currentTarget.style.opacity = "1";
+                      }
+                    }}
+                  >
+                    {label}
+                  </a>
+                );
+              })}
             </nav>
 
-            {/* ── MOBILE HAMBURGER (Visible on mobile & tablet) ── */}
+            {/* ── MOBILE HAMBURGER ── */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden"
@@ -212,7 +290,7 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
           </div>
         </div>
 
-        {/* ── Saree Categories Strip for Mobile / Tablet screens (< lg) ── */}
+        {/* ── Mobile/Tablet Category Strip ── */}
         <div
           className="flex lg:hidden items-center justify-start border-t mt-2.5 pt-2 overflow-x-auto no-scrollbar"
           style={{
@@ -223,35 +301,36 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             width: "100%",
           }}
         >
-          {[
-            { label: "NEW ARRIVALS", href: "#sarees" },
-            { label: "KANCHIPURAM", href: "#sarees" },
-            { label: "BANARASI", href: "#sarees" },
-            { label: "OCCASIONS", href: "#sarees" },
-            { label: "DESIGNED BY CHANDRIKA", href: "#sarees" },
-            { label: "SHOP ALL", href: "#sarees" },
-            { label: "READYMADES", href: "#sarees" },
-            { label: "FABRICS", href: "#sarees" },
-            { label: "MORE", href: "#why-chandrika" },
-          ].map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              style={{
-                fontSize: "10px",
-                letterSpacing: "0.14em",
-                fontWeight: 600,
-                textTransform: "uppercase",
-                color: scrolled ? "#201f1f" : "#ffffff",
-                textDecoration: "none",
-                textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.85)",
-                whiteSpace: "nowrap",
-                flexShrink: 0,
-              }}
-            >
-              {label}
-            </a>
-          ))}
+          {allNavItems.map(({ label, href }) => {
+            const isActive = activeCategory === label;
+            return (
+              <a
+                key={label}
+                href={href}
+                onClick={(e) => handleNavClick(e, label, href)}
+                style={{
+                  fontSize: "10px",
+                  letterSpacing: "0.14em",
+                  fontWeight: isActive ? 700 : 600,
+                  textTransform: "uppercase",
+                  color: isActive
+                    ? scrolled
+                      ? "#8B0000"
+                      : "#ffd700"
+                    : scrolled
+                    ? "#201f1f"
+                    : "#ffffff",
+                  textDecoration: "none",
+                  borderBottom: isActive ? "2px solid currentColor" : "none",
+                  paddingBottom: "2px",
+                  whiteSpace: "nowrap",
+                  flexShrink: 0,
+                }}
+              >
+                {label}
+              </a>
+            );
+          })}
         </div>
       </header>
 
@@ -267,32 +346,22 @@ export default function Header({ onOpenInquiry }: HeaderProps) {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: "24px",
+            gap: "20px",
             padding: "40px 24px",
             overflowY: "auto",
           }}
         >
-          {[
-            { href: "#sarees", label: "NEW ARRIVALS" },
-            { href: "#sarees", label: "KANCHIPURAM" },
-            { href: "#sarees", label: "BANARASI" },
-            { href: "#sarees", label: "OCCASIONS" },
-            { href: "#sarees", label: "DESIGNED BY CHANDRIKA" },
-            { href: "#sarees", label: "SHOP ALL" },
-            { href: "#sarees", label: "READYMADES" },
-            { href: "#sarees", label: "FABRICS" },
-            { href: "#why-chandrika", label: "WHY CHANDRIKA" },
-          ].map(({ href, label }) => (
+          {allNavItems.map(({ label, href }) => (
             <a
               key={label}
               href={href}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => handleNavClick(e, label, href)}
               style={{
                 fontSize: "14px",
                 letterSpacing: "0.22em",
-                fontWeight: 500,
+                fontWeight: activeCategory === label ? 700 : 500,
                 textTransform: "uppercase",
-                color: "#201f1f",
+                color: activeCategory === label ? "#8B0000" : "#201f1f",
                 textDecoration: "none",
               }}
             >
