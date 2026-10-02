@@ -27,7 +27,7 @@ export default function Home() {
       {/* Hero Video (100% Unchanged) */}
       <Hero />
 
-      {/* Experience Architectural Arch Section with Door Opening & Shop By Category */}
+      {/* Experience Architectural Arch Section */}
       <ExperienceArchSection
         onOpenInquiry={() => setInquiryModalOpen(true)}
         onSelectCategory={(cat) => setActiveCategory(cat)}
