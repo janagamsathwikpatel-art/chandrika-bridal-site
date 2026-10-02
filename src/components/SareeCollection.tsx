@@ -180,17 +180,13 @@ export default function SareeCollection({
         {/* ── Section Header ── */}
         <div className="mb-6 md:mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
-            <div className="inline-block px-3 py-1 bg-[#8B0000]/10 text-[#8B0000] text-xs font-semibold tracking-widest uppercase rounded-full mb-2">
-              {currentCategory === "SHOP ALL" ? "FEATURED COLLECTION" : currentCategory}
-            </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1f2421] tracking-tight">
-              Saree Collection
+              Featured products
             </h2>
             <p className="mt-1 text-sm md:text-base text-[#6b6965]">
-              Handwoven silk, zari, and bridal heritage — showing items for{" "}
-              <span className="font-semibold text-[#8B0000]">
-                {currentCategory}
-              </span>
+              {currentCategory === "SHOP ALL" || !currentCategory
+                ? "Fresh weaves, added daily — discover sarees handwoven just for you"
+                : `Fresh handwoven sarees selected for ${currentCategory}`}
             </p>
           </div>
           <button
@@ -199,26 +195,6 @@ export default function SareeCollection({
           >
             View All <span aria-hidden="true">&rarr;</span>
           </button>
-        </div>
-
-        {/* ── Category Pill Filters Tabs ── */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-6 no-scrollbar border-b border-[#eeeae2]">
-          {CATEGORIES.map((cat) => {
-            const isActive = currentCategory === cat;
-            return (
-              <button
-                key={cat}
-                onClick={() => handleCategoryChange(cat)}
-                className={`px-4 py-2 text-xs font-semibold tracking-wider uppercase rounded-full whitespace-nowrap transition-all duration-200 ${
-                  isActive
-                    ? "bg-[#8B0000] text-white shadow-sm"
-                    : "bg-[#f2efe9] text-[#444] hover:bg-[#e8e4dc] hover:text-[#111]"
-                }`}
-              >
-                {cat}
-              </button>
-            );
-          })}
         </div>
 
         {/* ── Product Display Grid / Carousel ── */}
