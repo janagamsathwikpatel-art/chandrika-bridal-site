@@ -29,7 +29,7 @@ export default function ContactSection({ onOpenInquiry }: ContactSectionProps) {
         </svg>
       </div>
 
-      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
         
         {/* ── Main 3-Column Card Layout ── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch mb-16">
