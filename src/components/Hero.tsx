@@ -79,42 +79,6 @@ export default function Hero() {
           />
         </div>
 
-        {/* ── Edge-to-Edge "CHANDRIKA" Brand Text Overlay with Scroll-Fade Removal (dropedition style) ── */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 15,
-            pointerEvents: "none",
-            userSelect: "none",
-            overflow: "hidden",
-            visibility: scrollProgress > 0.35 ? "hidden" : "visible",
-          }}
-        >
-          <h1
-            style={{
-              color: "rgba(255, 255, 255, 0.88)",
-              fontSize: "clamp(4.5rem, 15.5vw, 18rem)",
-              fontFamily: "Georgia, 'Times New Roman', serif",
-              fontWeight: 300,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              textAlign: "center",
-              whiteSpace: "nowrap",
-              width: "100vw",
-              textShadow: "0 10px 40px rgba(0,0,0,0.5)",
-              transform: `scale(${1 + scrollProgress * 2.2})`,
-              opacity: Math.max(0, 1 - scrollProgress * 3.2),
-              willChange: "transform, opacity",
-            }}
-          >
-            CHANDRIKA
-          </h1>
-        </div>
-
         {/* ── Controls (play / mute) ── */}
         <div
           style={{
