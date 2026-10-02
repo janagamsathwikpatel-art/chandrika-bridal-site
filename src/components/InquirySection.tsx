@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Sparkles, ShieldCheck, HeartHandshake, Compass, Award, ArrowRight } from "lucide-react";
+import { Sparkles, ShieldCheck, HeartHandshake, Compass, Award } from "lucide-react";
 
 interface InquirySectionProps {
   onOpenInquiry?: () => void;
@@ -122,16 +122,9 @@ export default function InquirySection({ onOpenInquiry }: InquirySectionProps) {
 
             {/* Atelier CTA Actions */}
             <div className="mt-10 pt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <button
-                onClick={onOpenInquiry}
-                className="px-8 py-4 bg-[#201f1f] text-white hover:bg-black transition-all duration-300 text-[11px] tracking-[0.25em] uppercase font-medium shadow-sm hover:shadow text-center flex items-center justify-center gap-3"
-              >
-                <span>REQUEST BESPOKE ATELIER CONSULTATION</span>
-                <ArrowRight size={14} />
-              </button>
               <a
                 href="#sarees"
-                className="px-8 py-4 border border-[#201f1f] text-[#201f1f] hover:bg-[#201f1f] hover:text-white transition-all duration-300 text-[11px] tracking-[0.25em] uppercase font-medium text-center"
+                className="px-8 py-4 border border-[#201f1f] text-[#201f1f] hover:bg-[#201f1f] hover:text-white transition-all duration-300 text-[11px] tracking-[0.25em] uppercase font-medium text-center inline-block"
               >
                 EXPLORE ALL SAREES
               </a>
