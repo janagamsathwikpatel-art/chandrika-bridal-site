@@ -71,7 +71,7 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
             textShadow: "0 4px 24px rgba(0,0,0,0.85)",
           }}
         >
-          THE SAREE COLLECTION
+          SAREE COLLECTION
         </h2>
 
         {/* Outlined Button: EXPLORE THE COLLECTION */}
