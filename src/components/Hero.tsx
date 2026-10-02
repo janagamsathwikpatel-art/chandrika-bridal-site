@@ -79,6 +79,40 @@ export default function Hero() {
           />
         </div>
 
+        {/* ── Scroll-Driven "CHANDRIKA" White Brand Text Zoom Overlay (dropedition style) ── */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 15,
+            pointerEvents: "none",
+            userSelect: "none",
+            overflow: "hidden",
+          }}
+        >
+          <h1
+            style={{
+              color: "#ffffff",
+              fontSize: "clamp(3.5rem, 12vw, 12rem)",
+              fontFamily: "Georgia, 'Times New Roman', serif",
+              fontWeight: 300,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              textAlign: "center",
+              whiteSpace: "nowrap",
+              textShadow: "0 4px 35px rgba(0,0,0,0.6)",
+              transform: `scale(${1 + scrollProgress * 3.5})`,
+              opacity: Math.max(0, 1 - scrollProgress * 1.25),
+              willChange: "transform, opacity",
+            }}
+          >
+            CHANDRIKA
+          </h1>
+        </div>
+
         {/* ── Controls (play / mute) ── */}
         <div
           style={{
