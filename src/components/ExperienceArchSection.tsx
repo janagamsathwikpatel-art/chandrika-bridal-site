@@ -76,7 +76,7 @@ export default function ExperienceArchSection({ onOpenInquiry }: ExperienceArchS
 
         {/* Outlined Button: EXPLORE THE COLLECTION */}
         <a
-          href="#sarees"
+          href="#shop-by-category"
           style={{
             display: "inline-flex",
             alignItems: "center",
