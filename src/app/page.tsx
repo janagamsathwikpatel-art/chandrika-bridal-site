@@ -28,10 +28,7 @@ export default function Home() {
       <Hero />
 
       {/* Experience Architectural Arch Section */}
-      <ExperienceArchSection
-        onOpenInquiry={() => setInquiryModalOpen(true)}
-        onSelectCategory={(cat) => setActiveCategory(cat)}
-      />
+      <ExperienceArchSection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Customer Favourites Slider matching user screenshot */}
       <CustomerFavourites onOpenInquiry={() => setInquiryModalOpen(true)} />
