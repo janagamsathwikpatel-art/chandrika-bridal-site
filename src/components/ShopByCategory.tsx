@@ -2,121 +2,121 @@
 
 import Image from "next/image";
 
-export interface CategoryCard {
+export interface CategoryItem {
   id: string;
   name: string;
   image: string;
-  filterCategory: string;
+  categoryFilter: string;
 }
 
-const CATEGORIES: CategoryCard[] = [
+export const CATEGORIES_LIST: CategoryItem[] = [
   {
     id: "cat-01",
-    name: "PURE ZARI KANCHIPURAM",
-    image: "/images/kanjivaram-pink-pure-silk.png",
-    filterCategory: "KANCHIPURAM",
+    name: "Pure Zari Kanchipuram",
+    image: "/images/royal-kanjivaram-bridal-saree.jpg",
+    categoryFilter: "KANCHIPURAM",
   },
   {
     id: "cat-02",
-    name: "BANARASI SILK",
+    name: "Banarasi Silk",
     image: "/images/banarasi-gold-brocade-saree.jpg",
-    filterCategory: "BANARASI",
+    categoryFilter: "BANARASI",
   },
   {
     id: "cat-03",
-    name: "MYSORE CREPE",
-    image: "/images/magenta-pink-woven-silk-saree.jpg",
-    filterCategory: "NEW ARRIVALS",
+    name: "Mysore Crepe",
+    image: "/images/kanjivaram-pink-pure-silk.png",
+    categoryFilter: "NEW ARRIVALS",
   },
   {
     id: "cat-04",
-    name: "IKATS",
+    name: "Ikats",
     image: "/images/patan-patola-double-ikat-saree.jpg",
-    filterCategory: "DESIGNED BY CHANDRIKA",
+    categoryFilter: "DESIGNED BY CHANDRIKA",
   },
   {
     id: "cat-05",
-    name: "TUSSAR",
+    name: "Tussar",
     image: "/images/tussar-silk-handloom-saree.jpg",
-    filterCategory: "FABRICS",
+    categoryFilter: "FABRICS",
   },
   {
     id: "cat-06",
-    name: "SOFT SILKS",
-    image: "/images/fav-pink-viscose.png",
-    filterCategory: "READYMADES",
+    name: "Soft Silks",
+    image: "/images/magenta-pink-woven-silk-saree.jpg",
+    categoryFilter: "OCCASIONS",
   },
   {
     id: "cat-07",
-    name: "KANCHI HALF FINE",
-    image: "/images/royal-kanjivaram-bridal-saree.jpg",
-    filterCategory: "KANCHIPURAM",
+    name: "Kanchi Half Fine",
+    image: "/images/kanjivaram-gold-dual-tone.png",
+    categoryFilter: "KANCHIPURAM",
   },
   {
     id: "cat-08",
-    name: "ORGANZA",
-    image: "/images/kanjivaram-arunima-muppagam.png",
-    filterCategory: "OCCASIONS",
+    name: "Organza",
+    image: "/images/chanderi-tissue-gold-saree.jpg",
+    categoryFilter: "FABRICS",
   },
   {
     id: "cat-09",
-    name: "PAITHANI",
+    name: "Paithani",
     image: "/images/paithani-peacock-teal-saree.jpg",
-    filterCategory: "NEW ARRIVALS",
+    categoryFilter: "OCCASIONS",
   },
   {
     id: "cat-10",
-    name: "SILK COTTON",
-    image: "/images/fav-teal-woven.png",
-    filterCategory: "FABRICS",
+    name: "Silk Cotton",
+    image: "/images/fav-rust-maheshwari.png",
+    categoryFilter: "READYMADES",
   },
   {
     id: "cat-11",
-    name: "CHIFFON",
-    image: "/images/fav-rust-maheshwari.png",
-    filterCategory: "OCCASIONS",
+    name: "Chiffon",
+    image: "/images/fav-pink-viscose.png",
+    categoryFilter: "READYMADES",
   },
   {
     id: "cat-12",
-    name: "GEORGETTE",
-    image: "/images/fav-blue-woven.png",
-    filterCategory: "READYMADES",
+    name: "Georgette",
+    image: "/images/fav-teal-woven.png",
+    categoryFilter: "DESIGNED BY CHANDRIKA",
   },
   {
     id: "cat-13",
-    name: "COTTON",
-    image: "/images/artisan-weaver-handloom.jpg",
-    filterCategory: "FABRICS",
+    name: "Cotton",
+    image: "/images/fav-blue-woven.png",
+    categoryFilter: "FABRICS",
   },
   {
     id: "cat-14",
-    name: "BANGALORE SILK",
+    name: "Bangalore Silk",
     image: "/images/blue-woven-pure-silk-saree.jpg",
-    filterCategory: "DESIGNED BY CHANDRIKA",
+    categoryFilter: "NEW ARRIVALS",
   },
   {
     id: "cat-15",
-    name: "BANARASI KATAN SILK",
+    name: "Banarasi Katan Silk",
     image: "/images/banarasi-gold-brocade-saree.jpg",
-    filterCategory: "BANARASI",
+    categoryFilter: "BANARASI",
   },
   {
     id: "cat-16",
-    name: "KANCHIPURAM TISSUE SILK",
-    image: "/images/chanderi-tissue-gold-saree.jpg",
-    filterCategory: "KANCHIPURAM",
+    name: "Kanchipuram Tissue Silk",
+    image: "/images/kanjivaram-gold-dual-tone.png",
+    categoryFilter: "KANCHIPURAM",
   },
   {
     id: "cat-17",
-    name: "CHANDERI",
+    name: "Chanderi",
     image: "/images/chanderi-tissue-gold-saree.jpg",
-    filterCategory: "OCCASIONS",
+    categoryFilter: "FABRICS",
   },
   {
     id: "cat-18",
-    name: "BROCADE KANCHIPURAM",
-    image: "/images/kanjivaram-navy-blue.png",
-    filterCategory: "KANCHIPURAM",
+    name: "Brocade Kanchipuram",
+    image: "/images/kanjivaram-arunima-muppagam.png",
+    categoryFilter: "KANCHIPURAM",
   },
 ];
 
@@ -125,16 +125,15 @@ interface ShopByCategoryProps {
 }
 
 export default function ShopByCategory({ onSelectCategory }: ShopByCategoryProps) {
-  const handleCategoryClick = (filterCategory: string) => {
+  const handleCategoryClick = (filterName: string) => {
     if (onSelectCategory) {
-      onSelectCategory(filterCategory);
+      onSelectCategory(filterName);
     }
     const sareesSection = document.getElementById("sarees");
     if (sareesSection) {
       const headerOffset = 70;
       const elementPosition = sareesSection.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",
@@ -143,31 +142,26 @@ export default function ShopByCategory({ onSelectCategory }: ShopByCategoryProps
   };
 
   return (
-    <section
-      id="shop-by-category"
-      className="w-full bg-[#fbfaf8] py-16 md:py-24 px-4 md:px-12 border-b border-[#ece9e2] scroll-mt-20"
-    >
+    <section className="w-full bg-[#fbfaf8] py-12 md:py-16 px-4 md:px-8">
       <div className="max-w-[1440px] mx-auto">
-        {/* Section Heading matching User Screenshot media_1790932209079 */}
-        <div className="mb-10 text-left">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1f2421] tracking-tight uppercase">
-            SHOP BY CATEGORY
+        {/* Section Heading matching Nalli screenshot */}
+        <div className="mb-8 md:mb-10 text-center">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wide text-[#111111] uppercase">
+            Shop By Category
           </h2>
-          <p className="mt-1 text-xs md:text-sm tracking-[0.2em] text-[#767573] uppercase font-medium">
-            EXPLORE OUR HERITAGE HANDLOOM WEAVES BY CRAFT, SILK, AND TECHNIQUE
-          </p>
+          <div className="w-16 h-0.5 bg-[#8B0000] mx-auto mt-3" />
         </div>
 
-        {/* 6-Column Category Grid matching Reference Screenshot */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 md:gap-6">
-          {CATEGORIES.map((cat) => (
+        {/* 6-Column Category Grid matching Screenshot 2 */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+          {CATEGORIES_LIST.map((cat) => (
             <div
               key={cat.id}
-              onClick={() => handleCategoryClick(cat.filterCategory)}
-              className="cursor-pointer group flex flex-col items-start"
+              onClick={() => handleCategoryClick(cat.categoryFilter)}
+              className="group cursor-pointer flex flex-col items-center text-center"
             >
-              {/* Square Image Card Container */}
-              <div className="relative aspect-square w-full overflow-hidden bg-[#ebe8e2] rounded-md shadow-sm border border-[#e2dfd7] group-hover:border-[#8B0000]/40 group-hover:shadow-md transition-all duration-300">
+              {/* Square Image Card */}
+              <div className="relative aspect-square w-full overflow-hidden bg-[#e8e5de] shadow-sm rounded-none border border-[#e2dfd5]">
                 <Image
                   src={cat.image}
                   alt={cat.name}
@@ -177,8 +171,8 @@ export default function ShopByCategory({ onSelectCategory }: ShopByCategoryProps
                 />
               </div>
 
-              {/* Uppercase Category Title Below Square Card */}
-              <span className="mt-2.5 text-[11px] sm:text-[12px] tracking-wider font-semibold text-[#201f1f] uppercase leading-snug group-hover:text-[#8B0000] transition-colors">
+              {/* Category Name Label underneath image */}
+              <span className="mt-2.5 text-[12px] md:text-[13px] font-normal text-[#333333] group-hover:text-[#8B0000] transition-colors leading-tight">
                 {cat.name}
               </span>
             </div>
