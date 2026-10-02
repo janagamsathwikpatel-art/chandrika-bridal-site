@@ -95,21 +95,52 @@ export default function CustomerFavourites({ onOpenInquiry }: CustomerFavourites
         
         {/* ── LEFT BRAND INFO COLUMN (Pothys Style) ── */}
         <div className="lg:w-[28%] flex flex-col justify-center text-left py-4 pr-4 border-b lg:border-b-0 lg:border-r border-[#eae7e0]">
-          {/* Traditional Handloom Peacock Motif Logo */}
+          {/* Traditional Handloom Peacock (Mayura) Motif Logo */}
           <div className="mb-4">
             <svg
-              width="44"
-              height="52"
-              viewBox="0 0 44 52"
+              width="54"
+              height="62"
+              viewBox="0 0 60 68"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="text-[#8B0000]"
+              className="text-[#8B0000] filter drop-shadow-sm"
             >
+              {/* Peacock Crown / Crest */}
+              <circle cx="30" cy="6" r="2.5" fill="#8B0000" />
+              <circle cx="24" cy="8" r="2" fill="#D4AF37" />
+              <circle cx="36" cy="8" r="2" fill="#D4AF37" />
+              <path d="M30 6L30 14M24 8L28 14M36 8L32 14" stroke="#8B0000" strokeWidth="1.5" strokeLinecap="round" />
+              
+              {/* Peacock Head & Curved Graceful Neck */}
               <path
-                d="M22 0C13.2 0 6 7.2 6 16C6 24 12 30.5 19.5 31.8V42H13V46H31V42H24.5V31.8C32 30.5 38 24 38 16C38 7.2 30.8 0 22 0ZM22 26C16.5 26 12 21.5 12 16C12 10.5 16.5 6 22 6C27.5 6 32 10.5 32 16C32 21.5 27.5 26 22 26Z"
-                fill="currentColor"
+                d="M30 14C27 14 24 16.5 24 20.5C24 25 28 27.5 28 32C28 35.5 25 38 21 38C17 38 13.5 35.5 13.5 32"
+                stroke="#8B0000"
+                strokeWidth="3"
+                strokeLinecap="round"
               />
-              <circle cx="22" cy="16" r="4" fill="#8B0000" />
+              <circle cx="28" cy="18" r="1.5" fill="#D4AF37" />
+
+              {/* Feather Plumes & Intricate Body Motifs */}
+              <path
+                d="M30 20C36 19 46 22 48 30C50 38 45 48 36 52C28 55.5 18 52 14 44C12 40 12 34 16 30"
+                stroke="#8B0000"
+                strokeWidth="2.5"
+                fill="#8B0000"
+                fillOpacity="0.08"
+              />
+              <path
+                d="M34 26C39 27 43 31 43 36C43 41 38 45 32 46"
+                stroke="#D4AF37"
+                strokeWidth="2"
+                strokeDasharray="2 2"
+              />
+              <circle cx="38" cy="32" r="2.5" fill="#8B0000" />
+              <circle cx="42" cy="38" r="2" fill="#D4AF37" />
+              <circle cx="34" cy="42" r="2" fill="#8B0000" />
+
+              {/* Decorative Handloom Base Ring */}
+              <ellipse cx="30" cy="58" rx="18" ry="4" stroke="#8B0000" strokeWidth="2" fill="none" />
+              <ellipse cx="30" cy="58" rx="10" ry="2" fill="#D4AF37" />
             </svg>
           </div>
 
