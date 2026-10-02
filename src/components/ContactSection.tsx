@@ -19,7 +19,7 @@ interface ContactSectionProps {
 
 export default function ContactSection({ onOpenInquiry }: ContactSectionProps) {
   return (
-    <section id="contact" className="w-full bg-[#f6eee2] pt-16 md:pt-24 pb-12 text-[#2b2520] border-t border-[#e5d9c7] select-none relative overflow-hidden">
+    <section id="contact" className="w-full bg-[#f6eee2] py-10 md:py-14 text-[#2b2520] border-t border-[#e5d9c7] select-none relative overflow-hidden">
       
       {/* Background Decorative Watermark (Lotus graphic) */}
       <div className="absolute right-0 bottom-16 w-[500px] h-[500px] opacity-15 pointer-events-none z-0">
@@ -29,14 +29,14 @@ export default function ContactSection({ onOpenInquiry }: ContactSectionProps) {
         </svg>
       </div>
 
-      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* ── Main 3-Column Card Layout ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-10">
           
           {/* Left Column: Dark Sepia Artisan Weaving Image Card (lg:col-span-5) */}
           <div className="lg:col-span-5 w-full">
-            <div className="relative aspect-[4/5] sm:aspect-[4/4] lg:aspect-[4/5] w-full rounded-2xl overflow-hidden shadow-lg border border-[#e5d9c7] bg-[#2b2520] group">
+            <div className="relative aspect-[16/11] sm:aspect-[4/3] lg:aspect-[16/11] w-full rounded-2xl overflow-hidden shadow-lg border border-[#e5d9c7] bg-[#2b2520] group">
               <Image
                 src="/images/contact-loom-border.png"
                 alt="Tradition In Every Thread - Handloom Weaving Atelier"
