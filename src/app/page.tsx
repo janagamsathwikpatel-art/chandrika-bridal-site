@@ -4,6 +4,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ExperienceArchSection from "@/components/ExperienceArchSection";
+import CustomerFavourites from "@/components/CustomerFavourites";
 import SareeCollection from "@/components/SareeCollection";
 import EditorialStory from "@/components/EditorialStory";
 import InquirySection from "@/components/InquirySection";
@@ -24,7 +25,10 @@ export default function Home() {
       {/* Experience The Saree Collection Architectural Arch Section */}
       <ExperienceArchSection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
-      {/* The Saree Collection Grid directly on the website */}
+      {/* Customer Favourites Slider matching user screenshot */}
+      <CustomerFavourites onOpenInquiry={() => setInquiryModalOpen(true)} />
+
+      {/* Featured Products Saree Collection Grid */}
       <SareeCollection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Editorial Story & Brand Philosophy */}
