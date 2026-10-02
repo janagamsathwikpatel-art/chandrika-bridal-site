@@ -9,6 +9,7 @@ import SareeCollection from "@/components/SareeCollection";
 import EditorialStory from "@/components/EditorialStory";
 import InquirySection from "@/components/InquirySection";
 import InquiryModal from "@/components/InquiryModal";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 import NewArrivalsDivider from "@/components/NewArrivalsDivider";
@@ -53,6 +54,9 @@ export default function Home() {
 
       {/* Why Choose Chandrika & Bespoke Appointment CTA */}
       <InquirySection onOpenInquiry={() => setInquiryModalOpen(true)} />
+
+      {/* Let's Connect Contact Section */}
+      <ContactSection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Editorial Luxury Footer */}
       <Footer />
