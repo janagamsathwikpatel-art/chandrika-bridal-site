@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Heart, ShoppingBag } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface SareeProduct {
   id: string;
@@ -229,7 +229,7 @@ export default function SareeCollection({
                   onClick={onOpenInquiry}
                   className="cursor-pointer group flex flex-col text-left"
                 >
-                  {/* Image Container with Wishlist Heart and Quick View */}
+                  {/* Image Container */}
                   <div className="relative aspect-[244/365] w-full overflow-hidden bg-[#ebe8e2] shadow-sm rounded-lg">
                     <Image
                       src={saree.image}
@@ -238,31 +238,6 @@ export default function SareeCollection({
                       className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
-
-                    {/* Quick View Button */}
-                    <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onOpenInquiry?.();
-                        }}
-                        className="flex items-center gap-1.5 px-3 py-1.5 bg-white text-[#201f1f] text-[11px] font-medium rounded-full shadow-md hover:bg-[#f5f5f5] transition-all"
-                      >
-                        <ShoppingBag size={13} />
-                        Quick View
-                      </button>
-                    </div>
-
-                    {/* Wishlist Heart */}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
-                      aria-label="Add to wishlist"
-                      className="absolute bottom-3 right-3 z-20 w-8 h-8 rounded-full bg-white/90 shadow flex items-center justify-center text-[#555] hover:text-[#8B0000] hover:bg-white hover:scale-110 transition-all duration-200"
-                    >
-                      <Heart size={15} />
-                    </button>
                   </div>
 
                   {/* Product Details */}
