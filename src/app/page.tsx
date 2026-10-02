@@ -11,6 +11,8 @@ import InquirySection from "@/components/InquirySection";
 import InquiryModal from "@/components/InquiryModal";
 import Footer from "@/components/Footer";
 
+import NewArrivalsDivider from "@/components/NewArrivalsDivider";
+
 export default function Home() {
   const [inquiryModalOpen, setInquiryModalOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("SHOP ALL");
@@ -35,6 +37,9 @@ export default function Home() {
 
       {/* Customer Favourites Slider matching user screenshot */}
       <CustomerFavourites onOpenInquiry={() => setInquiryModalOpen(true)} />
+
+      {/* Pink Bougainvillea Flower Divider & New Arrivals Header */}
+      <NewArrivalsDivider />
 
       {/* Featured Products Saree Collection Grid with active category filter */}
       <SareeCollection
