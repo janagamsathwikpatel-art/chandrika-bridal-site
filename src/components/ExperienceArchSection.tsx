@@ -168,20 +168,10 @@ export default function ExperienceArchSection({
       ) : (
         /* Revealed Inner Section: Shop By Category inside Wall Door */
         <div className="w-full bg-[#fbfaf8] relative animate-fadeIn">
-          {/* Header bar allowing user to close the doors */}
-          <div className="w-full bg-[#05084a] text-white py-3 px-6 flex items-center justify-between shadow-md">
-            <span className="text-xs font-semibold tracking-widest uppercase">
-              CHANDRIKA ARCHWAY — SHOP BY CATEGORY
-            </span>
-            <button
-              onClick={toggleDoors}
-              className="text-xs font-medium tracking-wider uppercase border border-white/40 px-3 py-1 hover:bg-white hover:text-[#05084a] transition-all"
-            >
-              CLOSE DOORS ✕
-            </button>
-          </div>
-
-          <ShopByCategory onSelectCategory={onSelectCategory} />
+          <ShopByCategory
+            onSelectCategory={onSelectCategory}
+            onClose={toggleDoors}
+          />
         </div>
       )}
     </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
 
 export interface CategoryItem {
   id: string;
@@ -122,9 +123,13 @@ export const CATEGORIES_LIST: CategoryItem[] = [
 
 interface ShopByCategoryProps {
   onSelectCategory?: (category: string) => void;
+  onClose?: () => void;
 }
 
-export default function ShopByCategory({ onSelectCategory }: ShopByCategoryProps) {
+export default function ShopByCategory({
+  onSelectCategory,
+  onClose,
+}: ShopByCategoryProps) {
   const handleCategoryClick = (filterName: string) => {
     if (onSelectCategory) {
       onSelectCategory(filterName);
@@ -142,8 +147,24 @@ export default function ShopByCategory({ onSelectCategory }: ShopByCategoryProps
   };
 
   return (
-    <section className="w-full bg-[#fbfaf8] py-12 md:py-16 px-4 md:px-8">
-      <div className="max-w-[1440px] mx-auto">
+    <section className="w-full bg-[#fbfaf8] py-10 md:py-14 px-4 md:px-8 relative">
+      <div className="max-w-[1440px] mx-auto relative">
+        {/* Top Navigation Row with Back Button */}
+        {onClose && (
+          <div className="mb-6 flex items-center justify-between border-b border-[#ece9e2] pb-4">
+            <button
+              onClick={onClose}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#05084a] text-white hover:bg-black text-xs font-semibold tracking-widest uppercase rounded-full shadow-sm hover:shadow transition-all duration-300"
+            >
+              <ArrowLeft size={14} />
+              <span>BACK TO ARCHWAY</span>
+            </button>
+            <span className="text-[11px] tracking-widest text-[#767573] uppercase hidden sm:inline-block">
+              CHANDRIKA ARCHWAY CATEGORY EXPLORER
+            </span>
+          </div>
+        )}
+
         {/* Section Heading matching Nalli screenshot */}
         <div className="mb-8 md:mb-10 text-center">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wide text-[#111111] uppercase">
@@ -152,7 +173,7 @@ export default function ShopByCategory({ onSelectCategory }: ShopByCategoryProps
           <div className="w-16 h-0.5 bg-[#8B0000] mx-auto mt-3" />
         </div>
 
-        {/* 6-Column Category Grid matching Screenshot 2 */}
+        {/* 6-Column Category Grid matching Screenshot */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
           {CATEGORIES_LIST.map((cat) => (
             <div
