@@ -64,23 +64,23 @@ export default function InquirySection({ onOpenInquiry }: InquirySectionProps) {
         </p>
       </div>
 
-      {/* ── Full-Width Edge-to-Edge 4-Image Grid Layout ── */}
-      <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-0 overflow-hidden">
+      {/* ── Interactive Mouse-Hover Zoom 4-Image Accordion Gallery ── */}
+      <div className="w-full flex flex-col md:flex-row gap-0 overflow-hidden">
         {DISCOVER_IMAGES.map((item) => (
           <div
             key={item.id}
             onClick={onOpenInquiry}
-            className="group cursor-pointer relative w-full h-[450px] sm:h-[550px] md:h-[650px] lg:h-[750px] overflow-hidden bg-gray-100"
+            className="group cursor-pointer relative w-full md:flex-1 md:hover:flex-[1.45] h-[450px] sm:h-[550px] md:h-[650px] lg:h-[750px] overflow-hidden bg-gray-100 transition-all duration-700 ease-in-out"
           >
             <Image
               src={item.image}
               alt={item.alt}
               fill
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-              sizes="(max-width: 768px) 50vw, 25vw"
+              className="object-cover object-center group-hover:scale-110 group-hover:brightness-105 transition-transform duration-700 ease-out"
+              sizes="(max-width: 768px) 100vw, 35vw"
             />
-            {/* Subtle Overlay on hover */}
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-500" />
+            {/* Subtle Overlay transition on hover */}
+            <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500" />
           </div>
         ))}
       </div>
