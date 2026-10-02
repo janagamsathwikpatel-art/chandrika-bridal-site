@@ -50,18 +50,6 @@ export default function InquirySection({ onOpenInquiry }: InquirySectionProps) {
         <h2 className="text-3xl md:text-5xl font-serif font-light tracking-tight text-gray-900 uppercase mb-2">
           Discover Chandrika
         </h2>
-
-        {/* Gold Italic Tagline: First & The Finest Since 1928 */}
-        <h3 className="text-xl md:text-3xl font-serif italic text-[#b8860b] tracking-wide mb-4">
-          First &amp; The Finest Since 1928
-        </h3>
-
-        <div className="w-16 h-px bg-[#b8860b]/40 mx-auto mb-4" />
-
-        {/* Subtitle Description */}
-        <p className="text-sm md:text-base text-gray-600 font-light tracking-wide leading-relaxed font-sans max-w-2xl">
-          A century of handloom heritage, master weaver devotion, and pure silk elegance created to be cherished across generations.
-        </p>
       </div>
 
       {/* ── Interactive Mouse-Hover Zoom 4-Image Accordion Gallery ── */}
