@@ -32,10 +32,10 @@ const DISCOVER_IMAGES = [
 
 export default function InquirySection({ onOpenInquiry }: InquirySectionProps) {
   return (
-    <section id="why-chandrika" className="w-full bg-[#fdfbf7] pt-16 md:pt-20 border-t border-[#e8e6e1] select-none">
+    <section id="why-chandrika" className="w-full bg-[#fdfbf7] pt-6 md:pt-8 select-none">
       
       {/* ── Section Header ── */}
-      <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 px-4 sm:px-6">
+      <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-6 px-4 sm:px-6">
         {/* Sparkle Gold Emblem */}
         <div className="w-12 h-12 rounded-full bg-[#800020]/10 border border-[#800020]/20 flex items-center justify-center mb-4 shadow-sm">
           <Sparkles size={22} className="text-[#800020]" />

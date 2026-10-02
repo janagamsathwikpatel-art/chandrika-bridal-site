@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function EditorialStory() {
   return (
-    <section id="about" className="w-full bg-[#fdfbf7] py-12 md:py-20 border-t border-[#e8e6e1] select-none">
+    <section id="about" className="w-full bg-[#fdfbf7] pt-10 pb-4 md:pt-14 md:pb-6 border-t border-[#e8e6e1] select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-center">
           
