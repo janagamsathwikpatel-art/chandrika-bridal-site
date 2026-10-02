@@ -38,10 +38,10 @@ export default function ContactSection({ onOpenInquiry }: ContactSectionProps) {
           <div className="lg:col-span-5 w-full">
             <div className="relative aspect-[4/5] sm:aspect-[4/4] lg:aspect-[4/5] w-full rounded-2xl overflow-hidden shadow-lg border border-[#e5d9c7] bg-[#2b2520] group">
               <Image
-                src="/images/artisan-weaver-handloom.jpg"
+                src="/images/contact-loom-border.png"
                 alt="Tradition In Every Thread - Handloom Weaving Atelier"
                 fill
-                className="object-cover object-center grayscale contrast-125 group-hover:scale-105 transition-transform duration-700 opacity-85"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 1024px) 100vw, 42vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/60" />
