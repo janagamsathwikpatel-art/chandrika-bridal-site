@@ -345,7 +345,7 @@ export default function ExperienceArchSection({
 
       {/* ════════════════ FULL-SCREEN CATEGORY SAREE GALLERY OVERLAY ════════════════ */}
       {selectedWeave && (
-        <div className="fixed inset-0 z-50 bg-[#03052a]/95 backdrop-blur-2xl flex flex-col p-4 md:p-8 overflow-y-auto animate-fadeIn select-none">
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-md flex flex-col p-4 md:p-8 overflow-y-auto animate-fadeIn select-none">
           {/* Top Bar with BACK TO CATEGORIES & Close X Button */}
           <div className="max-w-[1440px] w-full mx-auto flex items-center justify-between border-b border-white/20 pb-4 mb-6 pt-2">
             <button
