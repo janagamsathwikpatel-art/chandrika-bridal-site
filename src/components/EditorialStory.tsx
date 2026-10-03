@@ -196,35 +196,45 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
 
           {/* ── RIGHT 35% COLUMN: Fixed Dynamic Information Panel (lg:col-span-4) ── */}
           <div className="lg:col-span-4 lg:sticky lg:top-28">
-            <div className="bg-[#f6eee2] border border-[#e5d9c7] p-6 sm:p-8 rounded-2xl shadow-lg relative overflow-hidden transition-all duration-500">
+            <div className="bg-[#f6eee2] border border-[#e5d9c7] p-5 sm:p-7 rounded-2xl shadow-lg relative overflow-hidden transition-all duration-500">
               
+              {/* Dynamic Active Image Preview Container */}
+              <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden shadow-sm border border-[#e5d9c7] mb-4 bg-black group">
+                <Image
+                  key={activeCard.id}
+                  src={activeCard.image}
+                  alt={activeCard.title}
+                  fill
+                  quality={95}
+                  priority
+                  className="object-cover object-center transition-all duration-500 filter brightness-95 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 420px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+                <div className="absolute top-3 left-3 bg-[#800020] text-white text-[9px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-full shadow-sm">
+                  {activeCard.tag}
+                </div>
+              </div>
+
               {/* Background Watermark Accent */}
               <div className="absolute -right-6 -bottom-6 w-40 h-40 opacity-10 pointer-events-none text-[#800020]">
                 <Sparkles size={160} />
               </div>
 
-              {/* Eyebrow Tag */}
-              <div className="flex items-center gap-2 mb-3">
-                <span className="w-2 h-2 rounded-full bg-[#800020]" />
-                <p className="text-[10px] tracking-[0.3em] uppercase text-[#800020] font-bold">
-                  {activeCard.tag}
-                </p>
-              </div>
-
               {/* Title */}
-              <h3 className="text-2xl sm:text-3xl font-serif text-[#2b2520] tracking-tight mb-2">
+              <h3 className="text-2xl font-serif text-[#2b2520] tracking-tight mb-1.5">
                 {activeCard.title}
               </h3>
 
               {/* Subtitle */}
-              <p className="text-xs font-serif italic text-[#b8860b] mb-4">
+              <p className="text-xs font-serif italic text-[#b8860b] mb-3">
                 {activeCard.subtitle}
               </p>
 
-              <div className="w-12 h-px bg-[#b8860b]/40 mb-5" />
+              <div className="w-10 h-px bg-[#b8860b]/40 mb-4" />
 
               {/* Story Description */}
-              <p className="text-xs sm:text-sm text-gray-700 font-light tracking-wide leading-relaxed font-sans mb-8">
+              <p className="text-xs text-gray-700 font-light tracking-wide leading-relaxed font-sans mb-6">
                 {activeCard.story}
               </p>
 
@@ -238,7 +248,7 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
               </button>
 
               {/* Card Selector Indicator */}
-              <div className="mt-6 pt-4 border-t border-[#e5d9c7]/80 flex items-center justify-between text-[9px] tracking-widest text-gray-500 uppercase font-medium">
+              <div className="mt-5 pt-3.5 border-t border-[#e5d9c7]/80 flex items-center justify-between text-[9px] tracking-widest text-gray-500 uppercase font-medium">
                 <span>HERITAGE STORY {activeCard.id} OF 6</span>
                 <span className="text-[#800020] font-bold">HOVER CARD TO EXPLORE</span>
               </div>
