@@ -59,7 +59,6 @@ export default function Header({
   const rightNavItems = [
     { label: "DESIGNED BY CHANDRIKA", href: "#sarees" },
     { label: "SHOP ALL", href: "#sarees" },
-    { label: "READYMADES", href: "#sarees" },
     { label: "FABRICS", href: "#sarees" },
     { label: "MORE", href: "#why-chandrika" },
   ];
