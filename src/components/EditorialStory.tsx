@@ -84,7 +84,7 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
       <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ── 65% / 35% Grid Layout ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* ── LEFT 65% COLUMN: Handloom Image Grid (lg:col-span-8) ── */}
           <div className="lg:col-span-8 space-y-4">
@@ -194,63 +194,66 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
 
           </div>
 
-          {/* ── RIGHT 35% COLUMN: Fixed Dynamic Information Panel (lg:col-span-4) ── */}
-          <div className="lg:col-span-4 lg:sticky lg:top-28">
-            <div className="bg-[#f6eee2] border border-[#e5d9c7] p-5 sm:p-7 rounded-2xl shadow-lg relative overflow-hidden transition-all duration-500">
+          {/* ── RIGHT 35% COLUMN: Full-Height Dynamic Information Panel (lg:col-span-4) ── */}
+          <div className="lg:col-span-4 h-full flex flex-col">
+            <div className="bg-[#f6eee2] border border-[#e5d9c7] p-5 sm:p-7 rounded-2xl shadow-lg relative overflow-hidden transition-all duration-500 h-full flex flex-col justify-between">
               
-              {/* Dynamic Active Image Preview Container */}
-              <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden shadow-sm border border-[#e5d9c7] mb-4 bg-black group">
-                <Image
-                  key={activeCard.id}
-                  src={activeCard.image}
-                  alt={activeCard.title}
-                  fill
-                  quality={95}
-                  priority
-                  className="object-cover object-center transition-all duration-500 filter brightness-95 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 420px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
-                <div className="absolute top-3 left-3 bg-[#800020] text-white text-[9px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-full shadow-sm">
-                  {activeCard.tag}
+              <div className="flex-1 flex flex-col">
+                {/* Dynamic Active Image Preview Container */}
+                <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden shadow-sm border border-[#e5d9c7] mb-4 bg-black group shrink-0">
+                  <Image
+                    key={activeCard.id}
+                    src={activeCard.image}
+                    alt={activeCard.title}
+                    fill
+                    quality={95}
+                    priority
+                    className="object-cover object-center transition-all duration-500 filter brightness-95 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 420px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+                  <div className="absolute top-3 left-3 bg-[#800020] text-white text-[9px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-full shadow-sm">
+                    {activeCard.tag}
+                  </div>
                 </div>
+
+                {/* Background Watermark Accent */}
+                <div className="absolute -right-6 -bottom-6 w-40 h-40 opacity-10 pointer-events-none text-[#800020]">
+                  <Sparkles size={160} />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl font-serif text-[#2b2520] tracking-tight mb-1.5">
+                  {activeCard.title}
+                </h3>
+
+                {/* Subtitle */}
+                <p className="text-xs font-serif italic text-[#b8860b] mb-3">
+                  {activeCard.subtitle}
+                </p>
+
+                <div className="w-10 h-px bg-[#b8860b]/40 mb-4" />
+
+                {/* Story Description */}
+                <p className="text-xs sm:text-sm text-gray-700 font-light tracking-wide leading-relaxed font-sans mb-6">
+                  {activeCard.story}
+                </p>
               </div>
 
-              {/* Background Watermark Accent */}
-              <div className="absolute -right-6 -bottom-6 w-40 h-40 opacity-10 pointer-events-none text-[#800020]">
-                <Sparkles size={160} />
-              </div>
+              {/* Bottom Actions & Card Selector Indicator */}
+              <div className="mt-auto pt-4">
+                <button
+                  onClick={onOpenInquiry}
+                  className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3 bg-[#2b2520] hover:bg-[#800020] text-white text-[10px] uppercase tracking-[0.25em] font-medium transition-all duration-300 rounded-md shadow-md group mb-4"
+                >
+                  <span>EXPLORE OUR HERITAGE</span>
+                  <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                </button>
 
-              {/* Title */}
-              <h3 className="text-2xl font-serif text-[#2b2520] tracking-tight mb-1.5">
-                {activeCard.title}
-              </h3>
-
-              {/* Subtitle */}
-              <p className="text-xs font-serif italic text-[#b8860b] mb-3">
-                {activeCard.subtitle}
-              </p>
-
-              <div className="w-10 h-px bg-[#b8860b]/40 mb-4" />
-
-              {/* Story Description */}
-              <p className="text-xs text-gray-700 font-light tracking-wide leading-relaxed font-sans mb-6">
-                {activeCard.story}
-              </p>
-
-              {/* CTA Button */}
-              <button
-                onClick={onOpenInquiry}
-                className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3 bg-[#2b2520] hover:bg-[#800020] text-white text-[10px] uppercase tracking-[0.25em] font-medium transition-all duration-300 rounded-md shadow-md group"
-              >
-                <span>EXPLORE OUR HERITAGE</span>
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-
-              {/* Card Selector Indicator */}
-              <div className="mt-5 pt-3.5 border-t border-[#e5d9c7]/80 flex items-center justify-between text-[9px] tracking-widest text-gray-500 uppercase font-medium">
-                <span>HERITAGE STORY {activeCard.id} OF 6</span>
-                <span className="text-[#800020] font-bold">HOVER CARD TO EXPLORE</span>
+                <div className="pt-3 border-t border-[#e5d9c7]/80 flex items-center justify-between text-[9px] tracking-widest text-gray-500 uppercase font-medium">
+                  <span>HERITAGE STORY {activeCard.id} OF 6</span>
+                  <span className="text-[#800020] font-bold">HOVER CARD TO EXPLORE</span>
+                </div>
               </div>
 
             </div>
