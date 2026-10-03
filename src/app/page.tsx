@@ -9,9 +9,7 @@ import SareeCollection from "@/components/SareeCollection";
 import EditorialStory from "@/components/EditorialStory";
 import InquirySection from "@/components/InquirySection";
 import InquiryModal from "@/components/InquiryModal";
-import ContactSection from "@/components/ContactSection";
-
-import NewArrivalsDivider from "@/components/NewArrivalsDivider";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const [inquiryModalOpen, setInquiryModalOpen] = useState(false);
@@ -38,9 +36,6 @@ export default function Home() {
       {/* Customer Favourites Slider matching user screenshot */}
       <CustomerFavourites onOpenInquiry={() => setInquiryModalOpen(true)} />
 
-      {/* Pink Bougainvillea Flower Divider & New Arrivals Header */}
-      <NewArrivalsDivider />
-
       {/* Featured Products Saree Collection Grid with active category filter */}
       <SareeCollection
         onOpenInquiry={() => setInquiryModalOpen(true)}
@@ -54,8 +49,8 @@ export default function Home() {
       {/* Why Choose Chandrika & Bespoke Appointment CTA */}
       <InquirySection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
-      {/* Let's Connect Contact Section */}
-      <ContactSection onOpenInquiry={() => setInquiryModalOpen(true)} />
+      {/* Editorial Luxury Footer */}
+      <Footer />
 
       {/* Private Consultation & Stockist Inquiry Modal */}
       <InquiryModal
