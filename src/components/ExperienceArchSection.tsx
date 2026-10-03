@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Sparkles, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, X } from "lucide-react";
 
 interface CategoryCard {
   id: string;
@@ -22,8 +22,7 @@ interface SareeDetail {
 const WEAVE_SAREES: Record<string, SareeDetail[]> = {
   "fw-01": [
     { id: "pz-1", name: "Aarushi Kanchipuram Korvai Silk Saree", price: "₹48,000 – ₹85,000", image: "/images/royal-kanjivaram-bridal-saree.jpg", description: "Handcrafted pure mulberry silk woven with 24K gold zari korvai border." },
-    { id: "pz-2", name: "Mint Zari Kanchipuram Silk Saree", price: "₹52,000 – ₹95,000", image: "/images/our-col-2.jpg", description: "Traditional three-shuttle Muppagam weave with solid pure gold zari pallu." },
-    { id: "pz-3", name: "Royal Gold & Lilac Bridal Saree", price: "₹65,000 – ₹1,20,000", image: "/images/our-col-3.jpg", description: "Dual-tone gold tissue body woven with heavy Mayur & Ganda-Bherunda motifs." },
+    { id: "pz-2", name: "Mint Zari Kanchipuram Pure Silk Saree", price: "₹52,000 – ₹95,000", image: "/images/kanjivaram-pink-pure-silk.png", description: "Traditional three-shuttle Muppagam weave with solid pure gold zari pallu." },
   ],
   "fw-02": [
     { id: "bs-1", name: "Gold Brocade Banarasi Silk Saree", price: "₹39,500 – ₹75,000", image: "/images/banarasi-gold-brocade-saree.jpg", description: "Classic Katan silk brocade featuring intricate gold zari floral jaal." },
@@ -47,7 +46,7 @@ const WEAVE_SAREES: Record<string, SareeDetail[]> = {
   ],
   "fw-07": [
     { id: "kh-1", name: "Kanchi Half Fine Zari Saree", price: "₹28,500 – ₹48,000", image: "/images/kanjivaram-arunima-muppagam.png", description: "Traditional Half-Fine zari border with rich Mulberry silk texture." },
-    { id: "kh-2", name: "Gold Tone Kanchi Half Fine Saree", price: "₹32,000 – ₹54,000", image: "/images/kanjivaram-gold-dual-tone.png", description: "Golden dual-tone luster with soft Korvai pallu finish." },
+    { id: "kh-2", name: "Navy Blue Kanchi Half Fine Saree", price: "₹32,000 – ₹54,000", image: "/images/kanjivaram-navy-blue.png", description: "Navy blue luster with soft Korvai pallu finish." },
   ],
   "fw-08": [
     { id: "og-1", name: "Chanderi Tissue Organza Silk Saree", price: "₹24,500 – ₹45,000", image: "/images/chanderi-tissue-gold-saree.jpg", description: "Sheer metallic luster with weightless champagne gold elegance." },
@@ -78,12 +77,12 @@ const WEAVE_SAREES: Record<string, SareeDetail[]> = {
     { id: "bg-2", name: "Bangalore Crimson Silk Saree", price: "₹24,900 – ₹42,000", image: "/images/cta-saree-4.jpg", description: "Vibrant rich colors woven with solid gold zari pallu." },
   ],
   "fw-15": [
-    { id: "bk-1", name: "Banarasi Katan Silk Real Zari Saree", price: "₹58,000 – ₹98,000", image: "/images/banarasi-gold-brocade-saree.jpg", description: "Pure Katan silk woven with silver & real gold zari thread." },
-    { id: "bk-2", name: "Bridal Katan Silk Floral Jaal Saree", price: "₹62,500 – ₹1,10,000", image: "/images/our-col-4.jpg", description: "Heirloom bridal collection with dense all-over weaving." },
+    { id: "bk-1", name: "Banarasi Katan Silk Real Zari Saree", price: "₹58,000 – ₹98,000", image: "/images/our-col-2.jpg", description: "Pure Katan silk woven with silver & real gold zari thread." },
+    { id: "bk-2", name: "Bridal Katan Silk Masterpiece Saree", price: "₹62,500 – ₹1,10,000", image: "/images/handloom-hero-authentic.jpg", description: "Heirloom bridal collection with dense all-over weaving." },
   ],
   "fw-16": [
     { id: "kt-1", name: "Gold Kanchipuram Tissue Silk Saree", price: "₹75,000 – ₹1,35,000", image: "/images/kanjivaram-gold-dual-tone.png", description: "Full gold tissue warp & weft creating an opulent regal shine." },
-    { id: "kt-2", name: "Tissue Zari Kanchipuram Bridal Saree", price: "₹82,000 – ₹1,50,000", image: "/images/royal-kanjivaram-bridal-saree.jpg", description: "Heavy gold tissue pallu with Korvai temple border design." },
+    { id: "kt-2", name: "Tissue Zari Kanchipuram Bridal Saree", price: "₹82,000 – ₹1,50,000", image: "/images/our-col-3.jpg", description: "Heavy gold tissue pallu with Korvai temple border design." },
   ],
   "fw-17": [
     { id: "cd-1", name: "Gold Chanderi Metallic Saree", price: "₹24,500 – ₹45,000", image: "/images/chanderi-tissue-gold-saree.jpg", description: "Featherweight sheer weave with hand-stamped gold butis." },
@@ -94,57 +93,6 @@ const WEAVE_SAREES: Record<string, SareeDetail[]> = {
     { id: "bk2-2", name: "Royal Crimson Kanjivaram Brocade Saree", price: "₹95,000 – ₹1,60,000", image: "/images/royal-kanjivaram-bridal-saree.jpg", description: "Intricate temple brocade with pure gold Zari Korvai." },
   ],
 };
-
-const SHOP_BY_CATEGORIES: CategoryCard[] = [
-  {
-    id: "cat-01",
-    name: "Kanchipuram Silk Sarees",
-    subtitle: "Pure Mulberry Silk · 24K Gold Zari Korvai",
-    priceRange: "₹24,500 – ₹85,000",
-    image: "/images/kanjivaram-pink-pure-silk.png",
-    categoryTag: "KANCHIPURAM",
-  },
-  {
-    id: "cat-02",
-    name: "Banarasi Brocade Sarees",
-    subtitle: "Kadhwa Weave · Real Gold & Silver Zari",
-    priceRange: "₹28,000 – ₹95,000",
-    image: "/images/banarasi-gold-brocade-saree.jpg",
-    categoryTag: "BANARASI",
-  },
-  {
-    id: "cat-03",
-    name: "Paithani Peacock Sarees",
-    subtitle: "Oblique Tapestry Pallu · Pure Silk",
-    priceRange: "₹34,500 – ₹72,000",
-    image: "/images/paithani-peacock-teal-saree.jpg",
-    categoryTag: "OCCASIONS",
-  },
-  {
-    id: "cat-04",
-    name: "Chanderi Tissue Sarees",
-    subtitle: "Gossamer Light Metallic Zari Weave",
-    priceRange: "₹18,900 – ₹45,000",
-    image: "/images/chanderi-tissue-gold-saree.jpg",
-    categoryTag: "FABRICS",
-  },
-  {
-    id: "cat-05",
-    name: "Patan Patola Double Ikat",
-    subtitle: "Hereditary Award-Winning Master Weaves",
-    priceRange: "₹52,000 – ₹1,20,000",
-    image: "/images/patan-patola-double-ikat-saree.jpg",
-    categoryTag: "DESIGNED BY CHANDRIKA",
-  },
-  {
-    id: "cat-06",
-    name: "Royal Bridal Collections",
-    subtitle: "Heirloom Masterpieces for the Bride",
-    priceRange: "₹48,900 – ₹1,50,000",
-    image: "/images/royal-kanjivaram-bridal-saree.jpg",
-    categoryTag: "NEW ARRIVALS",
-  },
-];
 
 interface FabricWeaveTile {
   id: string;
@@ -190,22 +138,6 @@ export default function ExperienceArchSection({
     setSelectedWeave(weave);
     if (onSelectCategory) {
       onSelectCategory(weave.categoryTag);
-    }
-  };
-
-  const handleCategoryClick = (categoryTag: string) => {
-    if (onSelectCategory) {
-      onSelectCategory(categoryTag);
-    }
-    const sareesSection = document.getElementById("sarees");
-    if (sareesSection) {
-      const headerOffset = 70;
-      const elementPosition = sareesSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
     }
   };
 
@@ -413,74 +345,74 @@ export default function ExperienceArchSection({
 
       {/* ════════════════ FULL-SCREEN CATEGORY SAREE GALLERY OVERLAY ════════════════ */}
       {selectedWeave && (
-        <div className="fixed inset-0 z-50 bg-[#03052a]/95 backdrop-blur-2xl flex flex-col p-4 md:p-10 overflow-y-auto animate-fadeIn select-none">
+        <div className="fixed inset-0 z-50 bg-[#03052a]/95 backdrop-blur-2xl flex flex-col p-4 md:p-8 overflow-y-auto animate-fadeIn select-none">
           {/* Top Bar with BACK TO CATEGORIES & Close X Button */}
-          <div className="max-w-[1440px] w-full mx-auto flex items-center justify-between border-b border-white/20 pb-4 mb-8 pt-4">
+          <div className="max-w-[1440px] w-full mx-auto flex items-center justify-between border-b border-white/20 pb-4 mb-6 pt-2">
             <button
               onClick={() => setSelectedWeave(null)}
-              className="inline-flex items-center gap-2.5 px-6 py-2.5 bg-[#ffd700] text-[#05084a] text-xs font-bold tracking-[0.2em] uppercase rounded-full shadow-lg hover:bg-white transition-all duration-300"
+              className="inline-flex items-center gap-2 px-5 py-2 bg-[#ffd700] text-[#05084a] text-xs font-bold tracking-[0.2em] uppercase rounded-full shadow-lg hover:bg-white transition-all duration-300"
             >
               <ArrowLeft size={16} />
               <span>BACK TO CATEGORIES</span>
             </button>
 
             <div className="text-center">
-              <span className="text-[10px] tracking-[0.35em] text-[#ffd700] uppercase block font-semibold mb-1">
+              <span className="text-[10px] tracking-[0.35em] text-[#ffd700] uppercase block font-semibold mb-0.5">
                 EXQUISITE SAREE COLLECTION
               </span>
-              <h2 className="text-2xl md:text-4xl font-serif text-white uppercase tracking-wide">
+              <h2 className="text-xl md:text-3xl font-serif text-white uppercase tracking-wide">
                 {selectedWeave.title} Sarees
               </h2>
             </div>
 
             <button
               onClick={() => setSelectedWeave(null)}
-              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center border border-white/30 transition-colors"
+              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center border border-white/30 transition-colors"
               aria-label="Close"
             >
-              <X size={20} />
+              <X size={18} />
             </button>
           </div>
 
-          {/* Saree Products Full Screen Grid */}
-          <div className="max-w-[1440px] w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-12">
+          {/* Saree Products Small Dense Grid View */}
+          <div className="max-w-[1440px] w-full mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3.5 md:gap-4 pb-12">
             {(WEAVE_SAREES[selectedWeave.id] || WEAVE_SAREES["fw-01"]).map((item) => (
               <div
                 key={item.id}
                 onClick={onOpenInquiry}
-                className="group cursor-pointer bg-white/5 border border-white/15 hover:border-[#ffd700] rounded-2xl overflow-hidden backdrop-blur-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-1.5 flex flex-col"
+                className="group cursor-pointer bg-white/5 border border-white/15 hover:border-[#ffd700] rounded-xl overflow-hidden backdrop-blur-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 flex flex-col"
               >
-                {/* Full Screen High-Def Aspect 3/4 Image Container */}
+                {/* Clean Small Grid Aspect 3/4 Image Container */}
                 <div className="relative aspect-[3/4] w-full overflow-hidden bg-black/40">
                   <Image
                     src={item.image}
                     alt={item.name}
                     fill
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#05084a] via-transparent to-black/20" />
                   
-                  <span className="absolute top-4 left-4 bg-[#800020] text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full shadow-md">
+                  <span className="absolute top-2 left-2 bg-[#800020] text-white text-[9px] uppercase font-bold tracking-widest px-2 py-0.5 rounded shadow-sm">
                     {selectedWeave.title}
                   </span>
                 </div>
 
                 {/* Saree Details & Action */}
-                <div className="p-5 flex flex-col justify-between flex-1 text-left bg-gradient-to-b from-[#05084a]/90 to-[#030536]">
+                <div className="p-3 flex flex-col justify-between flex-1 text-left bg-gradient-to-b from-[#05084a]/90 to-[#030536]">
                   <div>
-                    <h3 className="text-lg md:text-xl font-serif text-white group-hover:text-[#ffd700] transition-colors leading-snug">
+                    <h3 className="text-xs md:text-sm font-serif text-white group-hover:text-[#ffd700] transition-colors leading-snug line-clamp-1 font-semibold">
                       {item.name}
                     </h3>
-                    <p className="text-xs text-white/70 font-light mt-1.5 leading-relaxed">
+                    <p className="text-[10px] text-white/70 font-light mt-1 leading-tight line-clamp-2">
                       {item.description}
                     </p>
                   </div>
 
-                  <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
+                  <div className="mt-3 pt-2 border-t border-white/10 flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] text-white/60 block uppercase tracking-widest">PRICE RANGE</span>
-                      <span className="text-base font-semibold text-[#ffd700] tracking-wide">{item.price}</span>
+                      <span className="text-[8px] text-white/50 block uppercase tracking-wider">PRICE RANGE</span>
+                      <span className="text-xs font-semibold text-[#ffd700] tracking-wide">{item.price}</span>
                     </div>
 
                     <button
@@ -488,10 +420,10 @@ export default function ExperienceArchSection({
                         e.stopPropagation();
                         if (onOpenInquiry) onOpenInquiry();
                       }}
-                      className="px-5 py-2.5 bg-[#ffd700] hover:bg-white text-[#05084a] text-[10px] uppercase tracking-[0.2em] font-bold rounded-md shadow-md transition-all flex items-center gap-2"
+                      className="px-2.5 py-1.5 bg-[#ffd700] hover:bg-white text-[#05084a] text-[9px] uppercase tracking-wider font-bold rounded shadow-sm transition-all flex items-center gap-1"
                     >
-                      <span>INQUIRE NOW</span>
-                      <ArrowRight size={13} />
+                      <span>INQUIRE</span>
+                      <ArrowRight size={10} />
                     </button>
                   </div>
                 </div>
