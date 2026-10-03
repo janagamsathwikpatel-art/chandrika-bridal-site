@@ -35,10 +35,21 @@ export default function InquirySection({ onOpenInquiry }: InquirySectionProps) {
     <section id="why-chandrika" className="w-full bg-[#fdfbf7] pt-6 md:pt-8 select-none">
       
       {/* ── Section Header ── */}
-      <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-6 px-4 sm:px-6">
-        {/* Sparkle Gold Emblem */}
-        <div className="w-12 h-12 rounded-full bg-[#800020]/10 border border-[#800020]/20 flex items-center justify-center mb-4 shadow-sm">
-          <Sparkles size={22} className="text-[#800020]" />
+      <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-6 px-4 sm:px-6">
+        {/* Pink Bougainvillea Flower Divider Line matching user screenshot */}
+        <div className="w-full flex items-center justify-center mb-8">
+          <div className="flex-1 border-t border-[#e2dfd7]" />
+          <div className="px-6 relative flex items-center justify-center">
+            <Image
+              src="/images/bougainvillea-flower-transparent.png"
+              alt="Pink Bougainvillea Flower Motif"
+              width={150}
+              height={48}
+              className="object-contain filter drop-shadow-sm"
+              priority
+            />
+          </div>
+          <div className="flex-1 border-t border-[#e2dfd7]" />
         </div>
 
         {/* Eyebrow: THE CHANDRIKA DISTINCTION */}
