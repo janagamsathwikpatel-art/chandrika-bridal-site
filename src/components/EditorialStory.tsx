@@ -16,7 +16,7 @@ const EDITORIAL_CARDS = [
     subtitle: "Each motif is a labour of love, woven thread by thread.",
     story:
       "Every motif begins in the hands of a master artisan. Intricate details are patiently woven thread by thread on traditional wooden pit looms, preserving generations of Indian craftsmanship and ancestral devotion.",
-    image: "/images/contact-loom-border.png",
+    image: "/images/handloom-card-1.jpg",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const EDITORIAL_CARDS = [
     subtitle: "From mulberry silk to 24K gold zari, nature's purest gifts.",
     story:
       "From the finest certified mulberry silk to lab-tested authentic 24K gold zari, our sarees begin with nature's purest gifts harvested directly from India's traditional silk havens for a luminescent drape.",
-    image: "/images/cta-saree-3.png",
+    image: "/images/handloom-card-2.jpg",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const EDITORIAL_CARDS = [
     subtitle: "Timeless weaves that connect tradition, art and you.",
     story:
       "Timeless weaves that connect tradition, art and you. Every fold cascades with rich ancestral motifs, intricate Korvai borders, and authentic handloom grace designed to be cherished for generations.",
-    image: "/images/cta-saree-1.jpg",
+    image: "/images/handloom-card-3.jpg",
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const EDITORIAL_CARDS = [
     subtitle: "A story of people, places and a rich cultural legacy.",
     story:
       "It is a living story of people, sacred weaving towns, and a rich cultural legacy crafted to honor life's most meaningful milestone celebrations and bridal occasions.",
-    image: "/images/cta-saree-2.jpg",
+    image: "/images/handloom-card-4.jpg",
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ const EDITORIAL_CARDS = [
     subtitle: "Inspired by our land and the artisans who keep it alive.",
     story:
       "Inspired by our sacred land, temple gopuram architecture, and master weavers who dedicate their lives to keeping ancestral Indian textile traditions alive.",
-    image: "/images/cta-saree-4.jpg",
+    image: "/images/handloom-card-5.jpg",
   },
   {
     id: 6,
@@ -61,7 +61,7 @@ const EDITORIAL_CARDS = [
     subtitle: "Preserving handloom today for a more beautiful tomorrow.",
     story:
       "Preserving traditional wooden pit looms today for a more conscious, beautiful tomorrow. An heirloom treasure passed from mother to daughter with enduring elegance.",
-    image: "/images/cta-saree-3.png",
+    image: "/images/handloom-card-6.jpg",
   },
 ];
 
@@ -89,31 +89,30 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
           {/* ── LEFT 65% COLUMN: Handloom Image Grid (lg:col-span-8) ── */}
           <div className="lg:col-span-8 space-y-4">
             
-            {/* Top Compact Hero Banner */}
+            {/* Top Compact Hero Banner with High Contrast Cream Panel */}
             <div className="relative w-full h-[300px] sm:h-[340px] rounded-2xl overflow-hidden shadow-md border border-[#e8e6e1] bg-black">
               <Image
-                src="/images/artisan-weaver-handloom.jpg"
+                src="/images/handloom-hero-authentic.jpg"
                 alt="Master Weaver handcrafting silk saree on pit loom"
                 fill
                 priority
                 quality={95}
-                className="object-cover object-center filter brightness-[0.75] contrast-110"
+                className="object-cover object-center filter brightness-[0.88] contrast-105"
                 sizes="(max-width: 1024px) 100vw, 850px"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-transparent to-black/60" />
 
-              {/* Left Translucent Card Overlay */}
-              <div className="absolute left-4 sm:left-6 top-4 sm:top-6 bottom-4 sm:bottom-6 w-[calc(100%-2rem)] sm:w-[360px] bg-white/92 backdrop-blur-md p-5 rounded-xl shadow-xl flex flex-col justify-between z-10 border border-white/50">
+              {/* Left Warm Cream Gradient Panel matching Screenshot 2 */}
+              <div className="absolute inset-y-0 left-0 w-full sm:w-[52%] bg-gradient-to-r from-[#f7f2ea] via-[#f7f2ea]/95 to-transparent p-5 sm:p-7 flex flex-col justify-between z-10">
                 <div>
                   <p className="text-[10px] tracking-[0.3em] uppercase text-[#800020] font-bold mb-1.5">
                     THE HANDLOOM STORY
                   </p>
-                  <h2 className="text-2xl sm:text-3xl font-serif font-light text-gray-900 leading-tight mb-2">
+                  <h2 className="text-2xl sm:text-3xl font-serif font-light text-[#2b2520] leading-tight mb-2">
                     Woven by <br />
                     <span className="font-normal">Generations</span>
                   </h2>
                   <div className="w-10 h-px bg-[#b8860b] mb-2.5" />
-                  <p className="text-xs text-gray-700 font-light tracking-wide leading-relaxed font-sans">
+                  <p className="text-xs text-gray-800 font-light tracking-wide leading-relaxed font-sans max-w-xs">
                     Every Chandrika saree carries the wisdom, patience and passion of our master weavers.
                   </p>
                 </div>
@@ -121,7 +120,7 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
                 <div>
                   <button
                     onClick={onOpenInquiry}
-                    className="inline-flex items-center gap-2 px-4 py-2 border border-[#2b2520] hover:bg-[#800020] hover:border-[#800020] hover:text-white text-[9px] uppercase tracking-[0.25em] font-medium transition-all duration-300 rounded shadow-sm"
+                    className="inline-flex items-center gap-2 px-4 py-2 border border-[#2b2520] hover:bg-[#800020] hover:border-[#800020] hover:text-white text-[#2b2520] text-[9px] uppercase tracking-[0.25em] font-medium transition-all duration-300 rounded shadow-sm bg-white/80"
                   >
                     <span>EXPLORE OUR HERITAGE</span>
                     <ArrowRight size={12} />
@@ -131,7 +130,7 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
 
               {/* Right Overlay */}
               <div className="hidden sm:flex absolute right-6 bottom-6 text-right flex-col items-end z-10">
-                <p className="text-[10px] tracking-[0.3em] uppercase text-white/90 font-medium max-w-xs leading-relaxed drop-shadow-md">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-white/95 font-medium max-w-xs leading-relaxed drop-shadow-md">
                   THREADS OF CULTURE, <br />
                   WOVEN FOR TOMORROW.
                 </p>
@@ -139,7 +138,7 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
               </div>
             </div>
 
-            {/* 6 Individual Interactive Image Cards (3-Column Grid) */}
+            {/* 6 Individual Interactive Image Cards with Exact Authentic Photos */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
               {EDITORIAL_CARDS.map((card) => {
                 const isActive = card.id === activeCardId;
@@ -159,7 +158,7 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
                       alt={card.title}
                       fill
                       quality={95}
-                      className="object-cover object-center filter brightness-[0.7] group-hover:brightness-[0.55] group-hover:scale-[1.03] transition-all duration-700"
+                      className="object-cover object-center filter brightness-[0.75] group-hover:brightness-[0.6] group-hover:scale-[1.03] transition-all duration-700"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 280px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/35" />
