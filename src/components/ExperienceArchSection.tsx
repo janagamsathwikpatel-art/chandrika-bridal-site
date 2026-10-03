@@ -283,21 +283,21 @@ export default function ExperienceArchSection({
         </button>
       </div>
 
-      {/* ════════════════ VIEW 2: REVEALED SHOP BY CATEGORY (Doors Open) ════════════════ */}
+      {/* ════════════════ VIEW 2: REVEALED SHOP BY CATEGORY FULL SCREEN ════════════════ */}
       <div
-        className={`absolute inset-0 z-30 flex flex-col items-center justify-start px-4 md:px-12 pt-20 pb-10 transition-all duration-700 ${
+        className={`fixed inset-0 z-40 bg-[#05084a]/95 backdrop-blur-2xl flex flex-col items-center justify-start p-6 md:p-10 overflow-y-auto transition-all duration-700 ${
           isOpen
             ? "opacity-100 pointer-events-auto scale-100"
-            : "opacity-0 pointer-events-none scale-105"
+            : "opacity-0 pointer-events-none scale-95"
         }`}
       >
-        <div className="w-full max-w-[1280px] mx-auto flex flex-col h-full">
-          {/* Top Header Bar with BACK Button on the Left */}
-          <div className="flex items-center justify-between border-b border-white/20 pb-4 mb-6">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col min-h-full">
+          {/* Top Header Bar with BACK & CLOSE Buttons */}
+          <div className="flex items-center justify-between border-b border-white/20 pb-5 mb-8 pt-2">
             {/* Left Side: BACK Button */}
             <button
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2.5 px-5 py-2.5 bg-white/10 hover:bg-white text-white hover:text-[#05084a] text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300 rounded-full border border-white/30 shadow-lg shrink-0"
+              className="flex items-center gap-2.5 px-6 py-2.5 bg-white/10 hover:bg-white text-white hover:text-[#05084a] text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 rounded-full border border-white/30 shadow-lg shrink-0"
             >
               <ArrowLeft size={16} />
               <span>BACK</span>
@@ -305,27 +305,36 @@ export default function ExperienceArchSection({
 
             {/* Center Section Title */}
             <div className="text-center">
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wider text-white uppercase">
+              <span className="text-[10px] md:text-xs tracking-[0.35em] text-[#ffd700] uppercase block font-semibold mb-1">
+                EXQUISITE WEAVES
+              </span>
+              <h3 className="text-2xl md:text-4xl font-bold font-serif tracking-wider text-white uppercase">
                 Shop By Category
               </h3>
-              <p className="text-[10px] md:text-xs text-white/70 tracking-widest uppercase mt-0.5">
-                Handcrafted Heirloom Weaves — Select to explore
+              <p className="text-[11px] md:text-xs text-white/70 tracking-widest uppercase mt-1">
+                Handcrafted Heirloom Weaves — Select any category to explore
               </p>
             </div>
 
-            {/* Right Side Spacer */}
-            <div className="w-24 hidden sm:block" />
+            {/* Right Side: CLOSE X Button */}
+            <button
+              onClick={() => setIsOpen(false)}
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center border border-white/30 transition-colors shrink-0"
+              aria-label="Close"
+            >
+              <X size={20} />
+            </button>
           </div>
 
-          {/* 18-Tile Fabric Weaves Grid (Shop by Category) */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 md:gap-4 overflow-y-auto pr-1 no-scrollbar my-auto max-h-[70vh] p-2">
+          {/* 18-Tile Fabric Weaves Full-Screen Grid (Shop by Category) */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-5 my-auto pb-10">
             {FABRIC_WEAVES.map((weave) => (
               <div
                 key={weave.id}
                 onClick={() => handleTileClick(weave)}
-                className="group flex flex-col items-center text-center cursor-pointer bg-[#ffffff] p-2.5 rounded-xl border border-white/20 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5"
+                className="group flex flex-col items-center text-center cursor-pointer bg-[#ffffff] p-3 rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
-                <div className="relative aspect-square w-full rounded-lg overflow-hidden mb-2 bg-gray-100 shadow-inner">
+                <div className="relative aspect-square w-full rounded-xl overflow-hidden mb-3 bg-gray-100 shadow-inner">
                   <Image
                     src={weave.image}
                     alt={weave.title}
@@ -334,7 +343,7 @@ export default function ExperienceArchSection({
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
                   />
                 </div>
-                <p className="text-[11px] sm:text-xs font-serif font-medium text-[#111111] group-hover:text-[#8B0000] tracking-wide leading-tight line-clamp-2 mt-1">
+                <p className="text-xs sm:text-sm font-serif font-semibold text-[#111111] group-hover:text-[#8B0000] tracking-wide leading-tight line-clamp-2 mt-1">
                   {weave.title}
                 </p>
               </div>
