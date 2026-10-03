@@ -34,20 +34,29 @@ export default function InquirySection({ onOpenInquiry }: InquirySectionProps) {
   return (
     <section id="why-chandrika" className="w-full bg-[#fdfbf7] pt-6 md:pt-8 select-none">
       
-      {/* ── Section Header ── */}
-      <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-6 px-4 sm:px-6">
-        {/* Exact 2nd Image Provided by User without any changes */}
-        <div className="w-full max-w-3xl flex items-center justify-center my-2">
+      {/* ── Pink Bougainvillea Flower Divider Line (Full Width Edge-to-Edge) ── */}
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 flex items-center justify-center my-6">
+        {/* Left Hairline Rule - Covers Full Left Side */}
+        <div className="flex-1 border-t border-[#d8d3c7]" />
+
+        {/* Ultra HD Centered Bougainvillea Flower Motif */}
+        <div className="px-5 sm:px-8 relative flex items-center justify-center shrink-0">
           <Image
-            src="/images/bougainvillea-divider-direct.png"
-            alt="Bougainvillea Floral Divider"
-            width={1024}
-            height={125}
-            className="w-full h-auto object-contain mix-blend-multiply"
+            src="/images/bougainvillea-flower-hd.png"
+            alt="Pink Bougainvillea Flower HD Motif"
+            width={120}
+            height={74}
+            className="object-contain filter drop-shadow-sm transition-transform duration-300 hover:scale-105"
             priority
           />
         </div>
 
+        {/* Right Hairline Rule - Covers Full Right Side */}
+        <div className="flex-1 border-t border-[#d8d3c7]" />
+      </div>
+
+      {/* ── Section Header ── */}
+      <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-6 px-4 sm:px-6">
         {/* Eyebrow: THE CHANDRIKA DISTINCTION */}
         <p className="text-[11px] md:text-xs tracking-[0.35em] uppercase text-[#800020] font-bold mb-2">
           The Chandrika Distinction
