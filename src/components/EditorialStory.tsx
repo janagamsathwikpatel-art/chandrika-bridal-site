@@ -80,11 +80,11 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
     EDITORIAL_CARDS.find((c) => c.id === activeCardId) || EDITORIAL_CARDS[0];
 
   return (
-    <section id="about" className="w-full bg-[#fdfbf7] py-10 md:py-16 border-t border-[#e8e6e1] select-none">
+    <section id="about" className="w-full bg-[#fdfbf7] pt-10 md:pt-14 pb-1 md:pb-2 border-t border-[#e8e6e1] select-none">
       <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ── 65% / 35% Grid Layout ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* ── LEFT 65% COLUMN: Handloom Image Grid (lg:col-span-8) ── */}
           <div className="lg:col-span-8 space-y-4">

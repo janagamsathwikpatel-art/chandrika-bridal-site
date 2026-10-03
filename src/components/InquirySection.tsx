@@ -32,10 +32,10 @@ const DISCOVER_IMAGES = [
 
 export default function InquirySection({ onOpenInquiry }: InquirySectionProps) {
   return (
-    <section id="why-chandrika" className="w-full bg-[#fdfbf7] pt-6 md:pt-8 select-none">
+    <section id="why-chandrika" className="w-full bg-[#fdfbf7] pt-1 md:pt-2 select-none">
       
       {/* ── Pink Bougainvillea Flower Divider Line (Full Width Edge-to-Edge) ── */}
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 flex items-center justify-center my-6">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 flex items-center justify-center my-2 sm:my-3">
         {/* Left Hairline Rule - Covers Full Left Side */}
         <div className="flex-1 border-t border-[#d8d3c7]" />
 
@@ -56,7 +56,7 @@ export default function InquirySection({ onOpenInquiry }: InquirySectionProps) {
       </div>
 
       {/* ── Section Header ── */}
-      <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-6 px-4 sm:px-6">
+      <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-3 sm:mb-4 px-4 sm:px-6">
         {/* Eyebrow: THE CHANDRIKA DISTINCTION */}
         <p className="text-[11px] md:text-xs tracking-[0.35em] uppercase text-[#800020] font-bold mb-2">
           The Chandrika Distinction
