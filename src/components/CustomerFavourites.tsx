@@ -71,7 +71,7 @@ export default function CustomerFavourites({ onOpenInquiry }: CustomerFavourites
   return (
     <section
       id="customer-favourites"
-      className="w-full bg-[#ffffff] py-14 md:py-20 px-4 md:px-10 relative border-b border-[#ece9e2]"
+      className="w-full bg-[#ffffff] pt-14 md:pt-20 pb-4 md:pb-6 px-4 md:px-10 relative border-b-0"
     >
       <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-stretch gap-8 lg:gap-12 relative">
         

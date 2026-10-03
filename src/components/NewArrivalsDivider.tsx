@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function NewArrivalsDivider() {
   return (
-    <section className="w-full bg-[#ffffff] pt-12 pb-8 px-4 md:px-10 flex flex-col items-center justify-center text-center select-none">
+    <section className="w-full bg-[#ffffff] py-2 md:py-4 px-4 md:px-10 flex flex-col items-center justify-center text-center select-none">
       <div className="max-w-[1440px] w-full mx-auto flex flex-col items-center">
         
         {/* ── Pink Bougainvillea Flower Branch (Authentic 1st Image Replacement) ── */}

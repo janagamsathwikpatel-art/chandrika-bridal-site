@@ -63,7 +63,7 @@ export default function SareeCollection({
   };
 
   return (
-    <section id="sarees" className="w-full bg-[#fbfaf8] py-14 md:py-20 px-4 md:px-10 relative scroll-mt-20 border-b border-[#ece9e2]">
+    <section id="sarees" className="w-full bg-[#fbfaf8] pt-4 md:pt-6 pb-14 md:pb-20 px-4 md:px-10 relative scroll-mt-20 border-b border-[#ece9e2]">
       <div className="max-w-[1440px] mx-auto relative">
         
         {/* ── Section Header ── */}
