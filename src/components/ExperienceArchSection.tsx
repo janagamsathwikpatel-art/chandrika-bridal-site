@@ -64,6 +64,34 @@ const SHOP_BY_CATEGORIES: CategoryCard[] = [
   },
 ];
 
+interface FabricWeaveTile {
+  id: string;
+  title: string;
+  image: string;
+  categoryTag: string;
+}
+
+const FABRIC_WEAVES: FabricWeaveTile[] = [
+  { id: "fw-01", title: "Pure Zari Kanchipuram", image: "/images/weave-1.png", categoryTag: "KANCHIPURAM" },
+  { id: "fw-02", title: "Banarasi Silk", image: "/images/weave-2.png", categoryTag: "BANARASI" },
+  { id: "fw-03", title: "Mysore Crepe", image: "/images/weave-3.png", categoryTag: "MYSORE" },
+  { id: "fw-04", title: "Ikats", image: "/images/weave-4.png", categoryTag: "IKAT" },
+  { id: "fw-05", title: "Tussar", image: "/images/weave-5.png", categoryTag: "TUSSAR" },
+  { id: "fw-06", title: "Soft Silks", image: "/images/weave-6.png", categoryTag: "SOFT SILK" },
+  { id: "fw-07", title: "Kanchi Half Fine", image: "/images/weave-7.png", categoryTag: "KANCHIPURAM" },
+  { id: "fw-08", title: "Organza", image: "/images/weave-8.png", categoryTag: "ORGANZA" },
+  { id: "fw-09", title: "Paithani", image: "/images/weave-9.png", categoryTag: "PAITHANI" },
+  { id: "fw-10", title: "Silk Cotton", image: "/images/weave-10.png", categoryTag: "COTTON SILK" },
+  { id: "fw-11", title: "Chiffon", image: "/images/weave-11.png", categoryTag: "CHIFFON" },
+  { id: "fw-12", title: "Georgette", image: "/images/weave-12.png", categoryTag: "GEORGETTE" },
+  { id: "fw-13", title: "Cotton", image: "/images/weave-13.png", categoryTag: "COTTON" },
+  { id: "fw-14", title: "Bangalore Silk", image: "/images/weave-14.png", categoryTag: "BANGALORE" },
+  { id: "fw-15", title: "Banarasi Katan Silk", image: "/images/weave-15.png", categoryTag: "BANARASI" },
+  { id: "fw-16", title: "Kanchipuram Tissue Silk", image: "/images/weave-16.png", categoryTag: "KANCHIPURAM" },
+  { id: "fw-17", title: "Chanderi", image: "/images/weave-17.png", categoryTag: "CHANDERI" },
+  { id: "fw-18", title: "Brocade Kanchipuram", image: "/images/weave-18.png", categoryTag: "KANCHIPURAM" },
+];
+
 interface ExperienceArchSectionProps {
   onOpenInquiry?: () => void;
   onSelectCategory?: (category: string) => void;
@@ -74,6 +102,7 @@ export default function ExperienceArchSection({
   onSelectCategory,
 }: ExperienceArchSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<"featured" | "fabrics">("featured");
 
   const handleCategoryClick = (categoryTag: string) => {
     if (onSelectCategory) {
@@ -242,12 +271,12 @@ export default function ExperienceArchSection({
         }`}
       >
         <div className="w-full max-w-[1280px] mx-auto flex flex-col h-full">
-          {/* Top Header Bar with BACK Button on the Left */}
-          <div className="flex items-center justify-between border-b border-white/20 pb-4 mb-6">
+          {/* Top Header Bar with BACK Button on the Left & Tab Switcher on the Right */}
+          <div className="flex flex-col sm:flex-row items-center justify-between border-b border-white/20 pb-4 mb-6 gap-4">
             {/* Left Side: BACK Button */}
             <button
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2.5 px-5 py-2.5 bg-white/10 hover:bg-white text-white hover:text-[#05084a] text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300 rounded-full border border-white/30 shadow-lg"
+              className="flex items-center gap-2.5 px-5 py-2 bg-white/10 hover:bg-white text-white hover:text-[#05084a] text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300 rounded-full border border-white/30 shadow-lg shrink-0"
             >
               <ArrowLeft size={16} />
               <span>BACK</span>
@@ -255,66 +284,115 @@ export default function ExperienceArchSection({
 
             {/* Center Section Title */}
             <div className="text-center">
-              <h3 className="text-xl md:text-3xl font-bold tracking-wider text-white uppercase">
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wider text-white uppercase">
                 Shop By Category
               </h3>
-              <p className="text-[11px] md:text-xs text-white/70 tracking-widest uppercase mt-0.5">
+              <p className="text-[10px] md:text-xs text-white/70 tracking-widest uppercase mt-0.5">
                 Handcrafted Heirloom Weaves — Select to explore
               </p>
             </div>
 
-            {/* Right Side Spacer for balanced header */}
-            <div className="w-24 hidden sm:block" />
-          </div>
-
-          {/* Shop By Category Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 overflow-y-auto pr-1 no-scrollbar my-auto max-h-[70vh]">
-            {SHOP_BY_CATEGORIES.map((cat) => (
-              <div
-                key={cat.id}
-                onClick={() => handleCategoryClick(cat.categoryTag)}
-                className="group relative bg-[#090d56]/80 border border-white/20 rounded-xl overflow-hidden cursor-pointer backdrop-blur-md transition-all duration-500 hover:border-[#ffd700] hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between"
+            {/* Right Side: Tab Switcher Toggle (Featured vs All Fabrics) */}
+            <div className="flex items-center bg-black/40 backdrop-blur-md p-1 rounded-full border border-white/20 text-[10px] font-semibold tracking-widest uppercase shrink-0">
+              <button
+                onClick={() => setActiveTab("featured")}
+                className={`px-4 py-1.5 rounded-full transition-all duration-300 ${
+                  activeTab === "featured"
+                    ? "bg-[#ffd700] text-[#05084a] shadow-md font-bold"
+                    : "text-white/80 hover:text-white"
+                }`}
               >
-                {/* Category Image */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/40">
-                  <Image
-                    src={cat.image}
-                    alt={cat.name}
-                    fill
-                    className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#05084a] via-black/20 to-transparent" />
-                  
-                  {/* Category Tag Badge */}
-                  <span className="absolute top-3 left-3 px-3 py-1 bg-black/75 backdrop-blur-md text-[#ffd700] text-[9px] font-semibold tracking-widest uppercase rounded-full border border-[#ffd700]/30">
-                    {cat.categoryTag}
-                  </span>
-                </div>
-
-                {/* Category Details */}
-                <div className="p-4 md:p-5 flex flex-col justify-between flex-grow text-left bg-gradient-to-b from-[#05084a]/90 to-[#030536]">
-                  <div>
-                    <h4 className="text-base md:text-lg font-bold text-white tracking-wide group-hover:text-[#ffd700] transition-colors">
-                      {cat.name}
-                    </h4>
-                    <p className="text-[11px] text-white/70 tracking-wider mt-1 font-light line-clamp-1">
-                      {cat.subtitle}
-                    </p>
-                  </div>
-
-                  <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs">
-                    <span className="font-semibold text-[#ffd700] tracking-wider text-[11px]">
-                      {cat.priceRange}
-                    </span>
-                    <span className="flex items-center gap-1 text-white group-hover:text-[#ffd700] font-medium tracking-widest text-[10px] uppercase transition-colors">
-                      Explore <ArrowRight size={12} />
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
+                Featured Collections
+              </button>
+              <button
+                onClick={() => setActiveTab("fabrics")}
+                className={`px-4 py-1.5 rounded-full transition-all duration-300 ${
+                  activeTab === "fabrics"
+                    ? "bg-[#ffd700] text-[#05084a] shadow-md font-bold"
+                    : "text-white/80 hover:text-white"
+                }`}
+              >
+                Fabric Weaves ({FABRIC_WEAVES.length})
+              </button>
+            </div>
           </div>
+
+          {/* TAB 1: Featured Category Cards Grid (Screenshot 1) */}
+          {activeTab === "featured" && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 overflow-y-auto pr-1 no-scrollbar my-auto max-h-[70vh]">
+              {SHOP_BY_CATEGORIES.map((cat) => (
+                <div
+                  key={cat.id}
+                  onClick={() => handleCategoryClick(cat.categoryTag)}
+                  className="group relative bg-[#090d56]/80 border border-white/20 rounded-xl overflow-hidden cursor-pointer backdrop-blur-md transition-all duration-500 hover:border-[#ffd700] hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between"
+                >
+                  {/* Category Image */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/40">
+                    <Image
+                      src={cat.image}
+                      alt={cat.name}
+                      fill
+                      className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#05084a] via-black/20 to-transparent" />
+                    
+                    {/* Category Tag Badge */}
+                    <span className="absolute top-3 left-3 px-3 py-1 bg-black/75 backdrop-blur-md text-[#ffd700] text-[9px] font-semibold tracking-widest uppercase rounded-full border border-[#ffd700]/30">
+                      {cat.categoryTag}
+                    </span>
+                  </div>
+
+                  {/* Category Details */}
+                  <div className="p-4 md:p-5 flex flex-col justify-between flex-grow text-left bg-gradient-to-b from-[#05084a]/90 to-[#030536]">
+                    <div>
+                      <h4 className="text-base md:text-lg font-bold text-white tracking-wide group-hover:text-[#ffd700] transition-colors">
+                        {cat.name}
+                      </h4>
+                      <p className="text-[11px] text-white/70 tracking-wider mt-1 font-light line-clamp-1">
+                        {cat.subtitle}
+                      </p>
+                    </div>
+
+                    <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs">
+                      <span className="font-semibold text-[#ffd700] tracking-wider text-[11px]">
+                        {cat.priceRange}
+                      </span>
+                      <span className="flex items-center gap-1 text-white group-hover:text-[#ffd700] font-medium tracking-widest text-[10px] uppercase transition-colors">
+                        Explore <ArrowRight size={12} />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* TAB 2: 18-Tile Fabric Weaves Grid (Screenshot 2) */}
+          {activeTab === "fabrics" && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 md:gap-4 overflow-y-auto pr-1 no-scrollbar my-auto max-h-[70vh] p-2">
+              {FABRIC_WEAVES.map((weave) => (
+                <div
+                  key={weave.id}
+                  onClick={() => handleCategoryClick(weave.categoryTag)}
+                  className="group flex flex-col items-center text-center cursor-pointer bg-[#ffffff] p-2.5 rounded-xl border border-white/20 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5"
+                >
+                  <div className="relative aspect-square w-full rounded-lg overflow-hidden mb-2 bg-gray-100 shadow-inner">
+                    <Image
+                      src={weave.image}
+                      alt={weave.title}
+                      fill
+                      className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
+                    />
+                  </div>
+                  <p className="text-[11px] sm:text-xs font-serif font-medium text-[#111111] group-hover:text-[#8B0000] tracking-wide leading-tight line-clamp-2 mt-1">
+                    {weave.title}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
