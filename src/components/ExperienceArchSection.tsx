@@ -8,71 +8,122 @@ interface ExperienceArchSectionProps {
   onSelectCategory?: (category: string) => void;
 }
 
-const PRIMARY_CATEGORIES = [
-  {
-    name: "KANCHIPURAM",
-    tag: "Pure Mulberry Silk & Korvai Zari",
-    image: "/images/kanjivaram-pink-pure-silk.png",
-    filter: "KANCHIPURAM",
-  },
-  {
-    name: "BANARASI",
-    tag: "Kadhwa Brocade & Real Zari",
-    image: "/images/banarasi-gold-brocade-saree.jpg",
-    filter: "BANARASI",
-  },
-  {
-    name: "PAITHANI",
-    tag: "Peacock Tapestry Weave",
-    image: "/images/paithani-peacock-teal-saree.jpg",
-    filter: "OCCASIONS",
-  },
-  {
-    name: "CHANDERI",
-    tag: "Metallic Sheer Tissue Silk",
-    image: "/images/chanderi-tissue-gold-saree.jpg",
-    filter: "FABRICS",
-  },
-  {
-    name: "PATOLA",
-    tag: "Double Ikat Master Weave",
-    image: "/images/patan-patola-double-ikat-saree.jpg",
-    filter: "DESIGNED BY CHANDRIKA",
-  },
-  {
-    name: "READYMADES",
-    tag: "Pre-Draped & Stitched Blouses",
-    image: "/images/fav-pink-viscose.png",
-    filter: "READYMADES",
-  },
-];
-
-const FABRIC_WEAVES = [
-  { name: "Pure Zari Kanchipuram", image: "/images/kanjivaram-gold-dual-tone.png", filter: "KANCHIPURAM" },
-  { name: "Banarasi Silk", image: "/images/banarasi-gold-brocade-saree.jpg", filter: "BANARASI" },
-  { name: "Mysore Crepe", image: "/images/magenta-pink-woven-silk-saree.jpg", filter: "OCCASIONS" },
-  { name: "Ikats", image: "/images/patan-patola-double-ikat-saree.jpg", filter: "DESIGNED BY CHANDRIKA" },
-  { name: "Tussar", image: "/images/tussar-silk-handloom-saree.jpg", filter: "FABRICS" },
-  { name: "Soft Silks", image: "/images/fav-pink-viscose.png", filter: "READYMADES" },
-  { name: "Kanchi Half Fine", image: "/images/royal-kanjivaram-bridal-saree.jpg", filter: "KANCHIPURAM" },
-  { name: "Organza", image: "/images/chanderi-tissue-gold-saree.jpg", filter: "FABRICS" },
-  { name: "Paithani", image: "/images/paithani-peacock-teal-saree.jpg", filter: "OCCASIONS" },
-  { name: "Silk Cotton", image: "/images/fav-rust-maheshwari.png", filter: "FABRICS" },
-  { name: "Chiffon", image: "/images/kanjivaram-pink-pure-silk.png", filter: "NEW ARRIVALS" },
-  { name: "Georgette", image: "/images/fav-teal-woven.png", filter: "READYMADES" },
-  { name: "Cotton", image: "/images/artisan-weaver-handloom.jpg", filter: "FABRICS" },
-  { name: "Bangalore Silk", image: "/images/blue-woven-pure-silk-saree.jpg", filter: "DESIGNED BY CHANDRIKA" },
-  { name: "Banarasi Katan Silk", image: "/images/banarasi-gold-brocade-saree.jpg", filter: "BANARASI" },
-  { name: "Kanchipuram Tissue Silk", image: "/images/kanjivaram-gold-dual-tone.png", filter: "KANCHIPURAM" },
-  { name: "Chanderi", image: "/images/chanderi-tissue-gold-saree.jpg", filter: "FABRICS" },
-  { name: "Brocade Kanchipuram", image: "/images/kanjivaram-arunima-muppagam.png", filter: "KANCHIPURAM" },
-];
-
 export default function ExperienceArchSection({
   onOpenInquiry,
   onSelectCategory,
 }: ExperienceArchSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const categories = [
+    {
+      name: "Pure Zari Kanchipuram",
+      tag: "Kanchipuram Korvai",
+      image: "/images/kanjivaram-pink-pure-silk.png",
+      filter: "KANCHIPURAM",
+    },
+    {
+      name: "Banarasi Silk",
+      tag: "Real Zari Kadhwa",
+      image: "/images/banarasi-gold-brocade-saree.jpg",
+      filter: "BANARASI",
+    },
+    {
+      name: "Mysore Crepe",
+      tag: "Pure Mulberry Crepe",
+      image: "/images/magenta-pink-woven-silk-saree.jpg",
+      filter: "OCCASIONS",
+    },
+    {
+      name: "Ikats",
+      tag: "Double Ikat Weave",
+      image: "/images/patan-patola-double-ikat-saree.jpg",
+      filter: "DESIGNED BY CHANDRIKA",
+    },
+    {
+      name: "Tussar",
+      tag: "Wild Handloom Silk",
+      image: "/images/tussar-silk-handloom-saree.jpg",
+      filter: "FABRICS",
+    },
+    {
+      name: "Soft Silks",
+      tag: "Lustrous Featherweight",
+      image: "/images/fav-pink-viscose.png",
+      filter: "NEW ARRIVALS",
+    },
+    {
+      name: "Kanchi Half Fine",
+      tag: "Ancestral Zari Weave",
+      image: "/images/kanjivaram-gold-dual-tone.png",
+      filter: "KANCHIPURAM",
+    },
+    {
+      name: "Organza",
+      tag: "Embroidered Sheer",
+      image: "/images/chanderi-tissue-gold-saree.jpg",
+      filter: "FABRICS",
+    },
+    {
+      name: "Paithani",
+      tag: "Peacock Tapestry",
+      image: "/images/paithani-peacock-teal-saree.jpg",
+      filter: "OCCASIONS",
+    },
+    {
+      name: "Silk Cotton",
+      tag: "Handloom Blend",
+      image: "/images/fav-teal-woven.png",
+      filter: "READYMADES",
+    },
+    {
+      name: "Chiffon",
+      tag: "Printed Luxury",
+      image: "/images/kanjivaram-arunima-muppagam.png",
+      filter: "DESIGNED BY CHANDRIKA",
+    },
+    {
+      name: "Georgette",
+      tag: "Textured Drape",
+      image: "/images/fav-rust-maheshwari.png",
+      filter: "FABRICS",
+    },
+    {
+      name: "Cotton",
+      tag: "Authentic Handloom",
+      image: "/images/artisan-weaver-handloom.jpg",
+      filter: "SHOP ALL",
+    },
+    {
+      name: "Bangalore Silk",
+      tag: "Pure Silk Weave",
+      image: "/images/blue-woven-pure-silk-saree.jpg",
+      filter: "FABRICS",
+    },
+    {
+      name: "Banarasi Katan Silk",
+      tag: "Royal Katan Brocade",
+      image: "/images/royal-kanjivaram-bridal-saree.jpg",
+      filter: "BANARASI",
+    },
+    {
+      name: "Kanchipuram Tissue Silk",
+      tag: "24K Gold Tissue",
+      image: "/images/chanderi-tissue-gold-saree.jpg",
+      filter: "KANCHIPURAM",
+    },
+    {
+      name: "Chanderi",
+      tag: "Metallic Sheer",
+      image: "/images/fav-blue-woven.png",
+      filter: "FABRICS",
+    },
+    {
+      name: "Brocade Kanchipuram",
+      tag: "Heavy Bridal Zari",
+      image: "/images/kanjivaram-navy-blue.png",
+      filter: "KANCHIPURAM",
+    },
+  ];
 
   const handleCategoryClick = (catFilter: string) => {
     if (onSelectCategory) {
@@ -219,31 +270,31 @@ export default function ExperienceArchSection({
         </button>
       </div>
 
-      {/* ── REVEALED STATE INSIDE OPENED DOORS: SHOP BY CATEGORY ── */}
+      {/* ── REVEALED STATE INSIDE OPENED DOORS: SHOP BY CATEGORY (Matching 2nd Screenshot) ── */}
       <div
-        className={`absolute inset-0 z-30 flex flex-col items-center justify-start pt-16 md:pt-24 pb-12 px-4 md:px-12 overflow-y-auto transition-all duration-700 ${
+        className={`absolute inset-0 z-30 flex flex-col items-center justify-start pt-16 md:pt-20 pb-12 px-4 md:px-12 overflow-y-auto transition-all duration-700 ${
           isOpen
             ? "opacity-100 pointer-events-auto translate-y-0"
             : "opacity-0 pointer-events-none translate-y-6"
         }`}
       >
         {/* Top Header Row with Left Back Button */}
-        <div className="w-full max-w-5xl flex items-center justify-between mb-6 pb-4 border-b border-white/20 flex-shrink-0">
+        <div className="w-full max-w-6xl flex items-center justify-between mb-6 pb-3 border-b border-white/20">
           {/* BACK BUTTON ON LEFT SIDE */}
           <button
             onClick={() => setIsOpen(false)}
-            className="flex items-center gap-2 px-4 py-2 bg-white/15 hover:bg-white/30 text-white rounded-full text-xs font-semibold tracking-widest uppercase transition-all duration-300 backdrop-blur-md border border-white/30 hover:scale-105"
+            className="flex items-center gap-2 px-3.5 py-1.5 bg-white/10 hover:bg-white/25 text-white rounded-full text-[11px] font-semibold tracking-widest uppercase transition-all duration-300 backdrop-blur-md border border-white/30 hover:scale-105"
             aria-label="Back to closed doors"
           >
-            <ArrowLeft size={16} />
+            <ArrowLeft size={14} />
             <span>BACK</span>
           </button>
 
-          <div className="text-center flex-1 mx-4">
-            <span className="text-[10px] md:text-xs tracking-[0.35em] text-[#ffd700] font-semibold uppercase block mb-0.5">
+          <div className="text-center flex-1 mx-3">
+            <span className="text-[9px] md:text-[11px] tracking-[0.35em] text-[#ffd700] font-semibold uppercase block mb-0.5">
               CHANDRIKA HAUTE BRIDAL
             </span>
-            <h2 className="text-2xl md:text-4xl font-bold text-white tracking-wider uppercase font-sans">
+            <h2 className="text-xl md:text-3xl font-bold text-white tracking-wider uppercase font-sans">
               SHOP BY CATEGORY
             </h2>
           </div>
@@ -251,75 +302,33 @@ export default function ExperienceArchSection({
           {/* Inquiry / Consultation Button on Right */}
           <button
             onClick={onOpenInquiry}
-            className="hidden sm:flex items-center gap-1.5 px-4 py-2 bg-[#8B0000] hover:bg-[#600000] text-white text-xs font-semibold tracking-widest uppercase rounded-full transition-all shadow-md"
+            className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 bg-[#8B0000] hover:bg-[#600000] text-white text-[11px] font-semibold tracking-widest uppercase rounded-full transition-all shadow-md"
           >
-            <Sparkles size={14} />
+            <Sparkles size={13} />
             <span>BOOK FIT</span>
           </button>
         </div>
 
-        {/* ── Primary Category Cards Grid matching screenshot media_1791042693976.png ── */}
-        <div className="w-full max-w-5xl grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-5 mb-10 flex-shrink-0">
-          {PRIMARY_CATEGORIES.map((cat) => (
+        {/* 18-Category Grid matching 2nd screenshot (media_1791043229233.png) */}
+        <div className="w-full max-w-6xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 md:gap-4 my-auto">
+          {categories.map((cat) => (
             <div
               key={cat.name}
               onClick={() => handleCategoryClick(cat.filter)}
-              className="group cursor-pointer relative aspect-[4/3] rounded-xl overflow-hidden border border-white/25 bg-black/50 shadow-xl transition-all duration-500 hover:scale-[1.03] hover:border-[#ffd700]"
+              className="group cursor-pointer flex flex-col items-start transition-all duration-300 hover:scale-[1.03]"
             >
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out opacity-85 group-hover:opacity-100"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-3.5 flex flex-col justify-end">
-                <span className="text-[9px] md:text-[10px] text-[#ffd700] font-medium tracking-widest uppercase mb-0.5">
-                  {cat.tag}
-                </span>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm md:text-lg font-bold text-white tracking-wider uppercase">
-                    {cat.name}
-                  </h3>
-                  <ChevronRight
-                    size={16}
-                    className="text-white opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all"
-                  />
-                </div>
+              <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-black/40 border border-white/20 shadow-md group-hover:border-[#ffd700] transition-all">
+                <img
+                  src={cat.image}
+                  alt={cat.name}
+                  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500 ease-out"
+                />
               </div>
+              <span className="mt-2 text-[11px] md:text-[12px] font-medium text-white/95 tracking-wide line-clamp-1 group-hover:text-[#ffd700] transition-colors">
+                {cat.name}
+              </span>
             </div>
           ))}
-        </div>
-
-        {/* ── Weave & Fabric Categories Showcase Grid matching screenshot media_1791042694004.png ── */}
-        <div className="w-full max-w-5xl bg-white/95 rounded-2xl p-6 md:p-8 shadow-2xl border border-white/40 mb-12">
-          <div className="text-center mb-6">
-            <span className="text-[10px] md:text-xs tracking-[0.3em] text-[#8B0000] font-semibold uppercase block mb-1">
-              HERITAGE SILK WEAVES & TEXTURES
-            </span>
-            <h3 className="text-xl md:text-2xl font-bold text-[#1f2421] tracking-wide uppercase font-sans">
-              Explore By Fabric & Weave
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 md:gap-5">
-            {FABRIC_WEAVES.map((item) => (
-              <div
-                key={item.name}
-                onClick={() => handleCategoryClick(item.filter)}
-                className="group cursor-pointer flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-1"
-              >
-                <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-[#ebe8e2] shadow-sm border border-[#e2dfd7] group-hover:shadow-md group-hover:border-[#8B0000] transition-all">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500 ease-out"
-                  />
-                </div>
-                <span className="mt-2 text-[11px] md:text-xs text-[#201f1f] font-medium leading-snug group-hover:text-[#8B0000] group-hover:underline transition-colors">
-                  {item.name}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
