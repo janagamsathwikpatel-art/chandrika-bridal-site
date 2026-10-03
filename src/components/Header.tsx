@@ -77,13 +77,11 @@ export default function Header({
           right: 0,
           zIndex: 50,
           transition: "all 0.4s ease",
-          background: scrolled
-            ? "rgba(251,250,248,0.95)"
-            : "linear-gradient(to bottom, rgba(0,0,0,0.6), transparent)",
-          backdropFilter: scrolled ? "blur(12px)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(232,230,225,0.9)" : "none",
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 75%, transparent 100%)",
+          backdropFilter: "blur(6px)",
+          borderBottom: "none",
           padding: scrolled ? "10px 0 6px 0" : "18px 0 10px 0",
-          boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.06)" : "none",
+          boxShadow: "none",
         }}
       >
         <div
@@ -121,33 +119,23 @@ export default function Header({
                     letterSpacing: "0.14em",
                     fontWeight: isActive ? 700 : 600,
                     textTransform: "uppercase",
-                    color: isActive
-                      ? scrolled
-                        ? "#8B0000"
-                        : "#ffd700"
-                      : scrolled
-                      ? "#201f1f"
-                      : "#ffffff",
+                    color: isActive ? "#ffd700" : "#ffffff",
                     textDecoration: "none",
-                    borderBottom: isActive
-                      ? scrolled
-                        ? "2px solid #8B0000"
-                        : "2px solid #ffd700"
-                      : "2px solid transparent",
+                    borderBottom: isActive ? "2px solid #ffd700" : "2px solid transparent",
                     paddingBottom: "2px",
-                    textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.85)",
+                    textShadow: "0 1px 4px rgba(0,0,0,0.85)",
                     whiteSpace: "nowrap",
                     transition: "all 0.2s ease",
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.color = scrolled ? "#8B0000" : "#ffd700";
+                      e.currentTarget.style.color = "#ffd700";
                       e.currentTarget.style.opacity = "0.85";
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
+                      e.currentTarget.style.color = "#ffffff";
                       e.currentTarget.style.opacity = "1";
                     }
                   }}
@@ -177,8 +165,8 @@ export default function Header({
                 letterSpacing: "0.38em",
                 fontWeight: 300,
                 textTransform: "uppercase",
-                color: scrolled ? "#201f1f" : "#ffffff",
-                textShadow: scrolled ? "none" : "0 2px 8px rgba(0,0,0,0.85)",
+                color: "#ffffff",
+                textShadow: "0 2px 8px rgba(0,0,0,0.85)",
                 whiteSpace: "nowrap",
                 transition: "all 0.3s",
               }}
@@ -191,8 +179,8 @@ export default function Header({
                 letterSpacing: "0.45em",
                 fontWeight: 400,
                 textTransform: "uppercase",
-                color: scrolled ? "#767573" : "rgba(255,255,255,0.85)",
-                textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.8)",
+                color: "rgba(255,255,255,0.85)",
+                textShadow: "0 1px 4px rgba(0,0,0,0.8)",
                 marginTop: "-2px",
                 whiteSpace: "nowrap",
                 transition: "all 0.3s",
@@ -233,33 +221,23 @@ export default function Header({
                       letterSpacing: "0.14em",
                       fontWeight: isActive ? 700 : 600,
                       textTransform: "uppercase",
-                      color: isActive
-                        ? scrolled
-                          ? "#8B0000"
-                          : "#ffd700"
-                        : scrolled
-                        ? "#201f1f"
-                        : "#ffffff",
+                      color: isActive ? "#ffd700" : "#ffffff",
                       textDecoration: "none",
-                      borderBottom: isActive
-                        ? scrolled
-                          ? "2px solid #8B0000"
-                          : "2px solid #ffd700"
-                        : "2px solid transparent",
+                      borderBottom: isActive ? "2px solid #ffd700" : "2px solid transparent",
                       paddingBottom: "2px",
-                      textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.85)",
+                      textShadow: "0 1px 4px rgba(0,0,0,0.85)",
                       whiteSpace: "nowrap",
                       transition: "all 0.2s ease",
                     }}
                     onMouseEnter={(e) => {
                       if (!isActive) {
-                        e.currentTarget.style.color = scrolled ? "#8B0000" : "#ffd700";
+                        e.currentTarget.style.color = "#ffd700";
                         e.currentTarget.style.opacity = "0.85";
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (!isActive) {
-                        e.currentTarget.style.color = scrolled ? "#201f1f" : "#ffffff";
+                        e.currentTarget.style.color = "#ffffff";
                         e.currentTarget.style.opacity = "1";
                       }
                     }}
@@ -279,8 +257,8 @@ export default function Header({
                 background: "none",
                 border: "none",
                 cursor: "pointer",
-                color: scrolled ? "#201f1f" : "#ffffff",
-                textShadow: scrolled ? "none" : "0 1px 4px rgba(0,0,0,0.8)",
+                color: "#ffffff",
+                textShadow: "0 1px 4px rgba(0,0,0,0.8)",
                 padding: "8px",
               }}
               aria-label="Menu"
@@ -294,7 +272,7 @@ export default function Header({
         <div
           className="flex lg:hidden items-center justify-start border-t mt-2.5 pt-2 overflow-x-auto no-scrollbar"
           style={{
-            borderColor: scrolled ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.2)",
+            borderColor: "rgba(255,255,255,0.2)",
             gap: "18px",
             paddingLeft: "20px",
             paddingRight: "20px",
@@ -313,18 +291,13 @@ export default function Header({
                   letterSpacing: "0.14em",
                   fontWeight: isActive ? 700 : 600,
                   textTransform: "uppercase",
-                  color: isActive
-                    ? scrolled
-                      ? "#8B0000"
-                      : "#ffd700"
-                    : scrolled
-                    ? "#201f1f"
-                    : "#ffffff",
+                  color: isActive ? "#ffd700" : "#ffffff",
                   textDecoration: "none",
-                  borderBottom: isActive ? "2px solid currentColor" : "none",
+                  borderBottom: isActive ? "2px solid #ffd700" : "none",
                   paddingBottom: "2px",
                   whiteSpace: "nowrap",
                   flexShrink: 0,
+                  textShadow: "0 1px 4px rgba(0,0,0,0.85)",
                 }}
               >
                 {label}
@@ -341,7 +314,8 @@ export default function Header({
             position: "fixed",
             inset: 0,
             zIndex: 40,
-            background: "#fbfaf8",
+            background: "#05084a",
+            color: "#ffffff",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -361,7 +335,7 @@ export default function Header({
                 letterSpacing: "0.22em",
                 fontWeight: activeCategory === label ? 700 : 500,
                 textTransform: "uppercase",
-                color: activeCategory === label ? "#8B0000" : "#201f1f",
+                color: activeCategory === label ? "#ffd700" : "#ffffff",
                 textDecoration: "none",
               }}
             >
@@ -379,11 +353,12 @@ export default function Header({
               letterSpacing: "0.24em",
               fontWeight: 600,
               textTransform: "uppercase",
-              color: "#ffffff",
-              backgroundColor: "#201f1f",
+              color: "#05084a",
+              backgroundColor: "#ffd700",
               padding: "12px 28px",
               border: "none",
               cursor: "pointer",
+              borderRadius: "4px",
             }}
           >
             BOOK CONSULTATION
