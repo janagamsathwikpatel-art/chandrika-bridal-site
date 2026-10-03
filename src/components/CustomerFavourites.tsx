@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Heart, ShoppingBag, Copy } from "lucide-react";
+import RoundCarousel from "@/components/RoundCarousel";
 
 interface SareeCard {
   id: string;
@@ -58,24 +58,14 @@ interface CustomerFavouritesProps {
 }
 
 export default function CustomerFavourites({ onOpenInquiry }: CustomerFavouritesProps) {
-  const [startIndex, setStartIndex] = useState(0);
-
-  const prevSlide = () => {
-    setStartIndex((prev) => (prev > 0 ? prev - 1 : FAVOURITE_SAREES.length - 3));
-  };
-
-  const nextSlide = () => {
-    setStartIndex((prev) => (prev < FAVOURITE_SAREES.length - 3 ? prev + 1 : 0));
-  };
-
   return (
     <section
       id="customer-favourites"
-      className="w-full bg-[#ffffff] pt-14 md:pt-20 pb-4 md:pb-6 px-4 md:px-10 relative border-b-0"
+      className="w-full bg-[#ffffff] pt-12 md:pt-16 pb-8 md:pb-12 px-4 md:px-10 relative border-b-0 overflow-hidden"
     >
-      <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-stretch gap-8 lg:gap-12 relative">
+      <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-10 relative">
         
-        {/* ── LEFT BRAND INFO COLUMN (Pothys Style) ── */}
+        {/* ── LEFT BRAND INFO COLUMN ── */}
         <div className="lg:w-[28%] flex flex-col justify-center text-left py-4 pr-4 border-b lg:border-b-0 lg:border-r border-[#eae7e0]">
           {/* Traditional Handloom Peacock (Mayura) Motif Logo */}
           <div className="mb-4">
@@ -127,122 +117,26 @@ export default function CustomerFavourites({ onOpenInquiry }: CustomerFavourites
           </div>
 
           {/* Heading in Elegant Serif */}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#111111] tracking-tight leading-tight mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#111111] tracking-tight leading-tight mb-3">
             Our Collections
           </h2>
 
-          {/* Descriptive Text matching Pothys screenshot */}
+          {/* Descriptive Text */}
           <p className="text-sm md:text-base text-[#555555] font-light leading-relaxed mb-6 max-w-sm">
-            Experience the pinnacle of Indian craftsmanship with Chandrika&apos;s luxurious collection.
+            Experience the pinnacle of Indian craftsmanship with Chandrika&apos;s 3D rotating saree showcase. Drag or swipe to explore all unique weaves.
           </p>
+
+          <button
+            onClick={onOpenInquiry}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#8B0000] hover:bg-[#111111] text-white text-xs font-semibold tracking-[0.2em] uppercase rounded-full transition-all duration-300 shadow-md max-w-xs"
+          >
+            <span>INQUIRE COLLECTION</span>
+          </button>
         </div>
 
-        {/* ── RIGHT CAROUSEL COLUMN (3-Card Slider matching Pothys Screenshot) ── */}
-        <div className="lg:w-[72%] relative flex items-center">
-          
-          {/* Left Arrow Button */}
-          <button
-            onClick={prevSlide}
-            aria-label="Previous Collection"
-            className="absolute -left-3 md:-left-5 top-1/2 -translate-y-1/2 z-30 w-9 h-9 md:w-11 md:h-11 rounded-full bg-white border border-[#e2dfd7] shadow-md flex items-center justify-center text-[#444] hover:text-[#000] hover:scale-105 transition-all duration-200"
-          >
-            <ChevronLeft size={20} />
-          </button>
-
-          {/* Right Arrow Button */}
-          <button
-            onClick={nextSlide}
-            aria-label="Next Collection"
-            className="absolute -right-3 md:-right-5 top-1/2 -translate-y-1/2 z-30 w-9 h-9 md:w-11 md:h-11 rounded-full bg-white border border-[#e2dfd7] shadow-md flex items-center justify-center text-[#444] hover:text-[#000] hover:scale-105 transition-all duration-200"
-          >
-            <ChevronRight size={20} />
-          </button>
-
-          {/* 3-Product Grid Row */}
-          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 overflow-hidden">
-            {FAVOURITE_SAREES.slice(startIndex, startIndex + 3).map((saree) => (
-              <div
-                key={saree.id}
-                onClick={onOpenInquiry}
-                className="cursor-pointer group flex flex-col text-left transition-transform duration-300 hover:-translate-y-1"
-              >
-                {/* Image Container with Top-Left Sale Badge & Top-Right Wishlist Heart */}
-                <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#f7f5f0] border border-[#eee9df] shadow-sm group-hover:shadow-md transition-shadow">
-                  <Image
-                    src={saree.image}
-                    alt={saree.name}
-                    fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-
-                  {/* Top-Left Sale Badge */}
-                  {saree.badge && (
-                    <span className="absolute top-3 left-3 bg-[#f5e8cf] text-[#7a4918] font-bold text-[11px] px-3 py-1 rounded shadow-sm">
-                      {saree.badge}
-                    </span>
-                  )}
-
-                  {/* Top-Right Circular Wishlist Heart */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                    }}
-                    aria-label="Wishlist"
-                    className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 border border-black/5 shadow flex items-center justify-center text-[#555] hover:text-[#8B0000] hover:scale-110 transition-all"
-                  >
-                    <Heart size={15} />
-                  </button>
-                </div>
-
-                {/* Product Caption below image matching Pothys screenshot */}
-                <div className="mt-3 flex flex-col gap-1">
-                  <h3 className="text-[13px] md:text-[14px] text-[#222222] font-medium leading-snug line-clamp-1 group-hover:underline">
-                    {saree.name}
-                  </h3>
-
-                  {/* Pricing row with Strikethrough + Sale Price + % OFF + Action Icons */}
-                  <div className="flex items-center justify-between mt-0.5">
-                    <div className="flex items-baseline gap-1.5 flex-wrap">
-                      <span className="text-[11px] md:text-[12px] text-[#e53935] line-through font-normal">
-                        {saree.originalPrice}
-                      </span>
-                      <span className="text-[13px] md:text-[14px] font-bold text-[#111111]">
-                        {saree.salePrice}
-                      </span>
-                      <span className="text-[10px] md:text-[11px] font-semibold text-[#2e7d32]">
-                        {saree.discount}
-                      </span>
-                    </div>
-
-                    {/* Action Icons on Bottom Right */}
-                    <div className="flex items-center gap-1.5 text-[#555555]">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onOpenInquiry?.();
-                        }}
-                        aria-label="Quick View"
-                        className="p-1 hover:text-black transition-colors"
-                      >
-                        <Copy size={14} />
-                      </button>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onOpenInquiry?.();
-                        }}
-                        aria-label="Add to Bag"
-                        className="p-1 hover:text-black transition-colors"
-                      >
-                        <ShoppingBag size={14} />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* ── RIGHT 3D ROUND CAROUSEL COLUMN ── */}
+        <div className="lg:w-[72%] relative w-full h-[460px] md:h-[500px] flex items-center justify-center">
+          <RoundCarousel />
         </div>
 
       </div>
