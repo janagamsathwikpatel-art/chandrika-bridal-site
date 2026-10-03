@@ -80,7 +80,7 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
     EDITORIAL_CARDS.find((c) => c.id === activeCardId) || EDITORIAL_CARDS[0];
 
   return (
-    <section id="about" className="w-full bg-[#fdfbf7] pt-10 md:pt-14 pb-1 md:pb-2 border-t border-[#e8e6e1] select-none">
+    <section id="about" className="w-full bg-[#fdfbf7] pt-8 md:pt-12 pb-0 my-0 border-t border-[#e8e6e1] select-none">
       <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ── 65% / 35% Grid Layout ── */}

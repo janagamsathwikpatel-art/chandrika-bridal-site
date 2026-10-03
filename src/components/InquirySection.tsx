@@ -32,10 +32,10 @@ const DISCOVER_IMAGES = [
 
 export default function InquirySection({ onOpenInquiry }: InquirySectionProps) {
   return (
-    <section id="why-chandrika" className="w-full bg-[#fdfbf7] pt-1 md:pt-2 select-none">
+    <section id="why-chandrika" className="w-full bg-[#fdfbf7] pt-0 my-0 select-none">
       
       {/* ── Pink Bougainvillea Flower Divider Line (Full Width Edge-to-Edge) ── */}
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 flex items-center justify-center my-2 sm:my-3">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 flex items-center justify-center my-0 py-1">
         {/* Left Hairline Rule - Covers Full Left Side */}
         <div className="flex-1 border-t border-[#d8d3c7]" />
 
