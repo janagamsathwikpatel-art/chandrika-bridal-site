@@ -25,18 +25,6 @@ export default function NewArrivalsDivider() {
           {/* Right Hairline Rule */}
           <div className="flex-1 border-t border-[#d8d3c7]" />
         </div>
-
-        {/* ── Title & Subtitles matching User Screenshot ── */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic text-[#111111] tracking-tight mb-3">
-          New Arrivals
-        </h2>
-        <p className="text-sm md:text-base font-sans text-[#444444] font-normal tracking-wide">
-          New Weave, New Vibe!
-        </p>
-        <p className="text-xs md:text-sm font-serif text-[#666666] tracking-wide mt-1 font-light">
-          Step into the experience— and find your new go to outfit.
-        </p>
-
       </div>
     </section>
   );
