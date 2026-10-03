@@ -24,7 +24,7 @@ const OTHER_COLLECTIONS: ArchCollectionCard[] = [
     id: "col-02",
     title: "Budget Silk Sarees",
     subtitle: "Affordable luxury handloom for everyday elegance",
-    image: "/images/fav-blue-woven.png",
+    image: "/images/blue-woven-pure-silk-saree.jpg",
     categoryTag: "READYMADES",
   },
   {
@@ -38,7 +38,7 @@ const OTHER_COLLECTIONS: ArchCollectionCard[] = [
     id: "col-04",
     title: "Uppada Silk Sarees",
     subtitle: "Lightweight Jamdani weaves from Andhra Pradesh",
-    image: "/images/kanjivaram-pink-pure-silk.png",
+    image: "/images/magenta-pink-woven-silk-saree.jpg",
     categoryTag: "KANCHIPURAM",
   },
 ];
@@ -66,7 +66,7 @@ export default function SareeCollection({
     <section id="sarees" className="w-full bg-[#fbfaf8] py-14 md:py-20 px-4 md:px-10 relative scroll-mt-20 border-b border-[#ece9e2]">
       <div className="max-w-[1440px] mx-auto relative">
         
-        {/* ── Section Header matching User Request ── */}
+        {/* ── Section Header ── */}
         <div className="mb-10 md:mb-14 text-center max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#111111] tracking-tight leading-tight mb-3">
             Explore Other Collections
@@ -76,16 +76,16 @@ export default function SareeCollection({
           </p>
         </div>
 
-        {/* ── 4 Arch-Window Cards Grid matching Pothys Style ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        {/* ── 4 Arch-Window Cards Grid (Aligned Shop Now Buttons & HD Images) ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 items-stretch">
           {OTHER_COLLECTIONS.map((col) => (
             <div
               key={col.id}
               onClick={() => handleCollectionClick(col.categoryTag)}
-              className="cursor-pointer group flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-1.5"
+              className="cursor-pointer group flex flex-col items-center text-center h-full transition-transform duration-300 hover:-translate-y-1.5"
             >
-              {/* Arched Top Image Portal (rounded-t-[120px] Pothys Arch Frame) */}
-              <div className="relative aspect-[3/4] w-full rounded-t-[120px] overflow-hidden bg-[#f4f2ec] border border-[#eee8de] shadow-sm group-hover:shadow-xl transition-shadow duration-500">
+              {/* Arched Top Image Portal */}
+              <div className="relative aspect-[3/4] w-full rounded-t-[120px] overflow-hidden bg-[#f4f2ec] border border-[#eee8de] shadow-sm group-hover:shadow-xl transition-shadow duration-500 shrink-0">
                 <Image
                   src={col.image}
                   alt={col.title}
@@ -95,22 +95,24 @@ export default function SareeCollection({
                 />
               </div>
 
-              {/* Card Caption Details */}
-              <div className="mt-5 flex flex-col items-center px-2">
-                <h3 className="text-base md:text-lg font-serif font-semibold text-[#111111] tracking-wide leading-snug line-clamp-1 group-hover:text-[#8B0000] transition-colors">
-                  {col.title}
-                </h3>
-                <p className="text-xs text-[#666666] font-light leading-relaxed mt-1 mb-4 line-clamp-2">
-                  {col.subtitle}
-                </p>
+              {/* Card Caption Details with Equalized Subtitle Height & Bottom Aligned Button */}
+              <div className="mt-5 flex-1 flex flex-col items-center justify-between w-full px-2">
+                <div className="flex flex-col items-center">
+                  <h3 className="text-base md:text-lg font-serif font-semibold text-[#111111] tracking-wide leading-snug line-clamp-1 group-hover:text-[#8B0000] transition-colors">
+                    {col.title}
+                  </h3>
+                  <p className="text-xs text-[#666666] font-light leading-relaxed mt-1 mb-4 h-9 flex items-center justify-center text-center line-clamp-2">
+                    {col.subtitle}
+                  </p>
+                </div>
 
-                {/* Shop Now Action Button */}
+                {/* Shop Now Action Button - Aligned in a Straight Line Across All Cards */}
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     handleCollectionClick(col.categoryTag);
                   }}
-                  className="px-6 py-2.5 bg-[#201f1f] group-hover:bg-[#8B0000] text-white text-[11px] font-semibold tracking-[0.2em] uppercase rounded-full transition-all duration-300 shadow-sm hover:shadow flex items-center gap-2"
+                  className="px-6 py-2.5 bg-[#201f1f] group-hover:bg-[#8B0000] text-white text-[11px] font-semibold tracking-[0.2em] uppercase rounded-full transition-all duration-300 shadow-sm hover:shadow flex items-center gap-2 mt-auto"
                 >
                   <span>Shop Now</span>
                   <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
