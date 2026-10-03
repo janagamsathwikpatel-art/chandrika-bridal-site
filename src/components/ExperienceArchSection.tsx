@@ -285,7 +285,7 @@ export default function ExperienceArchSection({
 
       {/* ════════════════ VIEW 2: REVEALED SHOP BY CATEGORY FULL SCREEN ════════════════ */}
       <div
-        className={`fixed inset-0 z-40 bg-[#05084a]/95 backdrop-blur-2xl flex flex-col items-center justify-start p-6 md:p-10 overflow-y-auto transition-all duration-700 ${
+        className={`fixed inset-0 z-40 bg-[#05084a]/95 backdrop-blur-2xl flex flex-col items-center justify-start px-6 pb-6 pt-28 md:pt-32 md:px-10 overflow-y-auto transition-all duration-700 ${
           isOpen
             ? "opacity-100 pointer-events-auto scale-100"
             : "opacity-0 pointer-events-none scale-95"
@@ -354,7 +354,7 @@ export default function ExperienceArchSection({
 
       {/* ════════════════ FULL-SCREEN CATEGORY SAREE GALLERY OVERLAY ════════════════ */}
       {selectedWeave && (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-md flex flex-col p-4 md:p-8 overflow-y-auto animate-fadeIn select-none">
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-md flex flex-col px-4 pb-4 pt-28 md:pt-32 md:px-8 overflow-y-auto animate-fadeIn select-none">
           {/* Top Bar with BACK TO CATEGORIES & Close X Button */}
           <div className="max-w-[1440px] w-full mx-auto flex items-center justify-between border-b border-white/20 pb-4 mb-6 pt-2">
             <button
