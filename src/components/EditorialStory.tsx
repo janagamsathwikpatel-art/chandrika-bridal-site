@@ -258,29 +258,7 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
 
         </div>
 
-        {/* ── Bottom Value Proposition Bar ── */}
-        <div className="bg-[#f7f4ed] py-4 px-6 sm:px-8 rounded-xl border border-[#e5d9c7] flex flex-wrap items-center justify-between gap-4 shadow-sm">
-          
-          <div className="flex flex-wrap items-center gap-5 sm:gap-8 text-[9px] tracking-[0.2em] font-bold text-gray-800 uppercase">
-            {VALUE_PROPOSITIONS.map((prop, idx) => {
-              const IconComp = prop.icon;
-              return (
-                <div key={idx} className="flex items-center gap-2">
-                  <IconComp size={15} className="text-[#800020]" />
-                  <span>{prop.label}</span>
-                </div>
-              );
-            })}
-          </div>
 
-          <div className="flex items-center gap-2.5 pl-4 border-l border-[#e5d9c7]">
-            <p className="text-base sm:text-lg font-serif italic text-[#800020] font-normal tracking-wide">
-              Woven with Purpose
-            </p>
-            <div className="w-6 h-px bg-[#b8860b]/60" />
-          </div>
-
-        </div>
 
       </div>
     </section>
