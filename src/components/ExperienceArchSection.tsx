@@ -285,7 +285,7 @@ export default function ExperienceArchSection({
 
       {/* ════════════════ VIEW 2: REVEALED SHOP BY CATEGORY FULL SCREEN ════════════════ */}
       <div
-        className={`fixed inset-0 z-40 bg-[#05084a]/95 backdrop-blur-2xl flex flex-col items-center justify-start px-6 pb-6 pt-28 md:pt-32 md:px-10 overflow-y-auto transition-all duration-700 ${
+        className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-start px-6 pb-6 pt-28 md:pt-32 md:px-10 overflow-y-auto transition-all duration-700 ${
           isOpen
             ? "opacity-100 pointer-events-auto scale-100"
             : "opacity-0 pointer-events-none scale-95"
@@ -296,7 +296,10 @@ export default function ExperienceArchSection({
           <div className="flex items-center justify-between border-b border-white/20 pb-5 mb-8 pt-2">
             {/* Left Side: BACK Button */}
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setSelectedWeave(null);
+                setIsOpen(false);
+              }}
               className="flex items-center gap-2.5 px-6 py-2.5 bg-white/10 hover:bg-white text-white hover:text-[#05084a] text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 rounded-full border border-white/30 shadow-lg shrink-0"
             >
               <ArrowLeft size={16} />
@@ -318,7 +321,10 @@ export default function ExperienceArchSection({
 
             {/* Right Side: CLOSE X Button */}
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setSelectedWeave(null);
+                setIsOpen(false);
+              }}
               className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center border border-white/30 transition-colors shrink-0"
               aria-label="Close"
             >
