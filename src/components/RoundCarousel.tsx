@@ -40,10 +40,10 @@ const DEFAULT_IMAGES: RoundCarouselImage[] = [
 
 function __OriginkitBase_RoundCarousel({
   images = DEFAULT_IMAGES,
-  imageWidth = 280,
-  imageHeight = 360,
-  spacing = 3,
-  speed = 4,
+  imageWidth = 320,
+  imageHeight = 420,
+  spacing = 3.2,
+  speed = 3,
   direction = "right",
   drag = true,
   sensitivity = 5,
@@ -133,7 +133,6 @@ function __OriginkitBase_RoundCarousel({
         ...style,
         width: "100%",
         height: "100%",
-        minHeight: "440px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -181,8 +180,8 @@ function __OriginkitBase_RoundCarousel({
                     ...faceBase,
                     backgroundColor: src ? "transparent" : "#222",
                     backgroundImage: src ? `url(${src})` : undefined,
-                    boxShadow: "0 12px 35px rgba(0,0,0,0.45)",
-                    border: "2px solid rgba(255, 215, 0, 0.4)",
+                    boxShadow: "0 14px 40px rgba(0,0,0,0.5)",
+                    border: "2px solid rgba(255, 215, 0, 0.45)",
                   }}
                 />
                 {/* Back Face: Solid Dark Backing Cover (prevents double image repetition) */}
@@ -207,9 +206,9 @@ function __OriginkitBase_RoundCarousel({
 
 const __originkitPresetProps = {
   images: DEFAULT_IMAGES,
-  imageWidth: 280,
-  imageHeight: 360,
-  spacing: 3,
+  imageWidth: 320,
+  imageHeight: 420,
+  spacing: 3.2,
   speed: 3,
   direction: "right",
   tilt: -2,
