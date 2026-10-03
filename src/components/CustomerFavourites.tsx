@@ -23,9 +23,6 @@ export default function CustomerFavourites({ onOpenInquiry }: CustomerFavourites
             Our Collections
           </h2>
           <div className="w-12 h-px bg-[#b8860b] my-1.5" />
-          <p className="text-xs md:text-sm text-[#555555] font-light leading-relaxed tracking-wide font-sans">
-            Handcrafted Heirloom Weaves — Drag or swipe to explore our 3D interactive saree carousel
-          </p>
         </div>
 
         {/* ── FULL LENGTH 3D ROTATING SAREE CAROUSEL (TIGHT VERTICAL BOUNDS) ── */}
