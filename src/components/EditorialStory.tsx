@@ -65,14 +65,6 @@ const EDITORIAL_CARDS = [
   },
 ];
 
-const VALUE_PROPOSITIONS = [
-  { icon: Heart, label: "SUPPORTING ARTISANS" },
-  { icon: Leaf, label: "SUSTAINABLE FASHION" },
-  { icon: Award, label: "AUTHENTIC HANDLOOM" },
-  { icon: Sparkles, label: "TIMELESS DESIGNS" },
-  { icon: Repeat, label: "A LEGACY LIVES ON" },
-];
-
 export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
   const [activeCardId, setActiveCardId] = useState(1);
 
@@ -80,14 +72,14 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
     EDITORIAL_CARDS.find((c) => c.id === activeCardId) || EDITORIAL_CARDS[0];
 
   return (
-    <section id="about" className="w-full bg-[#fdfbf7] pt-8 md:pt-12 pb-0 my-0 border-t border-[#e8e6e1] select-none">
+    <section id="about" className="w-full bg-[#fdfbf7] pt-8 md:pt-12 pb-8 my-0 border-t border-[#e8e6e1] select-none">
       <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ── 65% / 35% Grid Layout ── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* ── LEFT 65% COLUMN: Handloom Image Grid (lg:col-span-8) ── */}
-          <div className="lg:col-span-8 space-y-4">
+          <div className="lg:col-span-8 flex flex-col justify-between space-y-4">
             
             {/* Top Compact Hero Banner with High Contrast Cream Panel */}
             <div className="relative w-full h-[300px] sm:h-[340px] rounded-2xl overflow-hidden shadow-md border border-[#e8e6e1] bg-black">
@@ -139,7 +131,7 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
             </div>
 
             {/* 6 Individual Interactive Image Cards with Exact Authentic Photos */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 flex-1">
               {EDITORIAL_CARDS.map((card) => {
                 const isActive = card.id === activeCardId;
                 return (
@@ -194,13 +186,14 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
 
           </div>
 
-          {/* ── RIGHT 35% COLUMN: Full-Height Dynamic Information Panel (lg:col-span-4) ── */}
-          <div className="lg:col-span-4 h-full flex flex-col">
+          {/* ── RIGHT 35% COLUMN: Full-Length Dynamic Information Panel (lg:col-span-4) ── */}
+          <div className="lg:col-span-4 flex flex-col h-full">
             <div className="bg-[#f6eee2] border border-[#e5d9c7] p-5 sm:p-7 rounded-2xl shadow-lg relative overflow-hidden transition-all duration-500 h-full flex flex-col justify-between">
               
-              <div className="flex-1 flex flex-col">
+              {/* Top Content Block */}
+              <div>
                 {/* Dynamic Active Image Preview Container */}
-                <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden shadow-sm border border-[#e5d9c7] mb-4 bg-black group shrink-0">
+                <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden shadow-sm border border-[#e5d9c7] mb-4 bg-black group">
                   <Image
                     key={activeCard.id}
                     src={activeCard.image}
@@ -235,13 +228,14 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
                 <div className="w-10 h-px bg-[#b8860b]/40 mb-4" />
 
                 {/* Story Description */}
-                <p className="text-xs sm:text-sm text-gray-700 font-light tracking-wide leading-relaxed font-sans mb-6">
+                <p className="text-xs text-gray-700 font-light tracking-wide leading-relaxed font-sans mb-6">
                   {activeCard.story}
                 </p>
               </div>
 
-              {/* Bottom Actions & Card Selector Indicator */}
+              {/* Bottom Action & Indicator Block (Aligned to Bottom) */}
               <div className="mt-auto pt-4">
+                {/* CTA Button */}
                 <button
                   onClick={onOpenInquiry}
                   className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3 bg-[#2b2520] hover:bg-[#800020] text-white text-[10px] uppercase tracking-[0.25em] font-medium transition-all duration-300 rounded-md shadow-md group mb-4"
@@ -250,6 +244,7 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
                   <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
                 </button>
 
+                {/* Card Selector Indicator */}
                 <div className="pt-3 border-t border-[#e5d9c7]/80 flex items-center justify-between text-[9px] tracking-widest text-gray-500 uppercase font-medium">
                   <span>HERITAGE STORY {activeCard.id} OF 6</span>
                   <span className="text-[#800020] font-bold">HOVER CARD TO EXPLORE</span>
@@ -260,8 +255,6 @@ export default function EditorialStory({ onOpenInquiry }: EditorialStoryProps) {
           </div>
 
         </div>
-
-
 
       </div>
     </section>
