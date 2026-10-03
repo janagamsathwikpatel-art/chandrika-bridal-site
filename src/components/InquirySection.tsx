@@ -36,20 +36,16 @@ export default function InquirySection({ onOpenInquiry }: InquirySectionProps) {
       
       {/* ── Section Header ── */}
       <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-6 px-4 sm:px-6">
-        {/* Pink Bougainvillea Flower Divider Line matching user screenshot */}
-        <div className="w-full flex items-center justify-center mb-8">
-          <div className="flex-1 border-t border-[#e2dfd7]" />
-          <div className="px-6 relative flex items-center justify-center">
-            <Image
-              src="/images/bougainvillea-flower-transparent.png"
-              alt="Pink Bougainvillea Flower Motif"
-              width={150}
-              height={48}
-              className="object-contain filter drop-shadow-sm"
-              priority
-            />
-          </div>
-          <div className="flex-1 border-t border-[#e2dfd7]" />
+        {/* Exact 2nd Image Provided by User without any changes */}
+        <div className="w-full max-w-3xl flex items-center justify-center my-2">
+          <Image
+            src="/images/bougainvillea-divider-direct.png"
+            alt="Bougainvillea Floral Divider"
+            width={1024}
+            height={125}
+            className="w-full h-auto object-contain mix-blend-multiply"
+            priority
+          />
         </div>
 
         {/* Eyebrow: THE CHANDRIKA DISTINCTION */}
