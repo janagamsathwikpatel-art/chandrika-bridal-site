@@ -39,14 +39,14 @@ export default function InquirySection({ onOpenInquiry }: InquirySectionProps) {
         {/* Left Hairline Rule - Covers Full Left Side */}
         <div className="flex-1 border-t border-[#d8d3c7]" />
 
-        {/* Ultra HD Centered Bougainvillea Flower Motif */}
-        <div className="px-5 sm:px-8 relative flex items-center justify-center shrink-0">
+        {/* Ultra HD Centered Bougainvillea Flower Motif (Enlarged Prominent Size) */}
+        <div className="px-4 sm:px-8 relative flex items-center justify-center shrink-0">
           <Image
             src="/images/bougainvillea-flower-hd.png"
             alt="Pink Bougainvillea Flower HD Motif"
-            width={120}
-            height={74}
-            className="object-contain filter drop-shadow-sm transition-transform duration-300 hover:scale-105"
+            width={220}
+            height={135}
+            className="w-[160px] sm:w-[200px] md:w-[240px] h-auto object-contain filter drop-shadow-md transition-transform duration-300 hover:scale-105"
             priority
           />
         </div>
