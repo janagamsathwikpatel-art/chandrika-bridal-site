@@ -14,7 +14,7 @@ export default function ExperienceArchSection({
 }: ExperienceArchSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const categories = [
+  const featuredCategories = [
     {
       name: "KANCHIPURAM",
       tag: "Pure Mulberry Silk & Korvai Zari",
@@ -51,6 +51,27 @@ export default function ExperienceArchSection({
       image: "/images/fav-pink-viscose.png",
       filter: "READYMADES",
     },
+  ];
+
+  const weaveFabricItems = [
+    { name: "Pure Zari Kanchipuram", image: "/images/kanjivaram-navy-blue.png", filter: "KANCHIPURAM" },
+    { name: "Banarasi Silk", image: "/images/banarasi-gold-brocade-saree.jpg", filter: "BANARASI" },
+    { name: "Mysore Crepe", image: "/images/royal-kanjivaram-bridal-saree.jpg", filter: "FABRICS" },
+    { name: "Ikats", image: "/images/patan-patola-double-ikat-saree.jpg", filter: "DESIGNED BY CHANDRIKA" },
+    { name: "Tussar", image: "/images/tussar-silk-handloom-saree.jpg", filter: "FABRICS" },
+    { name: "Soft Silks", image: "/images/blue-woven-pure-silk-saree.jpg", filter: "FABRICS" },
+    { name: "Kanchi Half Fine", image: "/images/kanjivaram-pink-pure-silk.png", filter: "KANCHIPURAM" },
+    { name: "Organza", image: "/images/chanderi-tissue-gold-saree.jpg", filter: "FABRICS" },
+    { name: "Paithani", image: "/images/paithani-peacock-teal-saree.jpg", filter: "OCCASIONS" },
+    { name: "Silk Cotton", image: "/images/fav-teal-woven.png", filter: "FABRICS" },
+    { name: "Chiffon", image: "/images/fav-pink-viscose.png", filter: "FABRICS" },
+    { name: "Georgette", image: "/images/fav-rust-maheshwari.png", filter: "FABRICS" },
+    { name: "Cotton", image: "/images/artisan-weaver-handloom.jpg", filter: "FABRICS" },
+    { name: "Bangalore Silk", image: "/images/magenta-pink-woven-silk-saree.jpg", filter: "FABRICS" },
+    { name: "Banarasi Katan Silk", image: "/images/banarasi-gold-brocade-saree.jpg", filter: "BANARASI" },
+    { name: "Kanchipuram Tissue Silk", image: "/images/kanjivaram-gold-dual-tone.png", filter: "KANCHIPURAM" },
+    { name: "Chanderi", image: "/images/chanderi-tissue-gold-saree.jpg", filter: "FABRICS" },
+    { name: "Brocade Kanchipuram", image: "/images/kanjivaram-arunima-muppagam.png", filter: "KANCHIPURAM" },
   ];
 
   const handleCategoryClick = (catFilter: string) => {
@@ -198,20 +219,20 @@ export default function ExperienceArchSection({
         </button>
       </div>
 
-      {/* ── REVEALED STATE INSIDE OPENED DOORS: SHOP BY CATEGORY ── */}
+      {/* ── REVEALED STATE INSIDE OPENED DOORS: SHOP BY CATEGORY & WEAVE FABRIC GRID ── */}
       <div
-        className={`absolute inset-0 z-30 flex flex-col items-center justify-start pt-20 md:pt-28 pb-12 px-6 md:px-16 overflow-y-auto transition-all duration-700 ${
+        className={`absolute inset-0 z-30 flex flex-col items-center justify-start pt-16 md:pt-24 pb-12 px-4 md:px-12 overflow-y-auto transition-all duration-700 ${
           isOpen
             ? "opacity-100 pointer-events-auto translate-y-0"
             : "opacity-0 pointer-events-none translate-y-6"
         }`}
       >
-        {/* Top Header Row with Left Back Button */}
-        <div className="w-full max-w-5xl flex items-center justify-between mb-8 pb-4 border-b border-white/20">
+        {/* Top Header Row matching Screenshot 1 */}
+        <div className="w-full max-w-6xl flex items-center justify-between mb-6 pb-3 border-b border-white/20">
           {/* BACK BUTTON ON LEFT SIDE */}
           <button
             onClick={() => setIsOpen(false)}
-            className="flex items-center gap-2.5 px-4 py-2 bg-white/10 hover:bg-white/25 text-white rounded-full text-xs font-semibold tracking-widest uppercase transition-all duration-300 backdrop-blur-md border border-white/30 hover:scale-105"
+            className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/25 text-white rounded-full text-xs font-semibold tracking-widest uppercase transition-all duration-300 backdrop-blur-md border border-white/30 hover:scale-105"
             aria-label="Back to closed doors"
           >
             <ArrowLeft size={16} />
@@ -237,9 +258,9 @@ export default function ExperienceArchSection({
           </button>
         </div>
 
-        {/* Category Cards Grid inside open portal */}
-        <div className="w-full max-w-5xl grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6 my-auto">
-          {categories.map((cat) => (
+        {/* ── 6 Featured Arch Category Cards (Matching Screenshot 1 media_1791042043884.png) ── */}
+        <div className="w-full max-w-6xl grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-5 mb-8">
+          {featuredCategories.map((cat) => (
             <div
               key={cat.name}
               onClick={() => handleCategoryClick(cat.filter)}
@@ -250,12 +271,12 @@ export default function ExperienceArchSection({
                 alt={cat.name}
                 className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out opacity-80 group-hover:opacity-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4 flex flex-col justify-end">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-3.5 flex flex-col justify-end">
                 <span className="text-[9px] md:text-[10px] text-[#ffd700] font-medium tracking-widest uppercase mb-0.5">
                   {cat.tag}
                 </span>
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm md:text-lg font-bold text-white tracking-wider uppercase">
+                  <h3 className="text-xs md:text-base font-bold text-white tracking-wider uppercase">
                     {cat.name}
                   </h3>
                   <ChevronRight
@@ -266,6 +287,36 @@ export default function ExperienceArchSection({
               </div>
             </div>
           ))}
+        </div>
+
+        {/* ── 18-Tile Weave & Fabric Collection Grid (Matching Screenshot 2 media_1791042085227.png) ── */}
+        <div className="w-full max-w-6xl mt-4 pt-6 border-t border-white/15">
+          <div className="text-center mb-5">
+            <span className="text-[11px] tracking-[0.25em] text-[#ffd700] uppercase font-semibold">
+              EXPLORE BY WEAVE & FABRIC
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+            {weaveFabricItems.map((item, idx) => (
+              <div
+                key={idx}
+                onClick={() => handleCategoryClick(item.filter)}
+                className="group cursor-pointer flex flex-col items-center text-center bg-white/5 hover:bg-white/15 p-2 rounded-lg border border-white/10 transition-all duration-300 hover:scale-105"
+              >
+                <div className="w-full aspect-square relative rounded-md overflow-hidden bg-black/30 mb-2">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <span className="text-[11px] font-medium text-white/90 group-hover:text-[#ffd700] line-clamp-1">
+                  {item.name}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
