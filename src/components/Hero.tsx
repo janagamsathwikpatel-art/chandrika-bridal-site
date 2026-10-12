@@ -16,7 +16,6 @@ export default function Hero() {
       const progress = Math.min(Math.max(scrollY / (windowHeight * 1.5), 0), 1);
       setScrollProgress(progress);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -41,10 +40,17 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative h-[220vh] md:h-[280vh] w-screen bg-[#fbfaf8]">
-      <div className="sticky top-0 left-0 w-screen h-screen overflow-hidden flex flex-col justify-center items-center">
-        {/* Full-bleed background cinematic video */}
-        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+    <section id="hero" style={{ position: "relative", width: "100vw", height: "100vh", overflow: "hidden" }}>
+      <div
+        style={{
+          position: "relative",
+          width: "100vw",
+          height: "100vh",
+          overflow: "hidden",
+        }}
+      >
+        {/* ── Full-bleed Video ── */}
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden" }}>
           <video
             ref={videoRef}
             src="/videos/hero.mp4"
@@ -53,69 +59,161 @@ export default function Hero() {
             loop
             playsInline
             preload="auto"
-            className="w-full h-full object-cover pointer-events-none transition-transform duration-700 ease-out"
             style={{
-              transform: `scale(${1 + scrollProgress * 0.15})`,
-              filter: `brightness(${0.92 - scrollProgress * 0.25})`,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              pointerEvents: "none",
+              transform: `scale(${1 + scrollProgress * 0.1})`,
+              filter: `brightness(${Math.max(0.55, 0.9 - scrollProgress * 0.3)})`,
             }}
           />
-          {/* Subtle editorial warm gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/20 to-black/50 pointer-events-none" />
-        </div>
-
-        {/* Floating Controls (Sound & Playback) */}
-        <div className="absolute bottom-8 right-8 z-30 flex items-center gap-3">
-          <button
-            onClick={togglePlay}
-            aria-label={isPlaying ? "Pause Video" : "Play Video"}
-            className="p-3 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full text-white transition-all duration-300 border border-white/30"
-          >
-            {isPlaying ? <Pause size={14} /> : <Play size={14} />}
-          </button>
-          <button
-            onClick={toggleMute}
-            aria-label={isMuted ? "Unmute Video" : "Mute Video"}
-            className="p-3 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full text-white transition-all duration-300 border border-white/30"
-          >
-            {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
-          </button>
-        </div>
-
-        {/* Poeza-style Large Editorial Typography Centerpiece */}
-        <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 select-none pointer-events-none">
-          <h1
-            className="title text-white tracking-tight leading-[0.88] drop-shadow-sm transition-all duration-500"
+          {/* Dark gradient overlay — stronger at top & bottom */}
+          <div
             style={{
-              opacity: 1 - scrollProgress * 1.2,
-              transform: `translateY(-${scrollProgress * 60}px)`,
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.12) 40%, rgba(0,0,0,0.55) 100%)",
+              pointerEvents: "none",
             }}
+          />
+        </div>
+
+        {/* ── Controls (play / mute) ── */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 32,
+            right: 32,
+            zIndex: 30,
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+          }}
+        >
+          {[
+            { onClick: togglePlay, label: isPlaying ? "Pause" : "Play", icon: isPlaying ? <Pause size={14} /> : <Play size={14} /> },
+            { onClick: toggleMute, label: isMuted ? "Unmute" : "Mute", icon: isMuted ? <VolumeX size={14} /> : <Volume2 size={14} /> },
+          ].map(({ onClick, label, icon }) => (
+            <button
+              key={label}
+              onClick={onClick}
+              aria-label={label}
+              style={{
+                padding: 12,
+                background: "rgba(255,255,255,0.18)",
+                border: "1px solid rgba(255,255,255,0.35)",
+                borderRadius: "50%",
+                color: "#fff",
+                cursor: "pointer",
+                backdropFilter: "blur(8px)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "background 0.2s",
+              }}
+            >
+              {icon}
+            </button>
+          ))}
+        </div>
+
+        {/* ── Typographic Centrepiece ── */}
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: 0,
+            right: 0,
+            transform: `translateY(calc(-50% - ${scrollProgress * 50}px))`,
+            opacity: Math.max(0, 1 - scrollProgress * 1.15),
+            zIndex: 20,
+            pointerEvents: "none",
+            userSelect: "none",
+            paddingLeft: "clamp(20px, 5vw, 90px)",
+            paddingRight: "clamp(20px, 5vw, 60px)",
+          }}
+        >
+          {/* Big headline */}
+          <div
+            className="hero-title"
+            style={{ color: "#fff", textShadow: "0 2px 20px rgba(0,0,0,0.35)" }}
           >
-            <span className="block text-left text-white/95">A NEW</span>
-            <span className="block md:pl-28 pl-12 text-white/95">CHAPTER</span>
-            <span className="block md:pl-48 pl-20 text-white/90 italic font-serif lowercase tracking-normal text-[0.85em]">
+            {/* A NEW */}
+            <div style={{ display: "block", lineHeight: "inherit" }}>A NEW</div>
+
+            {/* CHAPTER */}
+            <div style={{ display: "block", lineHeight: "inherit" }}>CHAPTER</div>
+
+            {/* begins — italic serif, indented */}
+            <div
+              style={{
+                display: "block",
+                lineHeight: "inherit",
+                paddingLeft: "clamp(36px, 7vw, 160px)",
+                fontStyle: "italic",
+                fontFamily: "Georgia, 'Times New Roman', serif",
+                textTransform: "lowercase",
+                fontSize: "0.82em",
+                letterSpacing: "0.01em",
+                fontWeight: 400,
+                color: "rgba(255,255,255,0.93)",
+              }}
+            >
               begins
-            </span>
-          </h1>
+            </div>
+          </div>
 
+          {/* Subtitle */}
           <p
-            className="mt-8 text-[11px] md:text-[13px] tracking-[0.3em] text-white/80 uppercase font-light max-w-[480px] text-center"
             style={{
-              opacity: 1 - scrollProgress * 1.5,
+              marginTop: "clamp(16px, 2.5vh, 32px)",
+              fontSize: "clamp(10px, 1.1vw, 13px)",
+              letterSpacing: "0.28em",
+              textTransform: "uppercase",
+              fontWeight: 300,
+              color: "rgba(255,255,255,0.78)",
+              maxWidth: 440,
+              lineHeight: 1.6,
+              opacity: Math.max(0, 1 - scrollProgress * 1.6),
             }}
           >
-            Modern wedding dresses defined by clean lines, sculpted form, and understated luxury.
+            Ancestral handloom sarees defined by pure silk,&nbsp;24K gold zari, and timeless Indian elegance.
           </p>
         </div>
 
-        {/* Scroll Indicator Prompt */}
+        {/* ── Scroll Indicator ── */}
         <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none transition-opacity duration-300"
-          style={{ opacity: Math.max(0, 1 - scrollProgress * 3) }}
+          style={{
+            position: "absolute",
+            bottom: 32,
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 20,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 6,
+            pointerEvents: "none",
+            opacity: Math.max(0, 1 - scrollProgress * 4),
+          }}
         >
-          <span className="text-[10px] tracking-[0.25em] text-white/75 uppercase font-medium">
+          <span
+            style={{
+              fontSize: 10,
+              letterSpacing: "0.25em",
+              color: "rgba(255,255,255,0.72)",
+              textTransform: "uppercase",
+              fontWeight: 500,
+            }}
+          >
             Scroll to Discover
           </span>
-          <ChevronDown className="w-4 h-4 text-white/70 animate-bounce" />
+          <ChevronDown
+            size={16}
+            color="rgba(255,255,255,0.65)"
+            style={{ animation: "bounce 1.5s infinite" }}
+          />
         </div>
       </div>
     </section>
