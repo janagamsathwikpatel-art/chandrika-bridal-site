@@ -138,141 +138,143 @@ export default function ExperienceArchSection({
   return (
     <section
       id="experience"
-      className="relative w-screen overflow-hidden flex flex-col items-center justify-center bg-[#05084a]"
+      className="relative w-screen overflow-hidden flex flex-col items-center justify-end bg-[#05084a]"
       style={{
-        height: "100vh",
-        minHeight: "700px",
+        height: "min(88vh, 840px)",
+        minHeight: "640px",
+        paddingTop: "clamp(75px, 9vh, 95px)",
       }}
     >
-      {/* ── Deep Royal Blue Backdrop (Visible behind open doors) ── */}
-      <div
-        className="absolute inset-0 w-full h-full pointer-events-none z-0"
-        style={{
-          backgroundColor: "#05084a",
-          backgroundImage:
-            "radial-gradient(circle at 50% 55%, #080d69 0%, #05084a 55%, #030536 100%)",
-        }}
-      />
-
-      {/* ── Stone Wall Background Frame with Transparent Arch Opening ── */}
-      <div className="absolute inset-0 w-full h-full z-20 pointer-events-none">
-        <img
-          src="/images/arch-background.webp"
-          alt="Experience Wall Background"
-          className="w-full h-full object-cover object-bottom"
-        />
-      </div>
-
-      {/* ── LEFT DOOR ── */}
-      <div
-        className="absolute top-0 left-0 w-1/2 h-full z-10 transition-transform duration-1000 ease-in-out pointer-events-none"
-        style={{
-          transform: isOpen ? "translateX(-100%)" : "translateX(0%)",
-        }}
-      >
-        <img
-          src="/images/door-left.png"
-          alt="Left Door"
-          className="w-full h-full object-cover object-right"
-        />
-      </div>
-
-      {/* ── RIGHT DOOR ── */}
-      <div
-        className="absolute top-0 right-0 w-1/2 h-full z-10 transition-transform duration-1000 ease-in-out pointer-events-none"
-        style={{
-          transform: isOpen ? "translateX(100%)" : "translateX(0%)",
-        }}
-      >
-        <img
-          src="/images/door-right.png"
-          alt="Right Door"
-          className="w-full h-full object-cover object-left"
-        />
-      </div>
-
-      {/* ── CLOSED DOOR FRONT STATE (Headline + Explore Button) ── */}
-      <div
-        className={`relative z-30 flex flex-col items-center justify-center text-center px-4 select-none transition-all duration-700 ${
-          isOpen
-            ? "opacity-0 pointer-events-none scale-95"
-            : "opacity-100 pointer-events-auto scale-100"
-        }`}
-        style={{
-          marginTop: "clamp(20px, 4vh, 60px)",
-        }}
-      >
-        <span
+      <div className="relative w-full h-full overflow-hidden flex flex-col items-center justify-center">
+        {/* ── Deep Royal Blue Backdrop (Visible behind open doors) ── */}
+        <div
+          className="absolute inset-0 w-full h-full pointer-events-none z-0"
           style={{
-            fontSize: "clamp(12px, 1.3vw, 16px)",
-            letterSpacing: "0.38em",
-            fontWeight: 500,
-            color: "#ffffff",
-            textTransform: "uppercase",
-            display: "block",
-            marginBottom: "16px",
-            textShadow: "0 2px 10px rgba(0,0,0,0.8)",
+            backgroundColor: "#05084a",
+            backgroundImage:
+              "radial-gradient(circle at 50% 55%, #080d69 0%, #05084a 55%, #030536 100%)",
+          }}
+        />
+
+        {/* ── Stone Wall Background Frame with Transparent Arch Opening ── */}
+        <div className="absolute inset-0 w-full h-full z-20 pointer-events-none">
+          <img
+            src="/images/arch-background.webp"
+            alt="Experience Wall Background"
+            className="w-full h-full object-cover object-bottom"
+          />
+        </div>
+
+        {/* ── LEFT DOOR ── */}
+        <div
+          className="absolute top-0 left-0 w-1/2 h-full z-10 transition-transform duration-1000 ease-in-out pointer-events-none"
+          style={{
+            transform: isOpen ? "translateX(-100%)" : "translateX(0%)",
           }}
         >
-          EXPERIENCE
-        </span>
+          <img
+            src="/images/door-left.png"
+            alt="Left Door"
+            className="w-full h-full object-cover object-right"
+          />
+        </div>
 
-        <h2
+        {/* ── RIGHT DOOR ── */}
+        <div
+          className="absolute top-0 right-0 w-1/2 h-full z-10 transition-transform duration-1000 ease-in-out pointer-events-none"
           style={{
-            fontFamily: "'Anton', 'Impact', sans-serif",
-            fontSize: "clamp(42px, 6.5vw, 86px)",
-            letterSpacing: "0.02em",
-            lineHeight: "0.95",
-            color: "#ffffff",
-            textTransform: "uppercase",
-            margin: 0,
-            padding: 0,
-            marginBottom: "38px",
-            textShadow: "0 4px 24px rgba(0,0,0,0.85)",
+            transform: isOpen ? "translateX(100%)" : "translateX(0%)",
           }}
         >
-          SAREE COLLECTION
-        </h2>
+          <img
+            src="/images/door-right.png"
+            alt="Right Door"
+            className="w-full h-full object-cover object-left"
+          />
+        </div>
 
-        <button
-          onClick={() => setIsOpen(true)}
+        {/* ── CLOSED DOOR FRONT STATE (Headline + Explore Button) ── */}
+        <div
+          className={`relative z-30 flex flex-col items-center justify-center text-center px-4 select-none transition-all duration-700 ${
+            isOpen
+              ? "opacity-0 pointer-events-none scale-95"
+              : "opacity-100 pointer-events-auto scale-100"
+          }`}
           style={{
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "16px 42px",
-            border: "1.5px solid #ffffff",
-            backgroundColor: "transparent",
-            color: "#ffffff",
-            fontSize: "clamp(11px, 1.1vw, 13px)",
-            letterSpacing: "0.26em",
-            textTransform: "uppercase",
-            fontWeight: 500,
-            cursor: "pointer",
-            transition: "all 0.35s ease",
-            textShadow: "0 1px 6px rgba(0,0,0,0.7)",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = "#ffffff";
-            e.currentTarget.style.color = "#05084a";
-            e.currentTarget.style.textShadow = "none";
-            e.currentTarget.style.boxShadow =
-              "0 8px 30px rgba(255,255,255,0.4)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = "transparent";
-            e.currentTarget.style.color = "#ffffff";
-            e.currentTarget.style.textShadow = "0 1px 6px rgba(0,0,0,0.7)";
-            e.currentTarget.style.boxShadow = "none";
+            marginTop: "clamp(10px, 2vh, 32px)",
           }}
         >
-          EXPLORE THE COLLECTION
-        </button>
-      </div>
+          <span
+            style={{
+              fontSize: "clamp(11px, 1.2vw, 15px)",
+              letterSpacing: "0.38em",
+              fontWeight: 500,
+              color: "#ffffff",
+              textTransform: "uppercase",
+              display: "block",
+              marginBottom: "12px",
+              textShadow: "0 2px 10px rgba(0,0,0,0.8)",
+            }}
+          >
+            EXPERIENCE
+          </span>
 
-      {/* ── REVEALED STATE INSIDE OPENED DOORS: SHOP BY CATEGORY (Matching 2nd Screenshot) ── */}
-      <div
-        className={`absolute inset-0 z-30 flex flex-col items-center justify-start pt-16 md:pt-20 pb-12 px-4 md:px-12 overflow-y-auto transition-all duration-700 ${
+          <h2
+            style={{
+              fontFamily: "'Anton', 'Impact', sans-serif",
+              fontSize: "clamp(38px, 5.5vw, 76px)",
+              letterSpacing: "0.02em",
+              lineHeight: "0.95",
+              color: "#ffffff",
+              textTransform: "uppercase",
+              margin: 0,
+              padding: 0,
+              marginBottom: "28px",
+              textShadow: "0 4px 24px rgba(0,0,0,0.85)",
+            }}
+          >
+            SAREE COLLECTION
+          </h2>
+
+          <button
+            onClick={() => setIsOpen(true)}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "14px 38px",
+              border: "1.5px solid #ffffff",
+              backgroundColor: "transparent",
+              color: "#ffffff",
+              fontSize: "clamp(10px, 1vw, 12px)",
+              letterSpacing: "0.26em",
+              textTransform: "uppercase",
+              fontWeight: 500,
+              cursor: "pointer",
+              transition: "all 0.35s ease",
+              textShadow: "0 1px 6px rgba(0,0,0,0.7)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#ffffff";
+              e.currentTarget.style.color = "#05084a";
+              e.currentTarget.style.textShadow = "none";
+              e.currentTarget.style.boxShadow =
+                "0 8px 30px rgba(255,255,255,0.4)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.color = "#ffffff";
+              e.currentTarget.style.textShadow = "0 1px 6px rgba(0,0,0,0.7)";
+              e.currentTarget.style.boxShadow = "none";
+            }}
+          >
+            EXPLORE THE COLLECTION
+          </button>
+        </div>
+
+        {/* ── REVEALED STATE INSIDE OPENED DOORS: SHOP BY CATEGORY (Matching 2nd Screenshot) ── */}
+        <div
+          className={`absolute inset-0 z-30 flex flex-col items-center justify-start pt-6 md:pt-8 pb-10 px-4 md:px-12 overflow-y-auto transition-all duration-700 ${
           isOpen
             ? "opacity-100 pointer-events-auto translate-y-0"
             : "opacity-0 pointer-events-none translate-y-6"
@@ -324,6 +326,7 @@ export default function ExperienceArchSection({
             </div>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );
