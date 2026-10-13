@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeft, Sparkles, ChevronRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 interface ExperienceArchSectionProps {
   onOpenInquiry?: () => void;
@@ -18,109 +18,109 @@ export default function ExperienceArchSection({
     {
       name: "Pure Zari Kanchipuram",
       tag: "Kanchipuram Korvai",
-      image: "/images/kanjivaram-pink-pure-silk.png",
+      image: "/images/weave-1.png",
       filter: "KANCHIPURAM",
     },
     {
       name: "Banarasi Silk",
       tag: "Real Zari Kadhwa",
-      image: "/images/banarasi-gold-brocade-saree.jpg",
+      image: "/images/weave-2.png",
       filter: "BANARASI",
     },
     {
       name: "Mysore Crepe",
       tag: "Pure Mulberry Crepe",
-      image: "/images/magenta-pink-woven-silk-saree.jpg",
+      image: "/images/weave-3.png",
       filter: "OCCASIONS",
     },
     {
       name: "Ikats",
       tag: "Double Ikat Weave",
-      image: "/images/patan-patola-double-ikat-saree.jpg",
+      image: "/images/weave-4.png",
       filter: "DESIGNED BY ROSEPETAL",
     },
     {
       name: "Tussar",
       tag: "Wild Handloom Silk",
-      image: "/images/tussar-silk-handloom-saree.jpg",
+      image: "/images/weave-5.png",
       filter: "FABRICS",
     },
     {
       name: "Soft Silks",
       tag: "Lustrous Featherweight",
-      image: "/images/fav-pink-viscose.png",
+      image: "/images/weave-6.png",
       filter: "NEW ARRIVALS",
     },
     {
       name: "Kanchi Half Fine",
       tag: "Ancestral Zari Weave",
-      image: "/images/kanjivaram-gold-dual-tone.png",
+      image: "/images/weave-7.png",
       filter: "KANCHIPURAM",
     },
     {
       name: "Organza",
       tag: "Embroidered Sheer",
-      image: "/images/chanderi-tissue-gold-saree.jpg",
+      image: "/images/weave-8.png",
       filter: "FABRICS",
     },
     {
       name: "Paithani",
       tag: "Peacock Tapestry",
-      image: "/images/paithani-peacock-teal-saree.jpg",
+      image: "/images/weave-9.png",
       filter: "OCCASIONS",
     },
     {
       name: "Silk Cotton",
       tag: "Handloom Blend",
-      image: "/images/fav-teal-woven.png",
+      image: "/images/weave-10.png",
       filter: "READYMADES",
     },
     {
       name: "Chiffon",
       tag: "Printed Luxury",
-      image: "/images/kanjivaram-arunima-muppagam.png",
+      image: "/images/weave-11.png",
       filter: "DESIGNED BY ROSEPETAL",
     },
     {
       name: "Georgette",
       tag: "Textured Drape",
-      image: "/images/fav-rust-maheshwari.png",
+      image: "/images/weave-12.png",
       filter: "FABRICS",
     },
     {
       name: "Cotton",
       tag: "Authentic Handloom",
-      image: "/images/artisan-weaver-handloom.jpg",
+      image: "/images/weave-13.png",
       filter: "SHOP ALL",
     },
     {
       name: "Bangalore Silk",
       tag: "Pure Silk Weave",
-      image: "/images/blue-woven-pure-silk-saree.jpg",
+      image: "/images/weave-14.png",
       filter: "FABRICS",
     },
     {
       name: "Banarasi Katan Silk",
       tag: "Royal Katan Brocade",
-      image: "/images/royal-kanjivaram-bridal-saree.jpg",
+      image: "/images/weave-15.png",
       filter: "BANARASI",
     },
     {
       name: "Kanchipuram Tissue Silk",
       tag: "24K Gold Tissue",
-      image: "/images/chanderi-tissue-gold-saree.jpg",
+      image: "/images/weave-16.png",
       filter: "KANCHIPURAM",
     },
     {
       name: "Chanderi",
       tag: "Metallic Sheer",
-      image: "/images/fav-blue-woven.png",
+      image: "/images/weave-17.png",
       filter: "FABRICS",
     },
     {
       name: "Brocade Kanchipuram",
       tag: "Heavy Bridal Zari",
-      image: "/images/kanjivaram-navy-blue.png",
+      image: "/images/weave-18.png",
       filter: "KANCHIPURAM",
     },
   ];
@@ -299,17 +299,11 @@ export default function ExperienceArchSection({
             </h2>
           </div>
 
-          {/* Inquiry / Consultation Button on Right */}
-          <button
-            onClick={onOpenInquiry}
-            className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 bg-[#8B0000] hover:bg-[#600000] text-white text-[11px] font-semibold tracking-widest uppercase rounded-full transition-all shadow-md"
-          >
-            <Sparkles size={13} />
-            <span>BOOK FIT</span>
-          </button>
+          {/* Spacer on right matching BACK button width to keep center title balanced */}
+          <div className="w-[72px] hidden sm:block pointer-events-none" />
         </div>
 
-        {/* 18-Category Grid matching 2nd screenshot (media_1791043229233.png) */}
+        {/* 18-Category Swatch Grid (Clean authentic fabric swatches) */}
         <div className="w-full max-w-6xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 md:gap-4 my-auto">
           {categories.map((cat) => (
             <div
@@ -317,7 +311,7 @@ export default function ExperienceArchSection({
               onClick={() => handleCategoryClick(cat.filter)}
               className="group cursor-pointer flex flex-col items-start transition-all duration-300 hover:scale-[1.03]"
             >
-              <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-black/40 border border-white/20 shadow-md group-hover:border-[#ffd700] transition-all">
+              <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-white/5 border border-white/20 shadow-md group-hover:border-[#ffd700] transition-all">
                 <img
                   src={cat.image}
                   alt={cat.name}
