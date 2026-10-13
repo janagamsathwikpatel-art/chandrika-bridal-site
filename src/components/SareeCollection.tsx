@@ -88,13 +88,10 @@ export default function SareeCollection({
         </div>
 
         {/* ── Section Header ── */}
-        <div className="mb-10 md:mb-14 text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#111111] tracking-tight leading-tight mb-3">
+        <div className="mb-8 md:mb-12 text-center max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#111111] tracking-tight leading-tight">
             Explore Other Collections
           </h2>
-          <p className="text-sm md:text-base font-serif text-[#555555] font-light leading-relaxed">
-            Celebrate tradition with our exquisite range of Sarees.
-          </p>
         </div>
 
         {/* ── 4 Arch-Window Cards Grid (Aligned Shop Now Buttons & HD Images) ── */}
