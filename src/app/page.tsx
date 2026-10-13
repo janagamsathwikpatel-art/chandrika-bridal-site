@@ -43,7 +43,7 @@ export default function Home() {
         onSelectCategory={(cat) => setActiveCategory(cat)}
       />
 
-      {/* Women's Designer Dress Collection (Festive Arch Cards) */}
+      {/* Festive Saree Collection (Jharokha Arch Cards matching user reference) */}
       <WomensDressCollection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Why Choose Chandrika & Bespoke Appointment CTA */}

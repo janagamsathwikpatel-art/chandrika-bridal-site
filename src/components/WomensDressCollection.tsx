@@ -19,31 +19,31 @@ interface DressCard {
 
 const DRESS_CARDS: DressCard[] = [
   {
-    id: "dress-01",
-    title: "Vasundhara Anarkali Collection",
+    id: "saree-01",
+    title: "Vasundhara Pattu Collection",
     saleBadge: "DIWALI SALE",
     discount: "10% OFF",
     discountPrefix: "FLAT",
-    image: "/images/dress-anarkali-burgundy.jpg",
-    tagline: "Royal Crimson Zardozi Couture Gown",
+    image: "/images/festive-saree-yellow-bridal.jpg",
+    tagline: "Bridal Kanchipuram Pattu Saree",
   },
   {
-    id: "dress-02",
+    id: "saree-02",
     title: "Pillars Of Rosepetal Collection",
     saleBadge: "DIWALI SALE",
     discount: "20% OFF",
     discountPrefix: "UPTO",
-    image: "/images/dress-lehenga-blush.jpg",
-    tagline: "Haute Blush Evening Gown Dress",
+    image: "/images/festive-saree-trio-celebration.jpg",
+    tagline: "Festive Pure Silk Handloom Sarees",
   },
   {
-    id: "dress-03",
+    id: "saree-03",
     title: "Daughters Of Rosepetal",
     saleBadge: "DIWALI SALE",
-    discount: "15% OFF",
+    discount: "10% OFF",
     discountPrefix: "FLAT",
-    image: "/images/dress-cape-emerald.jpg",
-    tagline: "Imperial Banarasi Cape Dress",
+    image: "/images/festive-saree-duo-purple.jpg",
+    tagline: "Royal Plum Kanchipuram Silk Saree",
   },
 ];
 
@@ -57,14 +57,14 @@ export default function WomensDressCollection({
         {/* ── Section Header ── */}
         <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <span className="text-[10px] md:text-[11px] tracking-[0.38em] uppercase text-[#800020] font-semibold block mb-2">
-            Festive Couture Edit
+            Festive Pattu Saree Edit
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#111111] tracking-tight leading-tight">
-            Women&apos;s Designer Dresses
+            Festive Saree Collection
           </h2>
           <div className="w-12 h-px bg-[#b8860b] mx-auto mt-3.5 mb-2.5" />
           <p className="text-xs md:text-sm font-light text-[#666666] tracking-wide max-w-md mx-auto">
-            Celebratory silhouettes handcrafted in pure silks, organzas, and heirloom embellishments.
+            Celebratory handlooms handcrafted in pure Kanchipuram silk, Banarasi brocades, and heirloom gold zari.
           </p>
         </div>
 
