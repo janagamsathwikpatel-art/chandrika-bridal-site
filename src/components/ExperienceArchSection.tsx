@@ -138,64 +138,62 @@ export default function ExperienceArchSection({
   return (
     <section
       id="experience"
-      className="relative w-screen overflow-hidden flex flex-col items-center justify-end bg-[#05084a]"
+      className="relative w-screen overflow-hidden flex flex-col items-center justify-center bg-[#05084a]"
       style={{
-        height: "min(88vh, 840px)",
-        minHeight: "640px",
-        paddingTop: "clamp(75px, 9vh, 95px)",
+        height: "100vh",
+        minHeight: "700px",
       }}
     >
-      <div className="relative w-full h-full overflow-hidden flex flex-col items-center justify-center">
-        {/* ── Deep Royal Blue Backdrop (Visible behind open doors) ── */}
-        <div
-          className="absolute inset-0 w-full h-full pointer-events-none z-0"
-          style={{
-            backgroundColor: "#05084a",
-            backgroundImage:
-              "radial-gradient(circle at 50% 55%, #080d69 0%, #05084a 55%, #030536 100%)",
-          }}
+      {/* ── Deep Royal Blue Backdrop (Visible behind open doors) ── */}
+      <div
+        className="absolute inset-0 w-full h-full pointer-events-none z-0"
+        style={{
+          backgroundColor: "#05084a",
+          backgroundImage:
+            "radial-gradient(circle at 50% 55%, #080d69 0%, #05084a 55%, #030536 100%)",
+        }}
+      />
+
+      {/* ── Stone Wall Background Frame with Transparent Arch Opening ── */}
+      <div className="absolute inset-0 w-full h-full z-20 pointer-events-none">
+        <img
+          src="/images/arch-background.webp"
+          alt="Experience Wall Background"
+          className="w-full h-full object-cover object-center"
         />
+      </div>
 
-        {/* ── Stone Wall Background Frame with Transparent Arch Opening ── */}
-        <div className="absolute inset-0 w-full h-full z-20 pointer-events-none">
-          <img
-            src="/images/arch-background.webp"
-            alt="Experience Wall Background"
-            className="w-full h-full object-cover object-bottom"
-          />
-        </div>
+      {/* ── LEFT DOOR ── */}
+      <div
+        className="absolute top-0 left-0 w-1/2 h-full z-10 transition-transform duration-1000 ease-in-out pointer-events-none"
+        style={{
+          transform: isOpen ? "translateX(-100%)" : "translateX(0%)",
+        }}
+      >
+        <img
+          src="/images/door-left.png"
+          alt="Left Door"
+          className="w-full h-full object-cover object-right"
+        />
+      </div>
 
-        {/* ── LEFT DOOR ── */}
-        <div
-          className="absolute top-0 left-0 w-1/2 h-full z-10 transition-transform duration-1000 ease-in-out pointer-events-none"
-          style={{
-            transform: isOpen ? "translateX(-100%)" : "translateX(0%)",
-          }}
-        >
-          <img
-            src="/images/door-left.png"
-            alt="Left Door"
-            className="w-full h-full object-cover object-right"
-          />
-        </div>
+      {/* ── RIGHT DOOR ── */}
+      <div
+        className="absolute top-0 right-0 w-1/2 h-full z-10 transition-transform duration-1000 ease-in-out pointer-events-none"
+        style={{
+          transform: isOpen ? "translateX(100%)" : "translateX(0%)",
+        }}
+      >
+        <img
+          src="/images/door-right.png"
+          alt="Right Door"
+          className="w-full h-full object-cover object-left"
+        />
+      </div>
 
-        {/* ── RIGHT DOOR ── */}
-        <div
-          className="absolute top-0 right-0 w-1/2 h-full z-10 transition-transform duration-1000 ease-in-out pointer-events-none"
-          style={{
-            transform: isOpen ? "translateX(100%)" : "translateX(0%)",
-          }}
-        >
-          <img
-            src="/images/door-right.png"
-            alt="Right Door"
-            className="w-full h-full object-cover object-left"
-          />
-        </div>
-
-        {/* ── CLOSED DOOR FRONT STATE (Headline + Explore Button) ── */}
-        <div
-          className={`relative z-30 flex flex-col items-center justify-center text-center px-4 select-none transition-all duration-700 ${
+      {/* ── CLOSED DOOR FRONT STATE (Headline + Explore Button) ── */}
+      <div
+        className={`relative z-30 flex flex-col items-center justify-center text-center px-4 select-none transition-all duration-700 ${
             isOpen
               ? "opacity-0 pointer-events-none scale-95"
               : "opacity-100 pointer-events-auto scale-100"
@@ -274,7 +272,7 @@ export default function ExperienceArchSection({
 
         {/* ── REVEALED STATE INSIDE OPENED DOORS: SHOP BY CATEGORY (Matching 2nd Screenshot) ── */}
         <div
-          className={`absolute inset-0 z-30 flex flex-col items-center justify-start pt-6 md:pt-8 pb-10 px-4 md:px-12 overflow-y-auto transition-all duration-700 ${
+          className={`absolute inset-0 z-30 flex flex-col items-center justify-start pt-20 md:pt-24 pb-12 px-4 md:px-12 overflow-y-auto transition-all duration-700 ${
           isOpen
             ? "opacity-100 pointer-events-auto translate-y-0"
             : "opacity-0 pointer-events-none translate-y-6"
@@ -326,7 +324,6 @@ export default function ExperienceArchSection({
             </div>
           ))}
         </div>
-      </div>
       </div>
     </section>
   );
