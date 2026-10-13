@@ -161,31 +161,54 @@ export default function ExperienceArchSection({
         }}
       />
 
-      {/* ── CLOSED DOOR FRONT STATE (100% Exact Matching User Reference Image) ── */}
+      {/* ── DOUBLE SLIDING VELVET DOORS MECHANISM (100% Exact Reference Design) ── */}
+      
+      {/* ── LEFT DOOR PANEL (Slides Left) ── */}
       <div
-        className={`absolute inset-0 w-full h-full z-20 transition-all duration-700 ease-in-out select-none ${
-          isOpen
-            ? "opacity-0 pointer-events-none scale-105"
-            : "opacity-100 pointer-events-auto scale-100"
+        className="absolute top-0 left-0 w-1/2 h-full z-20 overflow-hidden transition-transform duration-1000 ease-in-out pointer-events-none select-none"
+        style={{
+          transform: isOpen ? "translateX(-100%)" : "translateX(0%)",
+        }}
+      >
+        <div className="absolute top-0 left-0 w-[200%] h-full">
+          <img
+            src="/images/arch-experience-rose-burgundy.jpg"
+            alt="Left Velvet Door"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+      </div>
+
+      {/* ── RIGHT DOOR PANEL (Slides Right) ── */}
+      <div
+        className="absolute top-0 right-0 w-1/2 h-full z-20 overflow-hidden transition-transform duration-1000 ease-in-out pointer-events-none select-none"
+        style={{
+          transform: isOpen ? "translateX(100%)" : "translateX(0%)",
+        }}
+      >
+        <div className="absolute top-0 right-0 w-[200%] h-full">
+          <img
+            src="/images/arch-experience-rose-burgundy.jpg"
+            alt="Right Velvet Door"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+      </div>
+
+      {/* ── INTERACTIVE EXPLORE BUTTON OVERLAY (Clean Single Border Box, No Double Box) ── */}
+      <div
+        className={`absolute inset-0 z-25 flex flex-col items-center justify-center pointer-events-none transition-opacity duration-500 ${
+          isOpen ? "opacity-0 pointer-events-none" : "opacity-100 pointer-events-auto"
         }`}
       >
-        {/* Exact Reference Artwork (Rose Burgundy Velvet Walls, Gold Mandalas, Weathered Arch, Velvet Doors, Saree Mannequins) */}
-        <img
-          src="/images/arch-experience-rose-burgundy.jpg"
-          alt="Rosepetal Saree Collection Architectural Arch"
-          className="w-full h-full object-cover object-center pointer-events-none"
-        />
-
-        {/* Interactive Click Area & Explore Button Overlay */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-          <button
-            onClick={() => setIsOpen(true)}
-            className="pointer-events-auto mt-[115px] sm:mt-[130px] md:mt-[145px] px-8 sm:px-11 py-3 sm:py-3.5 border border-white/70 hover:border-[#ffd700] hover:bg-[#ffd700] text-transparent hover:text-[#2b0814] text-[11px] sm:text-[12px] tracking-[0.26em] uppercase font-medium transition-all duration-300 shadow-sm hover:shadow-2xl cursor-pointer"
-            aria-label="Explore the collection"
-          >
-            <span className="opacity-0 hover:opacity-100 transition-opacity font-semibold">EXPLORE THE COLLECTION</span>
-          </button>
-        </div>
+        {/* Invisible button hit area directly aligned over the single artwork box (NO DUPLICATE BORDER) */}
+        <button
+          onClick={() => setIsOpen(true)}
+          className="pointer-events-auto mt-[115px] sm:mt-[130px] md:mt-[145px] w-[260px] sm:w-[290px] md:w-[320px] h-[44px] sm:h-[48px] border-0 border-transparent bg-transparent hover:bg-[#ffd700]/20 hover:shadow-[0_0_25px_rgba(255,215,0,0.45)] transition-all duration-300 cursor-pointer rounded-none"
+          aria-label="Explore the collection"
+        >
+          <span className="sr-only">Explore the collection</span>
+        </button>
       </div>
 
         {/* ── REVEALED STATE INSIDE OPENED DOORS: SHOP BY CATEGORY (Matching 2nd Screenshot) ── */}
