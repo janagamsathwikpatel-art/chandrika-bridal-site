@@ -146,7 +146,7 @@ export default function Footer() {
 
           {/* Copyright Statement */}
           <p className="text-center md:text-right font-light">
-            CHANDRIKA HAUTE BRIDAL SAREES. all rights reserved © {new Date().getFullYear()}
+            ROSEPETAL DESIGNER BOUTIQUE. all rights reserved © {new Date().getFullYear()}
           </p>
 
         </div>

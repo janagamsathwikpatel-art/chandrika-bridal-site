@@ -207,10 +207,10 @@ export default function ContactSection({ onOpenInquiry }: ContactSectionProps) {
           {/* Brand Logo */}
           <div className="text-center md:text-left">
             <h3 className="text-base font-serif font-medium tracking-[0.25em] text-[#2b2520] uppercase">
-              CHANDRIKA
+              ROSEPETAL
             </h3>
             <p className="text-[7.5px] tracking-[0.35em] text-[#800020] uppercase font-bold">
-              HAUTE BRIDAL SAREES
+              DESIGNER BOUTIQUE
             </p>
           </div>
 
