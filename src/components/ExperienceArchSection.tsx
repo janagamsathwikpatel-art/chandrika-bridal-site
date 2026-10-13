@@ -138,19 +138,19 @@ export default function ExperienceArchSection({
   return (
     <section
       id="experience"
-      className="relative w-screen overflow-hidden flex flex-col items-center justify-center bg-[#05084a]"
+      className="relative w-screen overflow-hidden flex flex-col items-center justify-center bg-[#2b0814]"
       style={{
         height: "100vh",
         minHeight: "700px",
       }}
     >
-      {/* ── Deep Royal Blue Backdrop (Visible behind open doors) ── */}
+      {/* ── Royal Rose Burgundy Velvet Backdrop (Visible behind open doors) ── */}
       <div
         className="absolute inset-0 w-full h-full pointer-events-none z-0"
         style={{
-          backgroundColor: "#05084a",
+          backgroundColor: "#2b0814",
           backgroundImage:
-            "radial-gradient(circle at 50% 55%, #080d69 0%, #05084a 55%, #030536 100%)",
+            "radial-gradient(circle at 50% 55%, #580e22 0%, #2b0814 60%, #150308 100%)",
         }}
       />
 
@@ -174,6 +174,9 @@ export default function ExperienceArchSection({
           src="/images/door-left.png"
           alt="Left Door"
           className="w-full h-full object-cover object-right"
+          style={{
+            filter: "hue-rotate(145deg) saturate(1.4) brightness(0.82) contrast(1.15)",
+          }}
         />
       </div>
 
@@ -188,6 +191,9 @@ export default function ExperienceArchSection({
           src="/images/door-right.png"
           alt="Right Door"
           className="w-full h-full object-cover object-left"
+          style={{
+            filter: "hue-rotate(145deg) saturate(1.4) brightness(0.82) contrast(1.15)",
+          }}
         />
       </div>
 
@@ -253,15 +259,17 @@ export default function ExperienceArchSection({
               textShadow: "0 1px 6px rgba(0,0,0,0.7)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#ffffff";
-              e.currentTarget.style.color = "#05084a";
+              e.currentTarget.style.backgroundColor = "#ffd700";
+              e.currentTarget.style.color = "#2b0814";
+              e.currentTarget.style.borderColor = "#ffd700";
               e.currentTarget.style.textShadow = "none";
               e.currentTarget.style.boxShadow =
-                "0 8px 30px rgba(255,255,255,0.4)";
+                "0 8px 30px rgba(255, 215, 0, 0.45)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = "transparent";
               e.currentTarget.style.color = "#ffffff";
+              e.currentTarget.style.borderColor = "#ffffff";
               e.currentTarget.style.textShadow = "0 1px 6px rgba(0,0,0,0.7)";
               e.currentTarget.style.boxShadow = "none";
             }}
