@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import ExperienceArchSection from "@/components/ExperienceArchSection";
 import CustomerFavourites from "@/components/CustomerFavourites";
 import SareeCollection from "@/components/SareeCollection";
+import WomensDressCollection from "@/components/WomensDressCollection";
 import InquirySection from "@/components/InquirySection";
 import InquiryModal from "@/components/InquiryModal";
 import Footer from "@/components/Footer";
@@ -41,6 +42,9 @@ export default function Home() {
         selectedCategory={activeCategory}
         onSelectCategory={(cat) => setActiveCategory(cat)}
       />
+
+      {/* Women's Designer Dress Collection (Festive Arch Cards) */}
+      <WomensDressCollection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Why Choose Chandrika & Bespoke Appointment CTA */}
       <InquirySection onOpenInquiry={() => setInquiryModalOpen(true)} />
