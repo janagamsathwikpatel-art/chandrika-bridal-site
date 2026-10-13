@@ -6,7 +6,7 @@ import Hero from "@/components/Hero";
 import ExperienceArchSection from "@/components/ExperienceArchSection";
 import CustomerFavourites from "@/components/CustomerFavourites";
 import SareeCollection from "@/components/SareeCollection";
-import EditorialStory from "@/components/EditorialStory";
+import WomensDressCollection from "@/components/WomensDressCollection";
 import InquirySection from "@/components/InquirySection";
 import InquiryModal from "@/components/InquiryModal";
 import Footer from "@/components/Footer";
@@ -43,8 +43,8 @@ export default function Home() {
         onSelectCategory={(cat) => setActiveCategory(cat)}
       />
 
-      {/* Editorial Story & Brand Philosophy */}
-      <EditorialStory />
+      {/* Festive Saree Collection (Jharokha Arch Cards matching user reference) */}
+      <WomensDressCollection onOpenInquiry={() => setInquiryModalOpen(true)} />
 
       {/* Why Choose Chandrika & Bespoke Appointment CTA */}
       <InquirySection onOpenInquiry={() => setInquiryModalOpen(true)} />

@@ -313,7 +313,7 @@ export default function Header({
             position: "fixed",
             inset: 0,
             zIndex: 40,
-            background: "#05084a",
+            background: "#1c040d",
             color: "#ffffff",
             display: "flex",
             flexDirection: "column",

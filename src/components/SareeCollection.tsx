@@ -66,14 +66,32 @@ export default function SareeCollection({
     <section id="sarees" className="w-full bg-[#fbfaf8] pt-2 md:pt-4 pb-14 md:pb-20 px-4 md:px-10 relative scroll-mt-20 border-b border-[#ece9e2]">
       <div className="max-w-[1440px] mx-auto relative">
         
+        {/* ── Pink Bougainvillea Floral Divider (Ultra-HD) ── */}
+        <div className="w-full flex items-center justify-center my-6 md:my-8 select-none">
+          {/* Left Hairline Rule */}
+          <div className="flex-1 h-px bg-[#d8d3c7]" />
+
+          {/* Centered Ultra-HD Bougainvillea Flower Motif */}
+          <div className="px-6 sm:px-8 relative flex items-center justify-center shrink-0">
+            <Image
+              src="/images/bougainvillea-flower-hd.png"
+              alt="Pink Bougainvillea Floral Motif"
+              width={180}
+              height={110}
+              className="w-[120px] sm:w-[150px] md:w-[170px] h-auto object-contain filter drop-shadow-sm transition-transform duration-300 hover:scale-105"
+              priority
+            />
+          </div>
+
+          {/* Right Hairline Rule */}
+          <div className="flex-1 h-px bg-[#d8d3c7]" />
+        </div>
+
         {/* ── Section Header ── */}
-        <div className="mb-10 md:mb-14 text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#111111] tracking-tight leading-tight mb-3">
+        <div className="mb-8 md:mb-12 text-center max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#111111] tracking-tight leading-tight">
             Explore Other Collections
           </h2>
-          <p className="text-sm md:text-base font-serif text-[#555555] font-light leading-relaxed">
-            Celebrate tradition with our exquisite range of Sarees.
-          </p>
         </div>
 
         {/* ── 4 Arch-Window Cards Grid (Aligned Shop Now Buttons & HD Images) ── */}
