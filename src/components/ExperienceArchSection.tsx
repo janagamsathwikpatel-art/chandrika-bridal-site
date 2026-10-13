@@ -154,12 +154,22 @@ export default function ExperienceArchSection({
         }}
       />
 
-      {/* ── Stone Wall Background Frame with Transparent Arch Opening ── */}
+      {/* ── Stone Wall Background Frame with Transparent Arch Opening (Royal Rose Burgundy Velvet) ── */}
       <div className="absolute inset-0 w-full h-full z-20 pointer-events-none">
         <img
           src="/images/arch-background.webp"
           alt="Experience Wall Background"
           className="w-full h-full object-cover object-center"
+          style={{
+            filter: "sepia(0.8) hue-rotate(295deg) saturate(2.2) brightness(0.68) contrast(1.15)",
+          }}
+        />
+        {/* Subtle Antique Gold Mandala Overlay on Arch Wall */}
+        <div
+          className="absolute inset-0 w-full h-full opacity-25 mix-blend-screen bg-cover bg-center pointer-events-none"
+          style={{
+            backgroundImage: "url('/images/rose-burgundy-velvet-mandala-bg.jpg')",
+          }}
         />
       </div>
 
