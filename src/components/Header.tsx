@@ -57,7 +57,7 @@ export default function Header({
   ];
 
   const rightNavItems = [
-    { label: "DESIGNED BY CHANDRIKA", href: "#sarees" },
+    { label: "DESIGNED BY ROSEPETAL", href: "#sarees" },
     { label: "SHOP ALL", href: "#sarees" },
     { label: "FABRICS", href: "#sarees" },
     { label: "MORE", href: "#why-chandrika" },
@@ -170,7 +170,7 @@ export default function Header({
                 transition: "all 0.3s",
               }}
             >
-              CHANDRIKA
+              ROSEPETAL
             </span>
             <span
               style={{
@@ -185,7 +185,7 @@ export default function Header({
                 transition: "all 0.3s",
               }}
             >
-              HAUTE BRIDAL SAREES
+              DESIGNER BOUTIQUE
             </span>
           </a>
 

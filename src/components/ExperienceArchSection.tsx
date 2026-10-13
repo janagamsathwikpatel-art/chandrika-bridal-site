@@ -37,7 +37,7 @@ export default function ExperienceArchSection({
       name: "Ikats",
       tag: "Double Ikat Weave",
       image: "/images/patan-patola-double-ikat-saree.jpg",
-      filter: "DESIGNED BY CHANDRIKA",
+      filter: "DESIGNED BY ROSEPETAL",
     },
     {
       name: "Tussar",
@@ -79,7 +79,7 @@ export default function ExperienceArchSection({
       name: "Chiffon",
       tag: "Printed Luxury",
       image: "/images/kanjivaram-arunima-muppagam.png",
-      filter: "DESIGNED BY CHANDRIKA",
+      filter: "DESIGNED BY ROSEPETAL",
     },
     {
       name: "Georgette",
@@ -292,7 +292,7 @@ export default function ExperienceArchSection({
 
           <div className="text-center flex-1 mx-3">
             <span className="text-[9px] md:text-[11px] tracking-[0.35em] text-[#ffd700] font-semibold uppercase block mb-0.5">
-              CHANDRIKA HAUTE BRIDAL
+              ROSEPETAL DESIGNER BOUTIQUE
             </span>
             <h2 className="text-xl md:text-3xl font-bold text-white tracking-wider uppercase font-sans">
               SHOP BY CATEGORY
