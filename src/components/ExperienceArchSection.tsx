@@ -144,7 +144,7 @@ export default function ExperienceArchSection({
         minHeight: "700px",
       }}
     >
-      {/* ── Royal Rose Burgundy Velvet Backdrop (Visible behind open doors) ── */}
+      {/* ── Royal Rose Burgundy Velvet Backdrop (Visible when doors are opened) ── */}
       <div
         className="absolute inset-0 w-full h-full pointer-events-none z-0"
         style={{
@@ -153,140 +153,40 @@ export default function ExperienceArchSection({
             "radial-gradient(circle at 50% 55%, #580e22 0%, #2b0814 60%, #150308 100%)",
         }}
       />
-
-      {/* ── Stone Wall Background Frame with Transparent Arch Opening (Royal Rose Burgundy Velvet) ── */}
-      <div className="absolute inset-0 w-full h-full z-20 pointer-events-none">
-        <img
-          src="/images/arch-background.webp"
-          alt="Experience Wall Background"
-          className="w-full h-full object-cover object-center"
-          style={{
-            filter: "sepia(0.8) hue-rotate(295deg) saturate(2.2) brightness(0.68) contrast(1.15)",
-          }}
-        />
-        {/* Subtle Antique Gold Mandala Overlay on Arch Wall */}
-        <div
-          className="absolute inset-0 w-full h-full opacity-25 mix-blend-screen bg-cover bg-center pointer-events-none"
-          style={{
-            backgroundImage: "url('/images/rose-burgundy-velvet-mandala-bg.jpg')",
-          }}
-        />
-      </div>
-
-      {/* ── LEFT DOOR ── */}
+      {/* Subtle Antique Gold Mandala Texture Overlay inside the revealed room */}
       <div
-        className="absolute top-0 left-0 w-1/2 h-full z-10 transition-transform duration-1000 ease-in-out pointer-events-none"
+        className="absolute inset-0 w-full h-full opacity-20 mix-blend-screen bg-cover bg-center pointer-events-none z-0"
         style={{
-          transform: isOpen ? "translateX(-100%)" : "translateX(0%)",
+          backgroundImage: "url('/images/rose-burgundy-velvet-mandala-bg.jpg')",
         }}
-      >
-        <img
-          src="/images/door-left.png"
-          alt="Left Door"
-          className="w-full h-full object-cover object-right"
-          style={{
-            filter: "hue-rotate(145deg) saturate(1.4) brightness(0.82) contrast(1.15)",
-          }}
-        />
-      </div>
+      />
 
-      {/* ── RIGHT DOOR ── */}
+      {/* ── CLOSED DOOR FRONT STATE (100% Exact Matching User Reference Image) ── */}
       <div
-        className="absolute top-0 right-0 w-1/2 h-full z-10 transition-transform duration-1000 ease-in-out pointer-events-none"
-        style={{
-          transform: isOpen ? "translateX(100%)" : "translateX(0%)",
-        }}
+        className={`absolute inset-0 w-full h-full z-20 transition-all duration-700 ease-in-out select-none ${
+          isOpen
+            ? "opacity-0 pointer-events-none scale-105"
+            : "opacity-100 pointer-events-auto scale-100"
+        }`}
       >
+        {/* Exact Reference Artwork (Rose Burgundy Velvet Walls, Gold Mandalas, Weathered Arch, Velvet Doors, Saree Mannequins) */}
         <img
-          src="/images/door-right.png"
-          alt="Right Door"
-          className="w-full h-full object-cover object-left"
-          style={{
-            filter: "hue-rotate(145deg) saturate(1.4) brightness(0.82) contrast(1.15)",
-          }}
+          src="/images/arch-experience-rose-burgundy.jpg"
+          alt="Rosepetal Saree Collection Architectural Arch"
+          className="w-full h-full object-cover object-center pointer-events-none"
         />
-      </div>
 
-      {/* ── CLOSED DOOR FRONT STATE (Headline + Explore Button) ── */}
-      <div
-        className={`relative z-30 flex flex-col items-center justify-center text-center px-4 select-none transition-all duration-700 ${
-            isOpen
-              ? "opacity-0 pointer-events-none scale-95"
-              : "opacity-100 pointer-events-auto scale-100"
-          }`}
-          style={{
-            marginTop: "clamp(10px, 2vh, 32px)",
-          }}
-        >
-          <span
-            style={{
-              fontSize: "clamp(11px, 1.2vw, 15px)",
-              letterSpacing: "0.38em",
-              fontWeight: 500,
-              color: "#ffffff",
-              textTransform: "uppercase",
-              display: "block",
-              marginBottom: "12px",
-              textShadow: "0 2px 10px rgba(0,0,0,0.8)",
-            }}
-          >
-            EXPERIENCE
-          </span>
-
-          <h2
-            style={{
-              fontFamily: "'Anton', 'Impact', sans-serif",
-              fontSize: "clamp(38px, 5.5vw, 76px)",
-              letterSpacing: "0.02em",
-              lineHeight: "0.95",
-              color: "#ffffff",
-              textTransform: "uppercase",
-              margin: 0,
-              padding: 0,
-              marginBottom: "28px",
-              textShadow: "0 4px 24px rgba(0,0,0,0.85)",
-            }}
-          >
-            SAREE COLLECTION
-          </h2>
-
+        {/* Interactive Click Area & Explore Button Overlay */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
           <button
             onClick={() => setIsOpen(true)}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "14px 38px",
-              border: "1.5px solid #ffffff",
-              backgroundColor: "transparent",
-              color: "#ffffff",
-              fontSize: "clamp(10px, 1vw, 12px)",
-              letterSpacing: "0.26em",
-              textTransform: "uppercase",
-              fontWeight: 500,
-              cursor: "pointer",
-              transition: "all 0.35s ease",
-              textShadow: "0 1px 6px rgba(0,0,0,0.7)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#ffd700";
-              e.currentTarget.style.color = "#2b0814";
-              e.currentTarget.style.borderColor = "#ffd700";
-              e.currentTarget.style.textShadow = "none";
-              e.currentTarget.style.boxShadow =
-                "0 8px 30px rgba(255, 215, 0, 0.45)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "transparent";
-              e.currentTarget.style.color = "#ffffff";
-              e.currentTarget.style.borderColor = "#ffffff";
-              e.currentTarget.style.textShadow = "0 1px 6px rgba(0,0,0,0.7)";
-              e.currentTarget.style.boxShadow = "none";
-            }}
+            className="pointer-events-auto mt-[115px] sm:mt-[130px] md:mt-[145px] px-8 sm:px-11 py-3 sm:py-3.5 border border-white/70 hover:border-[#ffd700] hover:bg-[#ffd700] text-transparent hover:text-[#2b0814] text-[11px] sm:text-[12px] tracking-[0.26em] uppercase font-medium transition-all duration-300 shadow-sm hover:shadow-2xl cursor-pointer"
+            aria-label="Explore the collection"
           >
-            EXPLORE THE COLLECTION
+            <span className="opacity-0 hover:opacity-100 transition-opacity font-semibold">EXPLORE THE COLLECTION</span>
           </button>
         </div>
+      </div>
 
         {/* ── REVEALED STATE INSIDE OPENED DOORS: SHOP BY CATEGORY (Matching 2nd Screenshot) ── */}
         <div
