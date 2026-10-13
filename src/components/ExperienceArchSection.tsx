@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeft, Sparkles, ChevronRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 interface ExperienceArchSectionProps {
   onOpenInquiry?: () => void;
@@ -13,7 +13,6 @@ export default function ExperienceArchSection({
   onSelectCategory,
 }: ExperienceArchSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [viewMode, setViewMode] = useState<"swatches" | "graphic">("swatches");
 
   const categories = [
     {
@@ -300,73 +299,31 @@ export default function ExperienceArchSection({
             </h2>
           </div>
 
-          {/* Right Action & View Switcher */}
-          <div className="flex items-center gap-2">
-            <div className="flex items-center bg-black/40 backdrop-blur-md p-1 rounded-full border border-white/20 text-[9px] md:text-[10px] font-semibold tracking-widest uppercase">
-              <button
-                onClick={() => setViewMode("swatches")}
-                className={`px-3 py-1 rounded-full transition-all duration-300 ${
-                  viewMode === "swatches"
-                    ? "bg-[#ffd700] text-[#05084a] shadow-md font-bold"
-                    : "text-white/80 hover:text-white"
-                }`}
-              >
-                18 Swatches
-              </button>
-              <button
-                onClick={() => setViewMode("graphic")}
-                className={`px-3 py-1 rounded-full transition-all duration-300 ${
-                  viewMode === "graphic"
-                    ? "bg-[#ffd700] text-[#05084a] shadow-md font-bold"
-                    : "text-white/80 hover:text-white"
-                }`}
-              >
-                Full Catalog
-              </button>
-            </div>
-
-            <button
-              onClick={onOpenInquiry}
-              className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 bg-[#8B0000] hover:bg-[#600000] text-white text-[11px] font-semibold tracking-widest uppercase rounded-full transition-all shadow-md"
-            >
-              <Sparkles size={13} />
-              <span>BOOK FIT</span>
-            </button>
-          </div>
+          {/* Spacer on right matching BACK button width to keep center title balanced */}
+          <div className="w-[72px] hidden sm:block pointer-events-none" />
         </div>
 
         {/* 18-Category Swatch Grid (Clean authentic fabric swatches) */}
-        {viewMode === "swatches" ? (
-          <div className="w-full max-w-6xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 md:gap-4 my-auto">
-            {categories.map((cat) => (
-              <div
-                key={cat.name}
-                onClick={() => handleCategoryClick(cat.filter)}
-                className="group cursor-pointer flex flex-col items-start transition-all duration-300 hover:scale-[1.03]"
-              >
-                <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-white/5 border border-white/20 shadow-md group-hover:border-[#ffd700] transition-all">
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500 ease-out"
-                  />
-                </div>
-                <span className="mt-2 text-[11px] md:text-[12px] font-medium text-white/95 tracking-wide line-clamp-1 group-hover:text-[#ffd700] transition-colors">
-                  {cat.name}
-                </span>
+        <div className="w-full max-w-6xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 md:gap-4 my-auto">
+          {categories.map((cat) => (
+            <div
+              key={cat.name}
+              onClick={() => handleCategoryClick(cat.filter)}
+              className="group cursor-pointer flex flex-col items-start transition-all duration-300 hover:scale-[1.03]"
+            >
+              <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-white/5 border border-white/20 shadow-md group-hover:border-[#ffd700] transition-all">
+                <img
+                  src={cat.image}
+                  alt={cat.name}
+                  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500 ease-out"
+                />
               </div>
-            ))}
-          </div>
-        ) : (
-          /* Direct uploaded image without changes */
-          <div className="w-full max-w-5xl my-auto rounded-xl overflow-hidden border border-white/20 shadow-2xl bg-black/30 p-2 backdrop-blur-md">
-            <img
-              src="/images/shop-by-category-uploaded.png"
-              alt="Shop by Category Full Catalog Graphic"
-              className="w-full h-auto max-h-[62vh] object-contain mx-auto rounded-lg"
-            />
-          </div>
-        )}
+              <span className="mt-2 text-[11px] md:text-[12px] font-medium text-white/95 tracking-wide line-clamp-1 group-hover:text-[#ffd700] transition-colors">
+                {cat.name}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
