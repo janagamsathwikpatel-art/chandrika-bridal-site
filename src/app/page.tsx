@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import ExperienceArchSection from "@/components/ExperienceArchSection";
 import CustomerFavourites from "@/components/CustomerFavourites";
 import SareeCollection from "@/components/SareeCollection";
-import EditorialStory from "@/components/EditorialStory";
 import InquirySection from "@/components/InquirySection";
 import InquiryModal from "@/components/InquiryModal";
 import Footer from "@/components/Footer";
@@ -42,9 +41,6 @@ export default function Home() {
         selectedCategory={activeCategory}
         onSelectCategory={(cat) => setActiveCategory(cat)}
       />
-
-      {/* Editorial Story & Brand Philosophy */}
-      <EditorialStory />
 
       {/* Why Choose Chandrika & Bespoke Appointment CTA */}
       <InquirySection onOpenInquiry={() => setInquiryModalOpen(true)} />
